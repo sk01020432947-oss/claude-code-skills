@@ -78,6 +78,16 @@ git clone https://github.com/sk01020432947-oss/claude-code-skills.git
 | 검색 계열 | Python + `curl_cffi` |
 | 공공데이터 | data.go.kr 등 본인 API 키 |
 
+## 앱: 맥북 로컬 Image Studio
+
+[`apps/image-studio`](apps/image-studio) — 맥북(Apple Silicon, 메모리 32GB 권장) 안에서 Qwen-Image-2.1 로 이미지를 만드는 스튜디오입니다. 비용 없이 초안을 여러 장 뽑고, 사진을 외부로 보내지 않고 편집합니다. 설교 배경·주보 표지·묵상 카드 같은 사역용 스타일이 들어 있습니다.
+
+```bash
+cd apps/image-studio && ./install.sh --check && ./install.sh
+```
+
+Claude Code 에서는 [`local-image-studio`](skills/local-image-studio) 스킬로 부릅니다. 분석 노트: [`notes/qwen-image-studio-분석.html`](notes/qwen-image-studio-분석.html)
+
 ## 함께 보면 좋은 스킬 (여기 없음)
 
 아래 두 스킬은 다른 분들이 만들어 공개한 것이라 이 저장소에 포함하지 않았습니다. 원본에서 받으세요.
