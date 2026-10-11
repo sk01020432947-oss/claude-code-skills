@@ -84,7 +84,8 @@ else
     local repo="$1" path="$2" dest="$3" name="${2##*/}"
     if [[ -f "$dest/$name" ]]; then ok "$name 이미 있음"; return; fi
     info "내려받기: $repo/$path"
-    uvx --from "huggingface_hub[hf_xet]" hf download "$repo" "$path" --local-dir "$dest"
+    # uvx 는 uv 설치 방식에 따라 PATH 에 없을 수 있어 같은 동작인 "uv tool run" 을 쓴다
+    uv tool run --from "huggingface_hub[hf_xet]" hf download "$repo" "$path" --local-dir "$dest"
     # --local-dir 은 repo 안의 하위 폴더 구조를 그대로 만들므로 파일을 대상 폴더로 올린다
     if [[ "$path" == */* && -f "$dest/$path" ]]; then mv "$dest/$path" "$dest/$name"; rmdir "$dest/${path%/*}" 2>/dev/null || true; fi
     rm -rf "$dest/.cache"
