@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aside AI 브라우저 학습노트</title>
+<style>
+:root{--bg:#fbfaf7;--card:#ffffff;--ink:#1d1d1f;--muted:#5f6368;--line:#e4e1da;--accent:#2f5d8a;--accent-soft:#e8f0f8;--warn:#9a5b00;--warn-soft:#fff4e0;--ok:#2e7d4f;--ok-soft:#e6f4ec;--bad:#a33a3a;--bad-soft:#fbeaea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141518;--card:#1c1e22;--ink:#ececec;--muted:#a0a4ab;--line:#2d3036;--accent:#8cb7e3;--accent-soft:#1f2b38;--warn:#f0b35a;--warn-soft:#2e2414;--ok:#7fd1a1;--ok-soft:#16281f;--bad:#f08a8a;--bad-soft:#2e1818}}
+:root[data-theme="dark"]{--bg:#141518;--card:#1c1e22;--ink:#ececec;--muted:#a0a4ab;--line:#2d3036;--accent:#8cb7e3;--accent-soft:#1f2b38;--warn:#f0b35a;--warn-soft:#2e2414;--ok:#7fd1a1;--ok-soft:#16281f;--bad:#f08a8a;--bad-soft:#2e1818}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 -apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+main{max-width:880px;margin:0 auto;padding:32px 16px 80px}
+h1{font-size:1.9rem;line-height:1.3;margin:0 0 6px}
+h2{font-size:1.35rem;margin:48px 0 12px;padding-top:14px;border-top:1px solid var(--line)}
+h3{font-size:1.08rem;margin:24px 0 8px}
+.sub{color:var(--muted);margin:0 0 20px}
+nav{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:20px 0}
+nav a{color:var(--accent);text-decoration:none;margin-right:14px;display:inline-block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0}
+.note{background:var(--warn-soft);border-left:4px solid var(--warn);border-radius:8px;padding:12px 16px;margin:16px 0}
+.good{background:var(--ok-soft);border-left:4px solid var(--ok);border-radius:8px;padding:12px 16px;margin:16px 0}
+.key{background:var(--accent-soft);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:16px 0}
+.bad{background:var(--bad-soft);border-left:4px solid var(--bad);border-radius:8px;padding:12px 16px;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:.94rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);white-space:nowrap}
+code,pre{background:var(--accent-soft);border-radius:5px;font-size:.9em}
+code{padding:1px 6px}
+pre{padding:12px 14px;overflow-x:auto;line-height:1.5}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.92rem}
+.flow b{color:var(--muted)}
+.tag{display:inline-block;font-size:.76rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);margin-left:4px;white-space:nowrap}
+a{color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.vid h3{margin-top:4px}
+.meta{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Aside AI 브라우저: 로그인된 브라우저를 AI에게 맡기는 법</h1>
+<p class="sub">영상 5편 통합 학습노트 · 2026-10-11 작성</p>
+
+<div class="note">
+<b>자료 출처와 한계.</b> 작업 환경의 네트워크 정책 때문에 YouTube에 직접 접속하지 못했습니다. 대신 이 영상들을 실제 자막으로 정리해 둔 <b>공개 GitHub 학습 저장소</b>(<a href="https://github.com/irun20000-eng/Search">irun20000-eng/Search</a>, 2026년 9~10월 작성)의 영상 노트와 가이드, 그리고 웹 검색 자료를 근거로 했습니다. ⑤번은 장별 요약까지 확보했고, ②③④는 해당 저장소의 요약 수준입니다. ①번은 어디서도 정보를 찾지 못했습니다. 화면 메뉴 이름과 요금은 버전에 따라 바뀔 수 있습니다.
+</div>
+
+<nav>
+<a href="#s0">0. 영상 5편</a><a href="#s1">1. 한 장 요약</a><a href="#s2">2. 개념</a><a href="#s3">3. 핵심 기능</a><a href="#s4">4. Claude Code 연동</a><a href="#s5">5. 위험과 비용</a><a href="#s6">6. 나에게 필요한가</a><a href="#s7">7. 확장 응용</a><a href="#s8">8. 2주 실천</a><a href="#s9">9. 스킬화 점검</a><a href="#s10">10. 퀴즈</a>
+</nav>
+
+<h2 id="s0">0. 보내 주신 영상 5편</h2>
+<div class="grid">
+<div class="card vid"><span class="tag">입문</span><h3>⑤ 아직도 직접 하세요? AI 초보도 쓰는 Aside 자동화</h3><p class="meta">실전압축 AI 방현 · 15:41 · 2026-09-28</p>설치, 크롬 데이터 가져오기, 패스워드 매니저, 미니 팝업, ChatGPT·Claude 구독 연결, 로컬 폴더 권한 3단계, 루틴까지 다룹니다. <b>가장 먼저 볼 영상입니다.</b></div>
+<div class="card vid"><span class="tag">입문</span><h3>② AI 브라우저 Aside 실제 사용법 공개</h3><p class="meta">AI 겸임교수 이종범 · 15:31 · 2026-09-20</p>한국인 3명이 만들고 Y Combinator가 투자한 제품이라고 소개합니다. 제작자는 처음엔 "Claude Code나 Codex의 하위호환 아닌가" 하고 회의적이었다가, 써 본 다음 날 생각이 바뀌었다고 말합니다.</div>
+<div class="card vid"><span class="tag">활용</span><h3>③ AI 브라우저한테 제 앱을 쓰게 했습니다</h3><p class="meta">실밸개발자 (메타 시니어 엔지니어) · 28:00 · 2026-09-17</p>썸네일 제작, 구독료 점검, YouTube Studio 분석, 쇼핑 비교를 맡기고, 자기가 만든 앱을 에이전트가 쓰게 해 봅니다. <b>실전 사례가 가장 많습니다.</b></div>
+<div class="card vid"><span class="tag">개발자</span><h3>④ AI 브라우저 다 써봤는데 결국 여기로 갈아탔습니다</h3><p class="meta">개발동생 · 14:27 · 2026-08-15</p>갈아탄 진짜 이유로 로그인 세션을 들고, 그 덕에 Playwright MCP를 안 쓰게 됐다고 말합니다. exec와 repl의 차이, 토큰 효율 측정, 보안과 프롬프트 인젝션, 권한 모드를 각각 다룹니다. <b>Claude Code 사용자에게 핵심인 영상입니다.</b></div>
+<div class="card vid"><span class="tag">미확인</span><h3>① rSKLpR1UwE0</h3><p class="meta">제목, 채널 확인 불가</p>검색 색인에도, 위 저장소에도 없습니다. 자막을 붙여 주시거나 로컬 PC에서 <code>/youtube-study-fit</code>을 돌리면 이 노트에 합칠 수 있습니다.</div>
+</div>
+<p class="meta">추천 시청 순서: ⑤ → ② → ③ → ④ (입문 → 활용 → 개발자 연동)</p>
+
+<h2 id="s1">1. 한 장 요약</h2>
+<div class="key">
+<b>핵심 문장:</b> AI에게 일을 시키려고 API나 MCP를 서비스마다 연결할 필요가 없습니다. <b>내가 이미 로그인해 둔 브라우저 안에 AI를 들여놓으면</b>, AI가 사람처럼 화면을 열고 클릭해 일합니다.<br><br>
+<b>한 줄 판별법:</b> 그 일을 남에게 시키려면 <b>내 계정을 빌려줘야 하는가?</b> 그렇다면 Aside가 맞는 자리입니다. API 키만 주면 되는 일은 기존 자동화 도구(n8n, Zapier 등)가 더 안전하고 쌉니다.
+</div>
+<div class="flow"><span>크롬 쿠키·비밀번호 가져오기</span><b>→</b><span>읽기 작업으로 신뢰 쌓기</span><b>→</b><span>메모리 교정</span><b>→</b><span>루틴 예약</span><b>→</b><span>Slack·터미널(Claude Code)에서 호출</span></div>
+
+<h2 id="s2">2. 개념: 왜 "브라우저 안의 AI"인가</h2>
+<table>
+<tr><th>방식</th><th>예</th><th>로그인된 사이트</th><th>장단점</th></tr>
+<tr><td>API/MCP 연동</td><td>Notion·Slack MCP, n8n</td><td>토큰을 따로 발급</td><td>정확하고 싸지만 서비스마다 배관 공사가 필요합니다</td></tr>
+<tr><td>새 브라우저 자동화</td><td>Playwright MCP</td><td>❌ 빈 브라우저라 로그인 벽에서 멈춥니다</td><td>테스트에는 좋지만 회원 전용 페이지는 못 봅니다</td></tr>
+<tr><td>기존 크롬 확장</td><td>Claude in Chrome</td><td>✅ 로그인 공유. 로그인 화면이 나오면 사람에게 넘깁니다</td><td>새로 깔 것이 적습니다. 일부 사용자는 느리고 끊긴다고 평합니다</td></tr>
+<tr><td><b>에이전트 내장 브라우저</b></td><td><b>Aside</b></td><td>✅ 세션을 그대로 쓰고, 저장된 비밀번호로 자동 입력합니다(비밀번호 자체는 AI에 넘기지 않음)</td><td>루틴, 메모리, CLI·MCP까지 갖췄습니다. 새 브라우저로 갈아타야 합니다</td></tr>
+</table>
+<p>Aside는 크로미움 기반이라 겉모습은 크롬과 거의 같습니다. 만든 회사는 샌프란시스코의 At Your Side입니다. 공식 문서는 활용처로 인사(온보딩), 재무(SaaS 갱신, 인보이스), 리서치(출처 수집, 가격 캡처), 영업(CRM 검증), 개발(CI 결과 분류)을 듭니다. 공통점은 <b>"로그인해야 보이는 화면을 여러 개 오가는 일"</b>입니다.</p>
+
+<h2 id="s3">3. 핵심 기능 (⑤번 영상 중심)</h2>
+<table>
+<tr><th>기능</th><th>내용</th><th>팁</th></tr>
+<tr><td>데이터 가져오기</td><td>크롬의 쿠키, 북마크, 저장된 비밀번호를 한 번에 옮깁니다. 영상은 이를 "택배 업체"에 비유합니다</td><td>설치 전에 <b>작업 관리자에서 크롬·엣지 프로세스를 완전히 종료</b>해야 충돌이 나지 않습니다</td></tr>
+<tr><td>패스워드 매니저</td><td>Windows Hello 생체인증과 복구용 마스터 키를 씁니다</td><td>복구 키는 반드시 따로 보관하세요</td></tr>
+<tr><td>미니 팝업</td><td><code>Ctrl+Space</code>로 어디서든 질문 창을 띄우고, <code>Ctrl+2</code>로 사이드바를 엽니다</td><td>탭 배치는 가로형(샌프란시스코)과 세로형(뉴욕) 중에서 고릅니다</td></tr>
+<tr><td>모델 연결 (BYOK)</td><td>이미 결제 중인 ChatGPT·Claude·Copilot 구독을 연결합니다</td><td>한 사용기에 따르면 <b>크레딧은 Aside 자체 모델을 쓸 때만 줄어듭니다</b>. 그러니 구독부터 연결하세요. 다만 여러 모델을 동시에 쓰기는 어렵다고 합니다</td></tr>
+<tr><td>로컬 프로젝트 폴더</td><td>PC 폴더를 연결해 파일 요약과 정리를 시킵니다. 권한은 <b>Read-only, Guard(매번 질문), Full Access</b> 3단계입니다</td><td>Full Access에서도 삭제 전에는 <b>파이널 컨펌</b>을 받습니다. 여러 폴더를 다룰 때는 최상위 부모 폴더를 등록하세요</td></tr>
+<tr><td>메모리</td><td>작업 맥락을 로컬 마크다운 파일로 남기고, 사람이 열어서 고칠 수 있습니다</td><td>틀린 기억도 그대로 굳으니 <b>고유명사</b>부터 교정하세요</td></tr>
+<tr><td>루틴</td><td>"매일 9시에 이 페이지 확인해서 달라진 것만 알려 줘" 같은 예약 작업입니다. 대화 기록에서 반복 작업을 찾아 루틴으로 추천하기도 합니다</td><td>무료는 3개까지입니다. <b>브라우저가 켜져 있어야</b> 돕니다</td></tr>
+<tr><td>Ultrabrowse</td><td>출처가 많은 심층 조사용 모드입니다</td><td>Pro 기능입니다</td></tr>
+<tr><td>Channels / CLI / MCP</td><td>Slack·텔레그램, 터미널, 코딩 에이전트에서 원격으로 지시합니다</td><td>Channels는 Pro 기능입니다. CLI와 MCP는 4장에서 다룹니다</td></tr>
+</table>
+
+<h2 id="s4">4. Claude Code에 붙이기 (④번 영상 + 연동 가이드)</h2>
+<p>Claude Code를 주로 쓰신다면 <b>이 장이 가장 실용적입니다.</b> 연결하면 Claude Code가 "로그인해야 보이는 페이지"를 직접 열어 증거를 가져옵니다.</p>
+<pre>Claude Code (터미널)
+   │  MCP
+   ▼
+aside mcp   ── 도구 2개: exec · repl
+   │
+   ▼
+Aside 브라우저 (내가 로그인해 둔 프로필)
+   │
+   ▼
+YouTube Studio · 교회 행정 포털 · 회원 전용 게시판</pre>
+<h3>설치와 등록 (macOS 기준. 공식 페이지와 대조한 뒤 실행하세요)</h3>
+<pre># 1) CLI 설치 (앱의 설정 → Developers 메뉴에서도 가능)
+curl -fsSL https://releases.aside.com/install.sh | bash
+which aside            # 경로가 찍히면 성공
+
+# 2) Claude Code에 MCP 서버로 등록 (모든 프로젝트에서 쓰려면 user 범위)
+claude mcp add --scope user aside -- ~/.local/bin/aside mcp
+claude mcp list        # aside가 보이면 성공</pre>
+<div class="note"><b>자주 하는 실수:</b> <code>--scope</code> 같은 Claude Code 플래그는 반드시 <code>--</code> <b>앞에</b> 둡니다. 뒤에 두면 aside에 넘어가는 인자가 되어, 범위가 기본값(현재 프로젝트)으로 잡힙니다.</div>
+<h3>exec와 repl의 구분</h3>
+<table>
+<tr><th>도구</th><th>누가 판단하나</th><th>언제 쓰나</th></tr>
+<tr><td><code>exec</code></td><td>Aside 에이전트에게 일을 통째로 넘깁니다</td><td>"결과만 맞으면 된다" (조사, 요약)</td></tr>
+<tr><td><code>repl</code></td><td>내가 적은 단계를 그대로 실행합니다</td><td>"매번 같은 순서로 같은 것을 봐야 한다" (캡처, 내려받기, 정기 점검)</td></tr>
+</table>
+<div class="bad"><b>함정:</b> 커뮤니티 기록에 따르면 비대화형으로 실행한 <code>aside exec</code>는 권한 질문을 만나면 <b>호출을 거부하고 종료 코드 0으로 끝날 수 있습니다.</b> 종료 코드 0을 성공으로 믿지 말고, 결과 파일에 기대한 값이 들어 있는지 확인하세요.</div>
+<p><b>실제 사례:</b> 한 국내 사용자는 Claude Code가 Aside를 "인턴처럼" 부리게 해서, 로그인 벽 뒤의 커뮤니티 글 2,428건(1,436명)을 수집해 Git 저장소에 쌓았습니다.</p>
+
+<h2 id="s5">5. 위험과 비용</h2>
+<table>
+<tr><th>요금제</th><th>가격</th><th>내용</th></tr>
+<tr><td>Free</td><td>0달러</td><td>월 500 크레딧(매월 1일 초기화), 루틴 3개. 내 구독을 연결하면 무료로도 충분한 경우가 많습니다</td></tr>
+<tr><td>Pro</td><td>월 20달러</td><td>사용량 3배, 무제한 루틴, Ultrabrowse, Channels, 클라우드 핸드오프. 모델 값이 아니라 기능 값으로 보면 됩니다</td></tr>
+<tr><td>Max</td><td>월 200달러</td><td>대용량 사용자용</td></tr>
+</table>
+<p class="meta">한 실측 후기에서는 Aside 자체 모델로 유튜브 검색 1회에 약 150 크레딧, 네이버 블로그 검색 1회에 약 55 크레딧이 들었습니다. 비용은 결과 개수가 아니라 방문한 페이지 수가 좌우합니다.</p>
+<ul>
+<li><b>프롬프트 인젝션:</b> 남이 쓴 글(커뮤니티, 댓글)에 숨은 지시가 섞여 AI를 조종할 수 있습니다. <b>남의 글을 모으는 작업은 읽기만 시키고, 그 결과로 무언가를 실행시키지 마세요.</b></li>
+<li><b>권한 위임:</b> 크롬 쿠키를 가져온다는 것은 모든 로그인 권한을 맡긴다는 뜻입니다. 은행, 교단 행정, 성도 개인정보가 있는 계정은 처음엔 빼 두세요.</li>
+<li><b>경계 행동:</b> 결제, 발송, 게시는 사람 확인을 거치게 설계돼 있지만, 확인 버튼을 습관적으로 누르면 소용이 없습니다. <b>첫 2주는 읽기와 정리만 맡기세요.</b></li>
+<li><b>알려진 실패:</b> 보안문자가 있는 로그인(예: 카카오)에서는 자동화가 실패합니다. 아래로 스크롤해야 불러오는 페이지(lazy load)는 아래쪽 내용을 놓칠 수 있습니다. 상대 사이트 장애가 에이전트 실패처럼 보일 때도 있습니다.</li>
+<li><b>신생 제품:</b> 출시된 지 몇 달 안 된 제품입니다. 성능 주장은 중립적인 재현이 나오기 전까지 마케팅으로 보세요.</li>
+</ul>
+
+<h2 id="s6">6. 나에게 필요한가? (이 저장소의 스킬 231개로 본 사용자 프로필 기준)</h2>
+<p>저장소를 보면 목회와 설교(<code>sermon-*</code>, 주해 파이프라인), 설교 유튜브(<code>sermon-to-youtube</code>, <code>youtube-video-pipeline</code>, <code>media-gen-thumbnail</code>), 앱 개발(<code>appbuild-*</code>), 공공 행정(<code>transport-receipt-collector</code>) 작업을 Claude Code로 하고 계십니다.</p>
+<table>
+<tr><th>영역</th><th>필요도</th><th>이유</th></tr>
+<tr><td>설교 채널 운영 (YouTube Studio)</td><td><b>높음</b></td><td>Studio 분석은 API 연결이 번거로운 "로그인 화면" 업무라서 Aside의 정확한 자리입니다(③번 영상의 사례)</td></tr>
+<tr><td>Claude Code 리서치 파이프라인</td><td><b>높음</b></td><td><code>insane-search</code>, <code>agent-reach</code>가 막히는 로그인 벽(페이스북 그룹, 회원제 카페)을 <code>aside mcp</code>로 넘을 수 있습니다</td></tr>
+<tr><td>행정 반복 업무 (영수증, 정산, 포털 신청)</td><td>중간</td><td>API 없는 포털에 맞습니다. 다만 보안문자가 있는 사이트는 안 되니 하나씩 확인해야 합니다</td></tr>
+<tr><td>앱 개발 QA (appbuild)</td><td>중간</td><td>로그인된 상태로 내 앱을 테스트할 수 있습니다(④번 영상의 Playwright 대체)</td></tr>
+<tr><td>설교 준비와 주해</td><td>낮음</td><td>대화형 사고 작업이라 브라우저 자동화의 이점이 적습니다</td></tr>
+</table>
+<div class="key"><b>결론: 써 볼 가치가 있지만, 주력 브라우저를 바로 바꿀 필요는 없습니다.</b><br>
+① 비용이 0입니다. 무료 플랜에 이미 쓰는 Claude 구독을 연결하면 됩니다.<br>
+② <b>"설교 채널 주간 리포트" 한 가지로 2주만</b> 시험해 보세요.<br>
+③ 효과가 확인되면 <code>aside mcp</code>를 Claude Code에 붙여 기존 스킬과 연결합니다.<br>
+단순히 로그인된 사이트를 한두 번 보는 정도라면, 이미 쓸 수 있는 <b>Claude in Chrome</b>으로 충분합니다.</div>
+<h3>왜 그렇게 해야 하나, 어떤 효과가 있나</h3>
+<ul>
+<li><b>시간이 줄어드는 곳은 세 군데뿐입니다.</b> ① 화면 이동(탭 열기, 로그인, 찾아 들어가기), ② 설명 반복(메모리가 대신 기억), ③ 착수 지연(루틴이 알아서 시작). 그중 ③이 가장 크고, 가장 잘 안 세어집니다.</li>
+<li><b>본전은 2개월 차에 넘습니다.</b> 가이드의 계산 예시로는, 주 2회 25분 걸리던 업무가 6분으로 줄면 월 약 163분을 아낍니다. 처음 익히는 데 약 230분이 드니 첫 달은 손해이고, 2개월 차부터 이익입니다. 실측 전의 가정치입니다.</li>
+<li><b>증빙이 남습니다.</b> 리서치에서는 시간보다, 출처와 캡처가 빠짐없이 남는다는 점이 더 큰 가치일 수 있습니다.</li>
+</ul>
+
+<h2 id="s7">7. 확장 응용 아이디어</h2>
+<div class="grid">
+<div class="card"><b>① 설교 채널 주간 리포트 (루틴)</b><br>매주 월요일, YouTube Studio에서 지난주 영상의 조회수, 평균 시청 시간, 댓글 요약을 4칸 표로 받습니다. 결과는 <code>sermon-to-youtube</code>의 제목·썸네일 개선 입력으로 씁니다.</div>
+<div class="card"><b>② 로그인 벽 리서치 → 설교 예화</b><br>Claude Code가 <code>aside exec</code>로 회원제 목회자 카페나 커뮤니티의 최근 고민 글을 수집하고(읽기 전용), 설교 적용점의 재료로 씁니다.</div>
+<div class="card"><b>③ 경쟁 채널 썸네일 수집</b><br>유사 설교 채널의 최근 썸네일과 제목 패턴을 <code>repl</code>로 매번 같은 방식으로 캡처해 <code>media-gen-thumbnail</code>의 참고 자료로 씁니다.</div>
+<div class="card"><b>④ 구독료 점검 (월 1회)</b><br>결제 내역 페이지를 모아 "서비스명, 금액, 결제일, 다음 결제일" 표를 만듭니다. 해지는 사람이 합니다.</div>
+<div class="card"><b>⑤ 행정 포털 초안 입력</b><br>출장·정산 양식의 초안까지만 채우고, 제출은 사람이 누릅니다. "만드는 단계와 제출하는 단계를 분리"하는 원칙입니다.</div>
+<div class="card"><b>⑥ 내 앱의 "AI 사용자 테스트"</b><br>appbuild로 만든 앱에 로그인한 상태로 핵심 흐름을 수행시킵니다. 에이전트가 헤맨 곳이 곧 UX 결함입니다. 의미 있는 버튼과 레이블, 글자로 된 상태 표시가 있으면 AI도 사람도 덜 헤맵니다.</div>
+</div>
+
+<h2 id="s8">8. 2주 실천 과제 (하루 10분)</h2>
+<pre>1주차: 되돌릴 수 있는 것만
+□ 1일  설치 (크롬 완전 종료 후) + Claude 구독 연결 + 크레딧 잔량 확인
+□ 2일  후보 업무 3개 적기 + 각각 지금 걸리는 시간을 스톱워치로 재기
+□ 3일  1개 골라 "읽기 작업" 시키기. 출력 형태를 지정 ("4칸 표로")
+□ 4일  메모리 파일 열어 틀린 고유명사 고치기
+□ 5일  같은 일을 지시문 절반 길이로 다시 시키기
+□ 주말  지시문 한 줄로 저장 + 실측 시간 기록
+
+2주차: 자동화와 확장
+□ 1일  루틴 걸기. 단 ①두 번 이상 성공 ②실패해도 피해 없음 ③결과 볼 자리 있음을 확인한 뒤
+□ 2일  루틴 결과가 도착했는지 확인
+□ 3일  Claude Code에서 aside mcp로 한 번 호출해 보기
+□ 4~5일  후보 2번 선정과 실측까지만
+□ 주말  본전 계산 (투입 시간 vs 절감 시간)</pre>
+<div class="good"><b>2주 뒤 자기 점검:</b> ① 내가 열지 않아도 결과를 받는가? ② 지시문이 저장돼 있어 남도 그대로 쓸 수 있는가? ③ 줄어든 시간이 실측 숫자로 적혀 있는가? 셋 다 "예"가 아니면 아직 업무에 붙은 것이 아닙니다.</div>
+
+<h2 id="s9">9. 스킬로 만들 필요가 있는가: 점검 결과</h2>
+<table>
+<tr><th>후보</th><th>판정</th><th>이유</th></tr>
+<tr><td>Aside 사용법 스킬</td><td>❌ 지금은 불필요</td><td>Aside는 앱이고, 설치와 사용법은 이 노트로 충분합니다. 웹 조작과 수집은 이미 <code>insane-search</code>, <code>agent-reach</code>, Claude in Chrome이 맡고 있습니다.</td></tr>
+<tr><td>Aside 연동 업무 스킬<br>(예: <code>/channel-weekly-report</code>)</td><td>△ <b>2주 시험 후 생성</b></td><td>연동 가이드의 원칙대로 <b>"같은 일이 두 번 통하면 스킬로 굳힙니다."</b> 지금 만들면 검증 안 된 절차가 굳어 버립니다. 시험이 끝나면 지시문, 가져올 양, 결과 확인 한 줄을 담은 SKILL.md를 만들어 드리겠습니다.</td></tr>
+<tr><td><b>YouTube 영상 학습 + 적합성 점검</b> 스킬</td><td>✅ <b>생성함</b></td><td>지금처럼 영상 링크를 주고 "분석 → 학습 정리 → 나에게 필요한가 → 확장 → 스킬화 점검"을 받는 일이 반복되고 있습니다. <code>skills/youtube-study-fit/</code>로 추가했습니다. 로컬 PC에서는 yt-dlp나 <code>insane-search</code>로 자막을 직접 받아 이 노트 형식의 HTML을 만듭니다.</td></tr>
+</table>
+<div class="good"><b>사용법:</b> 로컬 Claude Code에서 <code>/youtube-study-fit &lt;링크1&gt; &lt;링크2&gt;</code>라고 입력하거나, "이 영상 분석해서 나한테 필요한지 정리해 줘"라고 말하면 됩니다. 링크를 여러 개 주면 주제별로 묶어 하나의 노트로 만듭니다.</div>
+
+<h2 id="s10">10. 자기점검 퀴즈 (눌러서 답 보기)</h2>
+<details><summary>Q1. Aside가 Playwright MCP보다 유리한 결정적 이유는?</summary>Playwright는 빈 브라우저를 새로 띄워서 로그인 벽 앞에서 멈춥니다. Aside는 내가 로그인해 둔 세션을 그대로 씁니다(④번 영상).</details>
+<details><summary>Q2. 무료로 쓰려면 가장 먼저 무엇을 해야 하나?</summary>설정에서 기존 ChatGPT나 Claude 구독을 연결합니다. 크레딧은 Aside 자체 모델을 쓸 때 주로 줄어듭니다.</details>
+<details><summary>Q3. 로컬 폴더 권한 3단계와 안전장치는?</summary>Read-only, Guard(매번 질문), Full Access. Full Access에서도 삭제 같은 중대 작업 전에는 파이널 컨펌을 받습니다.</details>
+<details><summary>Q4. exec와 repl은 각각 언제 쓰나?</summary>결과만 맞으면 되는 일은 exec(에이전트에게 위임). 매번 같은 순서로 같은 것을 봐야 하는 일(캡처, 점검)은 repl(내가 적은 단계를 그대로 실행).</details>
+<details><summary>Q5. 루틴을 걸기 전에 확인할 세 가지는?</summary>① 같은 지시로 두 번 이상 성공했는가 ② 실패해도 피해가 없는가(읽기·초안인가) ③ 결과를 내가 매번 볼 자리가 있는가.</details>
+<details><summary>Q6. 커뮤니티 글을 수집할 때의 보안 원칙은?</summary>남이 쓴 글에는 프롬프트 인젝션이 섞일 수 있습니다. 결과는 읽기만 하고, 그 결과로 무언가를 실행시키지 않습니다.</details>
+<details><summary>Q7. 나에게 가장 먼저 맞는 시험 과제는?</summary>설교 채널의 YouTube Studio 주간 지표 요약. 읽기 전용이라 위험이 낮고, API 연결 없이 바로 효과가 보입니다.</details>
+
+<h2>참고 자료</h2>
+<ul>
+<li>영상: <a href="https://www.youtube.com/watch?v=Erz8N_yUTuU">⑤ 방현</a> · <a href="https://www.youtube.com/watch?v=2NNAF2VZ_6U">② 이종범</a> · <a href="https://www.youtube.com/watch?v=lKvvVOFa6M0">③ 실밸개발자</a> · <a href="https://www.youtube.com/watch?v=OXg-0BXf_Yk">④ 개발동생</a> · <a href="https://www.youtube.com/watch?v=rSKLpR1UwE0">① 미확인</a></li>
+<li>정리 근거: <a href="https://github.com/irun20000-eng/Search">irun20000-eng/Search</a>, 해당 저장소의 videos/notes/Erz8N_yUTuU.md, guides/aside-work-integration, guides/aside-claude-code, guides/aside-jev-start (2026년 9~10월)</li>
+<li>공식: <a href="https://aside.com/">aside.com</a> · <a href="https://aside.com/pricing">요금</a> · <a href="https://docs.aside.com/help/get-started">도움말</a></li>
+<li>국내 후기: <a href="https://daleseo.com/aside/">Dale Seo</a> · <a href="https://brunch.co.kr/@sukistory/133">브런치 sukistory (실패 사례)</a> · <a href="https://www.digitalmarketer.co.kr/insights/aside-browser-review">준이아빠블로그</a> · <a href="https://www.gpters.org/news/post/ai-beuraujeo-aside-hugi-20bun-mane-muryo-keuredis-da-sseugo-baeun-jeom-wWD0Fvr8rp8ITrw">GPTers 크레딧 실측</a> · <a href="https://sireal.co/blog/how-to/aside-browser-guide-comet-claude-compare">시리얼 (BYOK)</a> · <a href="https://techbukket.com/blog/aside-cli-guide">테크버킷 CLI</a></li>
+</ul>
+</main>
+</body>
+</html>
