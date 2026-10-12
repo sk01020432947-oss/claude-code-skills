@@ -80,10 +80,11 @@ git clone https://github.com/sk01020432947-oss/claude-code-skills.git
 
 ## 함께 보면 좋은 스킬 (여기 없음)
 
-아래 두 스킬은 다른 분들이 만들어 공개한 것이라 이 저장소에 포함하지 않았습니다. 원본에서 받으세요.
+아래 스킬은 다른 분들이 만들어 공개한 것이라 이 저장소에 포함하지 않았습니다. 원본에서 받으세요.
 
 - [ir-search](https://github.com/djfksjd/ir-search) — 한국 정부·공공기관 지원사업 전수조사
 - [pptx-design-styles](https://github.com/corazzon/pptx-design-styles) — PPT 디자인 스타일 30종
+- [showreel](https://github.com/revfactory/showreel) — 요청 한 번으로 한국어 모션그래픽 영상(쇼릴·홍보·티저) 제작. 콘셉트→원고→ElevenLabs 나레이션·음악→HTML/WebGL 장면→렌더→비평 반복→자동 검수. Node 20+·Python·ffmpeg·Chrome 필요, macOS 기준(Windows는 `REEL_CHROME_PATH` 지정)
 
 ## 참고
 
