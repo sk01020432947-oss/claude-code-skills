@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="kbg-master" data-pptx-master-name="KBG" data-pptx-layout="04_ending" data-pptx-layout-name="Ending">
+  <!-- KBG — Ending -->
+
+  <rect id="master-bg" width="1280" height="720" fill="#FBFAF7" data-pptx-layer="master" data-pptx-editable="false"/>
+
+  <rect x="56" y="228" width="6" height="164" fill="#1F4E79" id="layout-ending-bar" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="600" x2="1224" y2="600" stroke="#E3E0D8" stroke-width="1" id="layout-ending-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-placeholder-bounds="88 254 1136 64">
+    <text id="title-carrier" data-pptx-placeholder-carrier="true" x="88" y="310" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-weight="700" font-size="48" fill="#1D1F24" letter-spacing="-1.2">{{CLOSING_MESSAGE}}</text>
+  </g>
+  <g id="ending-subtitle">
+    <text x="88" y="366" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#5D6370">{{ENDING_SUBTITLE}}</text>
+  </g>
+  <g id="ending-footer">
+    <text x="56" y="644" font-family="'Pretendard SemiBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#1D1F24">{{CONTACT_INFO}}</text>
+  </g>
+</svg>

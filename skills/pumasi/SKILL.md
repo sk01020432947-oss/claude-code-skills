@@ -1,6 +1,6 @@
 ---
-name: image
-description: "Codex /imagen으로 이미지 생성 — 모드 자동 감지 + image-studio 프롬프트 + 후처리 금지 가드"
+name: pumasi
+description: "Codex /imagen으로 이미지 생성 — 모드 자동 감지 + image-studio 프롬프트 + 후처리 금지 가드 인자 없이 실행하면 어떤 이미지를 만들지 묻는다. 트리거: '/pumasi:image', 'Codex로 이미지 만들어줘', 'imagen으로 그려줘'. 코드 병렬 외주(/pumasi)와는 별개 명령이다."
 argument-hint: "[이미지 요청 자연어]"
 ---
 

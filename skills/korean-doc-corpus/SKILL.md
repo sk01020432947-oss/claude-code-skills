@@ -7,7 +7,8 @@ description: >
   frontmatter로 title·publisher·date·source_raw_md 부여) 및 정적 JSON 인덱스. 여러 문서를
   일괄로 마크다운화하거나, 스캔본 관보·고시·정관·공고를 RAG/검색용으로 정규화할 때 발동.
   트리거: "공공문서 마크다운으로 / 스캔 PDF OCR 깨짐 보정 / 문서 코퍼스 구축 / RAG용 정규화 /
-  관보·고시 일괄 파싱 / 여러 포맷 통일 마크다운".
+  관보·고시 일괄 파싱 / 여러 포맷 통일 마크다운 / 폴더 통째로 md 변환 / 한글파일 일괄 변환 /
+  HanMark처럼 변환".
   ★충돌 방지(중요): 단일 HWP/HWPX **파싱**은 `read-hwp`(kordoc), **편집**은 `rhwp-edit`,
   HWPX **보고서 양식 작성**은 `hwpx-mouseco`, 공공데이터셋 **검색**은 `public-data-finder`를
   쓴다 — 이 스킬은 그 도구들을 *대체하지 않고 호출*하는 상위 오케스트레이터·방법론이다.
@@ -25,6 +26,22 @@ description: >
 - **쓰지 말아야 할 때(위임)**: 파일 1개 단순 파싱=`read-hwp`(HWP/HWPX)·직접 pdfplumber(텍스트 PDF);
   HWP 내용 수정=`rhwp-edit`; HWPX 보고서 신규 작성=`hwpx-mouseco`; 데이터셋 찾기=`public-data-finder`.
   이 스킬은 "여러 포맷을 하나의 코퍼스로 수렴 + 스캔 OCR 보정 + 인덱싱"이 필요할 때만.
+
+## 0) 빠른 길 — 폴더 일괄 변환 (HanMark 대체)
+단순히 "폴더 안 문서를 전부 md로"면 보정·인덱싱 없이 이것 하나로 끝낸다.
+엔진은 HanMark 옵시디언 플러그인과 같은 kordoc. 하위 폴더 구조 복제, 재실행 시 새·수정 파일만 처리.
+```bash
+python3 ~/.claude/skills/korean-doc-corpus/scripts/batch_to_md.py <원본폴더> [출력폴더] [--ocr] [--force]
+```
+- 대상: .hwp .hwpx .pdf .docx .xlsx .xls / 출력 기본값 `<원본폴더>_md`
+- 같은 폴더에 이름이 같은 파일(승낙서.hwp·승낙서.docx)은 `승낙서.hwp.md`처럼 확장자를 붙인다.
+- 실패 파일은 `<출력폴더>/_실패목록.txt`. 스캔 PDF가 빈 md로 나오면 `--ocr`로 다시 돌린다.
+- 파일 하나면 `batch_to_md.py <파일>` → 같은 폴더에 `이름.md`. 기존 md는 `--force` 없이 덮어쓰지 않는다.
+- Finder 빠른 동작(폴더·파일 우클릭 → 빠른 동작 → "문서를 MD로 변환")은
+  `python3 ~/.claude/skills/korean-doc-corpus/scripts/install_quick_action.py`로 (재)설치한다.
+  같은 설치기가 바탕화면 드롭렛 `~/Desktop/문서를 MD로 변환.app`도 만든다(둘 다 `scripts/convert.sh` 호출).
+  사용설명서: `~/Desktop/cysjavis/매뉴얼/문서_공문도구/문서MD변환/사용설명서.html`.
+- 결과를 사용자에게 보고할 때 출력 폴더와 실패 목록을 클릭 가능한 링크로 준다.
 
 ## 2) 순서 (Procedure)
 1. **포맷 판별 → 라우팅** (포맷이 다르면 도구가 다르다. 출구는 하나의 마크다운):

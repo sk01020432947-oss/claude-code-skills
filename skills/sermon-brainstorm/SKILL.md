@@ -1,6 +1,6 @@
 ---
 name: sermon-brainstorm
-description: Interactive brainstorming partner for sermon preparation. Asks guided questions to help pastors clarify their message, identify the core tension, and produce a sermon brief. Thinks WITH the pastor, never writes the sermon.
+description: Interactive brainstorming partner for sermon preparation. Asks guided questions to help pastors clarify their message, identify the core tension, and produce a sermon brief. Thinks WITH the pastor, never writes the sermon. Not for writing the manuscript (use sermon-emotive-writing-coach) or for commentary research (use sermon-research).
 ---
 
 # Sermon Brainstorm

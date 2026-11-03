@@ -1,6 +1,6 @@
 ---
 name: kkirikkiri
-description: "자연어 한마디로 AI 에이전트 팀을 자동 구성하고 실행합니다. 리서치, 개발, 분석, 콘텐츠 — 목적에 맞는 팀을 만들어보세요."
+description: "자연어 한마디로 AI 에이전트 팀을 자동 구성하고 실행합니다. 리서치, 개발, 분석, 콘텐츠 — 목적에 맞는 팀을 만들어보세요. 흐름: 의도 파악→인터뷰→팀 생성→실행. 트리거: '끼리끼리', '/kkirikkiri', '에이전트 팀 만들어줘', '팀으로 조사·개발해줘'."
 argument-hint: "[자연어 요청]"
 allowed-tools:
   - Read
@@ -14,8 +14,7 @@ allowed-tools:
   - TaskUpdate
   - TaskList
   - TaskGet
-  - TeamCreate
-  - TeamDelete
+  - Agent
   - SendMessage
   - WebSearch
   - WebFetch

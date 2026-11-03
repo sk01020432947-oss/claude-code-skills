@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kbg 발표자료</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* ── 토큰: 영상 프레임 픽셀 실측값 (kbg-발표자료(1)) ── */
+:root{
+  --bg:#F3F1E9;        /* 캔버스 배경 (오프화이트 웜톤) */
+  --card:#F9F9F5;      /* 카드·라이트 타일 */
+  --card-2:#F5F3EB;    /* 보조 패널 */
+  --line:#E6E3D8;      /* 카드 테두리·구분선 */
+  --wire:#A9A69C;      /* 연결선 헤어라인 */
+  --ink:#1B1E1D;       /* 다크 타일·큰 숫자 */
+  --text:#343432;      /* 본문 */
+  --muted:#6F6D66;     /* 캡션·라벨 */
+  --dim:#CBCBC4;       /* 비활성 셀·막대 */
+  --blue:#2146CD;      /* 유일한 강조색 */
+  --blue-soft:#E7ECFB;
+  --sub-bg:rgba(52,52,50,.94); /* 자막 박스 */
+  --term:#1F2221;      /* 터미널 로그 카드 */
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-cam:cubic-bezier(.65,0,.35,1);
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --mono:"SF Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);overflow:hidden;
+  -webkit-font-smoothing:antialiased;font-feature-settings:"tnum"}
+.viewport{position:fixed;inset:0}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden;background:var(--bg)}
+
+/* ── 슬라이드 & 카메라 ── */
+.slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .6s var(--ease)}
+.slide.active{opacity:1;pointer-events:auto}
+.cam{position:absolute;inset:0;transition:transform 1s var(--ease-cam)}
+.abs{position:absolute}
+
+/* ── 등장 규칙: data-in=N 박자에 팝인 ── */
+[data-in]{opacity:0;transform:translateY(10px) scale(.96);transition:opacity .55s var(--ease),transform .55s var(--ease),filter .4s}
+[data-in].on{opacity:1;transform:none}
+.dim{opacity:.32!important;filter:grayscale(1)}
+.out{opacity:0!important;transform:scale(.96)!important}
+.focus{box-shadow:0 0 0 2px var(--blue),0 10px 28px rgba(33,70,205,.12)!important}
+
+/* ── 타일 (Jev/Laya 앱 아이콘형 노드) ── */
+.tile{display:grid;place-items:center;width:150px;height:150px;border-radius:32px;font-weight:700;font-size:44px;letter-spacing:-.02em}
+.tile.dark{background:linear-gradient(160deg,#2B2E2D,#141716);color:#fff;
+  box-shadow:0 2px 4px rgba(0,0,0,.18),0 18px 40px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.08)}
+.tile.light{background:var(--card);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05),0 14px 34px rgba(60,55,40,.10)}
+.tile.sm{width:96px;height:96px;border-radius:22px;font-size:28px}
+.tile.xs{width:68px;height:68px;border-radius:16px;font-size:19px}
+.cap{font-size:17px;color:var(--muted);text-align:center;margin-top:12px;font-weight:500}
+.node{display:flex;flex-direction:column;align-items:center}
+
+/* ── 카드 ── */
+.card{background:var(--card);border-radius:16px;padding:26px 28px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 12px 32px rgba(60,55,40,.08);transition:box-shadow .4s,opacity .55s var(--ease),transform .55s var(--ease),filter .4s}
+.label{display:flex;align-items:center;gap:6px;font-size:17px;color:var(--muted);font-weight:500}
+.big{font-size:118px;font-weight:700;letter-spacing:-.035em;line-height:1.05;color:var(--ink)}
+.big.blue,.blue{color:var(--blue)}
+.sub{font-size:20px;color:var(--muted);margin-top:4px}
+
+/* ── 와플 격자 (N칸 중 k칸 채움) ── */
+.waffle{display:grid;grid-template-columns:repeat(25,1fr);gap:3px;margin-top:22px}
+.waffle i{aspect-ratio:1;border-radius:2px;background:#E9E6DC;transition:background .25s}
+.waffle i.f{background:var(--blue)}
+.waffle.mono i.f{background:#8E8C85}
+
+/* ── 칩·필 ── */
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border-radius:12px;padding:14px 20px;font-size:19px;font-weight:500;
+  box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(60,55,40,.07);transition:box-shadow .4s,opacity .55s var(--ease),transform .55s var(--ease),filter .4s}
+.chip{display:inline-block;border:1.5px solid var(--text);border-radius:999px;padding:4px 14px;font-size:16px;font-weight:600}
+.chip.blue{background:var(--blue);border-color:var(--blue);color:#fff}
+
+/* ── 막대 ── */
+.bars{display:flex;align-items:flex-end;gap:18px}
+.bars div{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:17px;font-weight:600}
+.bars b{display:block;width:44px;background:var(--ink);border-radius:2px;transition:background .4s,height .8s var(--ease)}
+.bars .dimbar b{background:#AFADA6}.bars .dimbar{color:var(--muted)}
+.bars .hot b{background:var(--blue)}
+
+/* ── 터미널 로그 카드 ── */
+.term{background:var(--term);color:#C9CCC8;border-radius:12px;padding:18px 22px;font:14px/1.7 var(--mono);box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.term .h{color:#8C918C;margin-bottom:6px;font-family:var(--font)}
+.term .hl{background:rgba(33,70,205,.55);color:#fff;margin:0 -8px;padding:0 8px;border-radius:3px}
+
+/* ── 타임라인 바 ── */
+.track{display:flex;gap:10px}
+.seg{height:84px;border-radius:12px;background:#E9E5DA;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:600;transition:background .6s var(--ease),color .6s}
+.seg.fill{background:var(--blue);color:#fff;justify-content:flex-start;padding-left:26px}
+
+/* ── 연결선 SVG ── */
+svg.wires{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
+.wire{fill:none;stroke:var(--wire);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--ease),stroke .4s}
+.wire.on{stroke-dashoffset:0}
+.wire.hot{stroke:var(--blue)}
+.packet{fill:#55534D;opacity:0;transition:opacity .3s}
+.packet.on{opacity:1}.packet.hot{fill:var(--blue)}
+.wire.dash{stroke-dasharray:4 6;stroke-dashoffset:0;opacity:0;transition:opacity .6s}.wire.dash.on{opacity:1}
+
+/* ── 자막 (하단 중앙 다크 박스) ── */
+.subtitle{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);background:var(--sub-bg);color:#fff;
+  font-size:31px;font-weight:600;letter-spacing:-.01em;padding:7px 16px;white-space:nowrap;border-radius:2px;
+  transition:opacity .15s;z-index:20}
+.subtitle:empty{opacity:0}
+.nosubs .subtitle{display:none}
+/* 우하단 페이스캠 자리 (비워 둠) */
+.facecam{position:absolute;right:0;bottom:0;width:300px;height:260px;border:2px dashed rgba(0,0,0,.08);border-radius:16px 0 0 0;z-index:15}
+.rec .facecam,.nofacecam .facecam{display:none}
+.hint{position:fixed;left:16px;bottom:12px;font-size:12px;color:var(--muted);opacity:.7}
+.rec .hint{display:none}
+.subs{display:none}
+</style>
+</head>
+<body>
+<div class="viewport"><div class="stage" id="stage">
+
+<!-- ═══ 1. 표지: 비교 대상 두 타일 + 라벨 연결선 ═══ -->
+<section class="slide" data-cams="3:-260,0,1.12">
+  <div class="cam">
+    <svg class="wires"><path class="wire" data-in="2" pathLength="1" d="M820 540 H1100"/>
+      <circle class="packet" data-in="2" r="5"><animateMotion dur="1.8s" repeatCount="indefinite" path="M820 540 H1100"/></circle></svg>
+    <div class="abs node" style="left:660px;top:465px" data-in="1"><div class="tile light">기존</div></div>
+    <div class="abs" style="left:880px;top:490px;font-size:18px;color:var(--muted)" data-in="2">새로운 대안</div>
+    <div class="abs node" style="left:1110px;top:465px" data-in="2"><div class="tile dark">새 방식</div></div>
+  </div>
+  <ol class="subs"><li>오늘은 기존 방식과</li><li>새로운 방식을 비교해 보겠습니다</li><li>먼저 새 방식부터 볼게요</li></ol>
+</section>
+
+<!-- ═══ 2. 흐름: 입력 카드 → 패킷 → 노드 → 분기 ═══ -->
+<section class="slide">
+  <div class="cam">
+    <svg class="wires">
+      <path id="w1" class="wire" data-in="2" pathLength="1" d="M420 540 H820"/>
+      <g data-in="2"><circle class="packet on" r="5"><animateMotion dur="1.6s" repeatCount="indefinite" path="M420 540 H820"/></circle>
+        <circle class="packet on" r="5"><animateMotion dur="1.6s" begin=".55s" repeatCount="indefinite" path="M420 540 H820"/></circle></g>
+      <path class="wire" data-in="3" pathLength="1" d="M970 540 C1120 540 1120 360 1280 360"/>
+      <path class="wire" data-in="3" pathLength="1" d="M970 540 C1120 540 1120 480 1280 480"/>
+      <path class="wire" data-in="3" data-hot="4" pathLength="1" d="M970 540 C1120 540 1120 600 1280 600"/>
+      <path class="wire" data-in="3" pathLength="1" d="M970 540 C1120 540 1120 720 1280 720"/>
+    </svg>
+    <div class="abs" style="left:250px;top:420px;display:flex;flex-direction:column;gap:14px">
+      <div class="pill" data-in="1">💬 질문 1</div><div class="pill" data-in="1">💬 질문 2</div><div class="pill" data-in="1">💬 질문 3</div>
+    </div>
+    <div class="abs node" style="left:820px;top:465px" data-in="2"><div class="tile dark">분류</div><div class="cap">라우팅</div></div>
+    <div class="abs" style="left:1290px;top:332px;display:flex;flex-direction:column;gap:64px">
+      <div class="pill" data-in="3" data-dim="4">간단한 처리</div><div class="pill" data-in="3" data-dim="4">큰 모델</div>
+      <div class="pill" data-in="3" data-focus="4">상담원 연결</div><div class="pill" data-in="3" data-dim="4">답장 불필요</div>
+    </div>
+  </div>
+  <ol class="subs"><li>질문이 들어오면</li><li>먼저 분류 단계를 거칩니다</li><li>네 갈래 중 하나로 보내고</li><li>이 질문은 상담원에게 갑니다</li></ol>
+</section>
+
+<!-- ═══ 3. 점수: 막대 + 타일 + 큰 숫자 카드 + 와플 ═══ -->
+<section class="slide" data-cams="4:-120,0,1.06">
+  <div class="cam">
+    <svg class="wires"><path class="wire" data-in="1" pathLength="1" d="M600 470 H720"/><path class="wire" data-in="1" pathLength="1" d="M870 470 H960"/>
+      <path class="wire" data-in="3" pathLength="1" d="M330 640 C330 720 520 700 540 760"/></svg>
+    <div class="abs bars" style="left:250px;top:330px;height:280px" data-in="1">
+      <div id="b1"><b style="height:22px"></b>100건</div><div id="b2"><b style="height:70px"></b>300건</div><div id="b3"><b style="height:200px"></b>1,000건</div>
+    </div>
+    <div class="abs node" style="left:720px;top:395px" data-in="1"><div class="tile dark">모델</div><div class="cap">기본</div></div>
+    <div class="abs card" style="left:960px;top:150px;width:560px" data-in="1">
+      <div class="label">시험 250 🔒</div>
+      <div class="big"><span class="count" data-from="32.8" data-to="68.8" data-at="4" data-dec="1">32.8</span>%</div>
+      <div class="sub"><span class="count" data-from="82" data-to="172" data-at="4">82</span>/250</div>
+      <div class="waffle" data-n="250" data-fill="82" data-to="172" data-at="4"></div>
+    </div>
+    <div class="abs node" style="left:505px;top:760px" data-in="3"><div class="tile xs dark">모델</div><div class="cap">학습 100 · 약 4분</div></div>
+    <div class="abs term" style="left:1560px;top:470px;width:330px" data-in="3">
+      <div class="h">평가 로그 · 시험 250 · 학습 100</div>
+      <div>case-shipping-03: shipping, 0.105s</div><div>case-cancel-10: cancel, 0.103s</div><div class="hl">"accuracy": 0.688</div>
+    </div>
+  </div>
+  <ol class="subs"><li>학습 전 기본 점수는 32.8%였습니다 (예시)</li><li>데이터를 단계별로 늘려 봤어요</li><li>먼저 100건만 학습시켰더니</li><li>68.8%로 올라갔습니다</li></ol>
+</section>
+
+<!-- ═══ 4. 비교: 나란히 두 카드, 승자 블루 → 패자 디밍 ═══ -->
+<section class="slide">
+  <div class="cam">
+    <div class="abs card" style="left:470px;top:300px;width:470px" data-in="1">
+      <div class="label">새 방식 · 학습 1,000건</div><div class="big"><span class="count" data-from="0" data-to="86.4" data-at="1" data-dec="1">0</span>%</div>
+      <div class="sub">216/250</div><div class="waffle mono" data-n="250" data-fill="216"></div>
+    </div>
+    <div class="abs card" style="left:980px;top:300px;width:470px" data-in="2" data-dim="3">
+      <div class="label">기존</div><div class="big blue">100%</div><div class="sub">250/250</div><div class="waffle mono" data-n="250" data-fill="250"></div>
+    </div>
+  </div>
+  <ol class="subs"><li>1,000건 학습 후 86.4%</li><li>기존 방식은 100%였죠 (예시)</li><li>그런데 비용을 보면 얘기가 달라집니다</li></ol>
+</section>
+
+<!-- ═══ 5. 타임라인: 요청 → 라우팅(블루 채움) → 답변 ═══ -->
+<section class="slide">
+  <div class="cam">
+    <div class="abs track" style="left:260px;top:440px;width:1400px" data-in="1">
+      <div class="seg" style="width:220px">💬 요청</div>
+      <div class="seg" id="seg" style="width:560px" data-fill="2">라우팅</div>
+      <div class="seg" style="flex:1">LLM 답변</div>
+    </div>
+    <div class="abs" style="left:260px;top:560px;width:1400px;border-top:1.5px solid var(--wire)" data-in="1"></div>
+    <div class="abs" style="left:1040px;top:575px;font-size:18px;color:var(--muted)" data-in="3">답변 시작</div>
+  </div>
+  <ol class="subs"><li>응답 시간을 쪼개 보면</li><li>라우팅이 앞부분을 차지합니다</li><li>여기가 줄어야 답변이 빨라져요</li></ol>
+</section>
+
+<!-- ═══ 6. 마무리: 중앙 단일 타일 ═══ -->
+<section class="slide">
+  <div class="cam">
+    <div class="abs node" style="left:885px;top:465px" data-in="1"><div class="tile dark">새 방식</div></div>
+  </div>
+  <ol class="subs"><li>한 번 검토해 볼 만합니다</li></ol>
+</section>
+
+<div class="subtitle" id="subtitle"></div>
+<div class="facecam"></div>
+</div></div>
+<div class="hint">→/스페이스 다음 · ← 이전 · S 자막 · F 전체화면 · ?auto=1 자동재생(녹화)</div>
+
+<script>
+const q = new URLSearchParams(location.search);
+const stage = document.getElementById('stage'), subEl = document.getElementById('subtitle');
+const slides = [...document.querySelectorAll('.slide')];
+if (q.has('auto') || q.has('rec')) document.body.classList.add('rec');
+if (q.has('nosubs')) document.body.classList.add('nosubs');
+let si = 0, beat = 1;
+
+const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `translate(-50%,-50%) scale(${s})`; };
+addEventListener('resize', fit); fit();
+
+// 와플 격자 생성
+document.querySelectorAll('.waffle').forEach(w => {
+  w.innerHTML = '<i></i>'.repeat(+w.dataset.n);
+  setFill(w, +w.dataset.fill, false);
+});
+function setFill(w, k, animate) {
+  [...w.children].forEach((c, i) => {
+    c.style.transitionDelay = animate ? `${(i - (+w.dataset.fill)) * 6}ms` : '0ms';
+    c.classList.toggle('f', i < k);
+  });
+}
+function countTo(el, to, back) {
+  const from = +el.dataset.from, dec = +(el.dataset.dec || 0), a = back ? to : from, b = back ? from : to, t0 = performance.now();
+  const step = t => { const p = Math.min((t - t0) / 900, 1), e = 1 - Math.pow(1 - p, 3);
+    el.textContent = (a + (b - a) * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+const maxBeat = s => s.querySelectorAll('.subs li').length || 1;
+
+function render() {
+  slides.forEach((s, i) => s.classList.toggle('active', i === si));
+  const s = slides[si];
+  s.querySelectorAll('[data-in]').forEach(e => e.classList.toggle('on', beat >= +e.dataset.in));
+  s.querySelectorAll('[data-dim]').forEach(e => e.classList.toggle('dim', beat >= +e.dataset.dim));
+  s.querySelectorAll('[data-focus]').forEach(e => e.classList.toggle('focus', beat >= +e.dataset.focus));
+  s.querySelectorAll('[data-out]').forEach(e => e.classList.toggle('out', beat >= +e.dataset.out));
+  s.querySelectorAll('[data-hot]').forEach(e => e.classList.toggle('hot', beat >= +e.dataset.hot));
+  s.querySelectorAll('.seg[data-fill]').forEach(e => e.classList.toggle('fill', beat >= +e.dataset.fill));
+  s.querySelectorAll('.count[data-at]').forEach(e => {
+    const want = beat >= +e.dataset.at, has = e.dataset.done === '1';
+    if (want !== has) { countTo(e, +e.dataset.to, !want); e.dataset.done = want ? '1' : '0'; }
+  });
+  s.querySelectorAll('.waffle[data-at]').forEach(w => {
+    const want = beat >= +w.dataset.at; if ((w.dataset.done === '1') !== want) { setFill(w, want ? +w.dataset.to : +w.dataset.fill, want); w.dataset.done = want ? '1' : '0'; }
+  });
+  // 막대 하이라이트 데모: 3번 슬라이드 3박자부터 100건만 블루
+  if (s.querySelector('#b1')) { const on = beat >= 3; s.querySelector('#b1').classList.toggle('hot', on);
+    ['#b2', '#b3'].forEach(id => s.querySelector(id).classList.toggle('dimbar', on)); }
+  // 카메라: data-cams="박자:x,y,scale;…" — 가장 최근 박자 값 유지
+  let cam = '0,0,1';
+  (s.dataset.cams || '').split(';').filter(Boolean).forEach(p => { const [b, v] = p.split(':'); if (beat >= +b) cam = v; });
+  const [x, y, z] = cam.split(',').map(Number);
+  s.querySelector('.cam').style.transform = `translate(${x}px,${y}px) scale(${z})`;
+  const li = s.querySelectorAll('.subs li')[beat - 1];
+  subEl.textContent = li ? li.textContent : '';
+}
+function next() { if (beat < maxBeat(slides[si])) beat++; else if (si < slides.length - 1) { si++; beat = 1; } render(); }
+function prev() { if (beat > 1) beat--; else if (si > 0) { si--; beat = maxBeat(slides[si]); } render(); }
+addEventListener('keydown', e => {
+  if (['ArrowRight', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); next(); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) prev();
+  if (e.key === 's' || e.key === 'S') document.body.classList.toggle('nosubs');
+  if (e.key === 'f' || e.key === 'F') document.documentElement.requestFullscreen?.();
+});
+stage.addEventListener('click', next);
+render();
+// 자동재생: 자막 글자 수에 비례해 박자 유지 (녹화용)
+if (q.has('auto')) (function tick() {
+  const li = slides[si].querySelectorAll('.subs li')[beat - 1];
+  const ms = Math.max(1600, (li ? li.textContent.length : 10) * 140);
+  if (si === slides.length - 1 && beat === maxBeat(slides[si])) return;
+  setTimeout(() => { next(); tick(); }, ms);
+})();
+</script>
+</body>
+</html>

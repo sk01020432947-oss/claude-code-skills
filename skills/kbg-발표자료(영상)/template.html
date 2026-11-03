@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>kbg 발표자료 영상</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@600&display=swap">
+<style>
+/* ── 토큰: 바이브랩스 영상 프레임 픽셀 실측값 (kbg-발표자료(영상)) ── */
+:root{
+  --cream:#F2EEE7;      /* 밝은 장면 배경 (가운데 #F7F2EB → 가장자리 #F0EBE4) */
+  --cream-hi:#F7F2EB;
+  --card:#FBF9F4;       /* 카드·프롬프트 박스 */
+  --ink:#1D1C23;        /* 글자·테두리·키워드 칩 */
+  --muted:#77736C;      /* 보조 라벨 */
+  --line:#D9D3C8;       /* 연결선·빈 노드 */
+  --placeholder:#5E5E62;/* 문서 자리표시 막대 */
+  --navy:#1F242F;       /* 어두운 장면 배경 */
+  --term:#0F1319;       /* 터미널 본문 */
+  --termbar:#1D232D;    /* 터미널 상단 바 */
+  --teal:#1DA3A0;       /* 진행·완료·활성 */
+  --yellow:#FAB332;     /* 제목 칩 막대·큰 숫자·밑줄 */
+  --marker:#F8D292;     /* 형광펜 띠 */
+  --coral:#EE6A4C;      /* 시작점·경고·손글씨·X (근사값) */
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-cut:cubic-bezier(.76,0,.24,1);
+  --font:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;
+  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,monospace;
+  --hand:"Nanum Pen Script",cursive;
+  --brush:"Nanum Brush Script",cursive;
+  --serif:"Noto Serif KR",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#111;color:var(--ink);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center;overflow:hidden;background:var(--cream)}
+
+/* ── 장면 & 전환: 나가는 장면이 위로 밀려 올라가고 다음 장면이 드러난다 ── */
+.slide{position:absolute;inset:0;visibility:hidden;overflow:hidden}
+.slide.active{visibility:visible;z-index:1}
+.slide.leaving{visibility:visible;z-index:2;animation:wipeUp .7s var(--ease-cut) forwards}
+@keyframes wipeUp{to{transform:translateY(-100%)}}
+.light{background:radial-gradient(ellipse at 50% 40%,var(--cream-hi),var(--cream) 60%,#ECE6DD)}
+.dark{background:var(--navy);color:#E8E6E1}
+.cam{position:absolute;inset:0;transform-origin:50% 55%}
+.active .cam.drift{animation:drift 14s linear forwards}         /* 도식 장면: 아주 느린 밀어 넣기 */
+@keyframes drift{to{transform:scale(1.045)}}
+.abs{position:absolute}
+
+/* ── 사진 무대 장면: AI 생성 배경 + 인물, 느린 켄번스 ── */
+.photo .bg{position:absolute;inset:-2%;background:#3a3029 center/cover no-repeat;
+  background-image:linear-gradient(180deg,#6f6658 0%,#4b4036 55%,#7a5a3c 56%,#5c4330 100%)} /* 사진 자리 */
+.active.photo .bg{animation:kenburns 16s linear forwards}
+@keyframes kenburns{to{transform:scale(1.07) translate(-1%,-1%)}}
+.photo .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,0) 30%,rgba(0,0,0,.18))}
+.ph-note{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:500 20px var(--mono);color:rgba(255,255,255,.55);text-align:center;line-height:1.6}
+.rec .ph-note{display:none}
+
+/* ── 제목 칩 (영상의 시그니처 자막) ── */
+.chip{position:absolute;left:50%;top:46px;transform:translateX(-50%);z-index:5;white-space:nowrap;
+  display:flex;align-items:center;gap:14px;height:84px;padding:0 30px 0 24px;background:#fff;
+  border:1.5px solid var(--ink);border-radius:4px;font:700 33px/1 var(--font);letter-spacing:-.02em;color:var(--ink);
+  box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.chip::before{content:"";width:6px;height:34px;border-radius:2px;background:var(--yellow);flex:none}
+.chip b{position:relative;padding:4px 8px 6px;margin:0 2px;border-radius:4px;font-weight:800;transition:background .25s,color .25s}
+.chip b::after{content:"";position:absolute;left:4px;right:4px;bottom:-6px;height:4px;border-radius:2px;background:var(--yellow);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease) .1s}
+.chip b.lit{background:var(--ink);color:#fff}
+.chip b.lit::after{transform:scaleX(1)}
+.ch{opacity:0}.ch.on{opacity:1}
+.chip .caret{width:2px;height:34px;background:var(--ink);margin-left:-10px;animation:blink .8s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* ── 박자 등장 규칙 ── */
+[data-in]{opacity:0;transform:translateY(14px) scale(.97);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+[data-in].on{opacity:1;transform:var(--rest,none)}
+[data-in].pop.on{animation:pop .45s var(--ease)}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.08)}100%{transform:var(--rest,none)}}
+[data-in].drop{transform:translateY(-60px)}
+[data-in].drop.on{transform:none;transition:transform .55s cubic-bezier(.34,1.56,.64,1),opacity .2s}
+.gone{opacity:0!important;transition:opacity .35s!important}
+.dimmed{opacity:.35;filter:grayscale(1);transition:opacity .4s,filter .4s}
+
+/* ── 부품 ── */
+.pill{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:rgba(24,24,28,.86);
+  color:#fff;font:700 24px var(--font);box-shadow:0 0 0 2px rgba(29,163,160,.55),0 8px 20px rgba(0,0,0,.25)}
+.pill::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--teal)}
+.pill.coral::before{background:var(--coral)}
+.tag{display:inline-block;padding:6px 14px;border-radius:4px;background:#fff;color:var(--ink);font:700 22px var(--font);box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.tag.coral{background:var(--coral);color:#fff;transform:rotate(-4deg)}
+.hand{font:400 52px var(--hand);color:var(--coral);line-height:1.1}
+.hand.ink{color:var(--ink)}
+.brush{font:400 190px var(--brush);color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:22px 26px;box-shadow:0 10px 24px rgba(40,30,20,.14)}
+.card .lab{font:700 24px var(--font);color:var(--teal);margin-bottom:16px}
+.bar{height:16px;border-radius:8px;background:var(--placeholder);margin:10px 0}
+.mono{font-family:var(--mono)}
+.x{width:150px;height:150px}
+.x path{stroke:var(--coral);stroke-width:12;stroke-linecap:round;fill:none}
+.draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s var(--ease)}
+.on .draw,.draw.on{stroke-dashoffset:0}
+
+/* 타임라인 노드 */
+.track{display:flex;align-items:flex-start;gap:0}
+.node{display:flex;flex-direction:column;align-items:center;width:150px;position:relative}
+.node::before{content:"";position:absolute;top:27px;left:-75px;width:150px;height:4px;background:var(--line)}
+.node:first-child::before{display:none}
+.dot{width:58px;height:58px;border-radius:50%;border:4px solid var(--placeholder);background:#fff;position:relative;z-index:1}
+.node.start .dot{background:var(--coral);border-color:var(--coral)}
+.node span{margin-top:12px;font:700 26px var(--font);color:var(--muted)}
+.node.start span{color:var(--ink)}
+.flag{width:96px;height:72px;background:var(--ink);color:#fff;border-radius:6px;display:grid;place-items:center;font:800 48px var(--font)}
+.flag::after{content:"";position:absolute;right:0;top:0;width:4px;height:150px;background:var(--ink)}
+
+/* 터미널 */
+.term{background:var(--term);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+.term .top{height:40px;background:var(--termbar);display:flex;align-items:center;gap:8px;padding:0 16px;font:500 17px var(--mono);color:#8b93a1}
+.term .top i{width:12px;height:12px;border-radius:50%;background:#4a5262}
+.term pre{padding:22px 26px;font:400 22px/1.65 var(--mono);color:#C9CFD8;white-space:pre-wrap}
+.term .ok{color:var(--teal)}.term .hl{background:rgba(250,179,50,.22);color:#fff}
+
+/* 큰 숫자·형광펜·와플 */
+.big{font:900 150px/1 var(--font);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.big.yellow{color:var(--yellow)}
+.marker{background:linear-gradient(var(--marker),var(--marker)) left 62%/0% 46% no-repeat;transition:background-size .7s var(--ease)}
+.marker.on{background-size:100% 46%}
+.progress{height:12px;border-radius:6px;background:rgba(255,255,255,.12);overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--yellow);transition:width .9s var(--ease)}
+.waffle{display:grid;grid-template-columns:repeat(23,32px);gap:6px}
+.waffle i{width:32px;height:32px;border-radius:4px;border:2.5px solid var(--yellow);background:transparent;transition:background .2s,border-color .2s}
+.waffle i.f{background:var(--teal);border-color:var(--teal)}
+
+/* 프롬프트 박스 */
+.prompt{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:36px 44px;box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.prompt .head{font:600 20px var(--mono);letter-spacing:.12em;color:var(--muted);display:flex;align-items:center;gap:10px}
+.prompt .head i{width:16px;height:16px;border-radius:50%;border:2.5px solid var(--coral)}
+.prompt .head i:first-of-type{background:var(--coral)}
+.prompt .body{margin-top:26px;font:700 52px/1.35 var(--font);letter-spacing:-.02em}
+.prompt.darkbox{background:var(--term);color:#fff;border-color:var(--teal)}
+
+/* 하단 자막(선택: ?subs) — 영상 원본은 제목 칩만 쓰고 하단 자막은 없음 */
+.subs{display:none}
+.subbar{position:absolute;left:50%;bottom:70px;transform:translateX(-50%);z-index:9;max-width:1500px;padding:10px 22px;
+  background:rgba(20,20,24,.82);color:#fff;font:600 36px/1.35 var(--font);border-radius:6px;text-align:center;display:none}
+.show-subs .subbar{display:block}
+.subbar:empty{display:none!important}
+.hint{position:fixed;right:14px;bottom:10px;font:500 13px var(--font);color:#888;z-index:20}
+.rec .hint{display:none}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- ① 사진 무대 장면: 배경 사진 + 인물 + 떠 있는 라벨. 사진은 style="background-image:url(img/01.jpg)"로 넣는다 -->
+<section class="slide photo" data-chip="출판사에서 온 음성 샘플 — <b>깜짝</b> 놀랐다">
+  <div class="bg"><div class="ph-note">사진 자리 · 따뜻한 서재, 창가 자연광<br>인물: 회색 후드티, 정면 전신</div></div>
+  <div class="abs" style="left:960px;top:300px"><span class="tag" data-in="1">출판사 대표님이 보낸 샘플</span></div>
+  <div class="abs" style="left:880px;top:420px;display:flex;align-items:center;gap:36px">
+    <span class="pill" data-in="1">샘플</span>
+    <span data-in="2" style="font:800 56px var(--font);color:#fff">≈</span>
+    <span class="pill coral" data-in="2">내 녹음</span>
+  </div>
+  <div class="abs hand" style="left:1010px;top:560px;--rest:rotate(-6deg)" data-in="3">거의 똑같다?!</div>
+  <ol class="subs"><li>출판사 대표님이 보내주신 AI 음성 샘플을 듣고</li><li>제 목소리와 거의 구별하기 힘들었습니다</li><li>깜짝 놀랐습니다</li></ol>
+</section>
+
+<!-- ② 타임라인 노드: 시작점(코럴) → 단계 원 → 끝에 ? 깃발 -->
+<section class="slide light" data-chip="대본 하나로 <b>어디까지</b> 자동화될까">
+  <div class="cam drift">
+    <div class="abs track" style="left:240px;top:470px" data-stagger="140">
+      <div class="node start" data-in="0"><div class="dot"></div><span>대본</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>장면</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>더빙</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>화면</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>클립</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>편집</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>렌더</span></div>
+      <div class="node" data-in="1"><div class="dot"></div><span>MP4</span></div>
+    </div>
+    <div class="abs flag drop" style="left:1270px;top:322px" data-in="2">?</div>
+    <div class="abs hand" style="left:240px;top:400px;font-size:40px" data-in="3">대본 1장 ▾</div>
+  </div>
+  <ol class="subs"><li>대본을 쓰고 나면</li><li>장면, 더빙, 화면 녹화, 편집, 렌더까지</li><li>어디까지 맡길 수 있을까요?</li><li>출발점은 대본 한 장입니다</li></ol>
+</section>
+
+<!-- ③ 어두운 터미널 장면: 로그가 찍히고 오른쪽에 큰 노란 숫자 -->
+<section class="slide dark" data-chip="일레븐랩스 <b>v4</b>에 음성 요청">
+  <div class="abs term" style="left:100px;top:210px;width:1000px" data-in="0">
+    <div class="top"><i></i><i></i><i></i>&nbsp; 메인 세션 — tts-v4.mjs</div>
+    <pre data-type="1"><span class="ok">✓</span> n033  60자 · 1회 · 2.7s
+<span class="ok">✓</span> n034  23자 · 1회 · 1.3s
+<span class="ok">✓</span> n035  92자 · 1회 · 3.6s
+<span class="ok">✓</span> n036  86자 · 1회 · 3.3s
+<span class="hl"><span class="ok">✓</span> n037  57자 · 1회 · 2.5s</span>
+<span class="ok">✓</span> n038  53자 · 1회 · 2.3s</pre>
+  </div>
+  <div class="abs" style="left:1200px;top:260px;width:560px">
+    <span class="pill" data-in="1" style="font-family:var(--mono);font-size:22px">model · eleven_v4</span>
+    <div data-in="2" style="margin-top:60px;font:600 26px var(--font);color:#C9CFD8">생성된 문단</div>
+    <div data-in="2" style="display:flex;align-items:baseline;gap:16px"><span class="big yellow" data-count="53" data-at="2">0</span><span style="font:700 40px var(--font);color:#8b93a1">/ 89</span></div>
+    <div class="progress" data-in="2" style="margin-top:18px;width:420px"><i data-width="60%" data-at="2"></i></div>
+  </div>
+  <ol class="subs"><li>대본을 문단별로 나눠</li><li>일레븐랩스 v4에 음성을 요청합니다</li><li>89문단 중 53문단 생성 완료</li></ol>
+</section>
+
+<!-- ④ 비교 카드: 기울어진 카드 ≠ 긴 목록(형광펜 머리) -->
+<section class="slide light" data-chip="샘플 두 문장 ≠ <b>긴 영상 전체</b>">
+  <div class="abs card" style="left:150px;top:290px;width:540px;--rest:rotate(-4deg)" data-in="0"><div class="lab">샘플 1</div><div class="bar" style="width:90%"></div><div class="bar" style="width:62%"></div></div>
+  <div class="abs card" style="left:230px;top:520px;width:540px;--rest:rotate(3deg)" data-in="0"><div class="lab">샘플 2</div><div class="bar" style="width:86%"></div><div class="bar" style="width:55%"></div></div>
+  <div class="abs pop" style="left:830px;top:420px;font:800 170px/1 var(--font)" data-in="1">≠</div>
+  <div class="abs" style="left:1130px;top:220px;width:520px" data-in="2">
+    <div class="marker" data-mark="2" style="font:800 40px var(--font);padding:4px 8px">문단 <span data-count="89" data-at="2">0</span>/89 <small style="font-size:26px">4,752자</small></div>
+    <div class="bar" style="width:62%;background:var(--teal);margin-top:28px"></div><div class="bar" style="width:72%;background:var(--teal)"></div>
+    <div class="bar" style="width:68%"></div><div class="bar" style="width:40%"></div><div class="bar" style="width:75%"></div><div class="bar" style="width:52%"></div><div class="bar" style="width:83%"></div><div class="bar" style="width:47%"></div>
+  </div>
+  <ol class="subs"><li>짧은 샘플 두 문장이 괜찮다고</li><li>긴 영상 전체가 괜찮은 건 아닙니다</li><li>그래서 89문단을 모두 들어봤습니다</li></ol>
+</section>
+
+<!-- ⑤ 큰 결과 숫자: 손글씨 라벨 + 형광펜 + 와플 -->
+<section class="slide light" data-chip="장면 92개 중 <b>69개</b> 처음 그대로">
+  <div class="abs hand ink" style="left:150px;top:200px" data-in="0">처음 그대로 쓴 장면</div>
+  <div class="abs big marker" data-mark="1" style="left:150px;top:290px;color:var(--ink);padding:0 10px" data-in="0"><span data-count="69" data-at="1">0</span> &nbsp;/&nbsp; 92</div>
+  <div class="abs waffle" style="left:150px;top:520px" data-waffle="92" data-fill="69" data-at="2"></div>
+  <ol class="subs"><li>결과를 보겠습니다</li><li>장면 92개 중 69개는</li><li>처음 만든 그대로 썼습니다</li></ol>
+</section>
+
+<!-- ⑥ 프롬프트 박스: 한 문장이 타이핑된다 -->
+<section class="slide light" data-chip="프롬프트는 <b>세 문장</b>">
+  <div class="abs prompt" style="left:330px;top:300px;width:1260px" data-in="0">
+    <div class="head">PROMPT <i></i><i></i><i></i></div>
+    <div class="body" data-type="1">이 대본으로 영상 만들어 줘.</div>
+  </div>
+  <div class="abs term" style="left:330px;top:640px;width:1260px;height:60px" data-in="0"><pre style="padding:14px 22px;color:var(--teal)">&gt;</pre></div>
+  <ol class="subs"><li>제가 넣은 프롬프트는</li><li>딱 이 한 문장이었습니다</li></ol>
+</section>
+
+<!-- ⑦ 사진 + 붓글씨 한 단어 -->
+<section class="slide photo" data-chip="제작자에게 남는 <b>가장 중요한 일</b>">
+  <div class="bg" style="background-image:linear-gradient(180deg,#e9a46b 0%,#7b6a72 40%,#2c3540 75%,#1d232b 100%)"><div class="ph-note">사진 자리 · 해질녘 도시 전경</div></div>
+  <div class="abs brush" style="left:110px;top:300px" data-in="1">생각</div>
+  <ol class="subs"><li>AI가 목소리는 흉내 내도</li><li>생각까지 대신 만들어 주지는 않습니다</li></ol>
+</section>
+
+<!-- ⑧ 마무리: +1 · NEXT QUESTION · 명조 질문 -->
+<section class="slide light" data-chip="그리고 <b>한 가지 더</b>">
+  <div class="abs pop" style="left:560px;top:280px;font:900 300px/1 var(--font);color:var(--coral);letter-spacing:-.04em" data-in="0">+1</div>
+  <div class="abs" style="left:1170px;top:330px" data-in="1">
+    <div class="mono" style="font-size:20px;letter-spacing:.2em;color:var(--muted)">NEXT QUESTION</div>
+    <div style="font:600 64px/1.3 var(--serif);margin-top:14px">목소리 다음은,<br>생각</div>
+  </div>
+  <div class="abs" style="left:200px;top:700px;width:1520px;height:4px;background:var(--ink)" data-in="0"></div>
+  <ol class="subs"><li>그리고 한 가지 더 있습니다</li><li>목소리 다음은, 생각입니다</li></ol>
+</section>
+
+<div class="subbar" id="subbar"></div>
+</div>
+<div class="hint">→/스페이스 다음 · ← 이전 · S 자막 · F 전체화면 · ?auto=1 자동재생</div>
+
+<script>
+const Q=new URLSearchParams(location.search), AUTO=Q.has('auto'), stage=document.getElementById('stage');
+if(Q.has('subs'))document.body.classList.add('show-subs');
+if(AUTO||Q.has('rec'))document.body.classList.add('rec');
+const fit=()=>stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/1920,innerHeight/1080)})`;
+addEventListener('resize',fit);fit();
+
+/* 한 글자씩 쪼개 타이핑할 수 있게 감싼다 (중첩 <b>도 유지) */
+function splitChars(el){
+  const walk=n=>[...n.childNodes].forEach(c=>{
+    if(c.nodeType===3){const f=document.createDocumentFragment();
+      [...c.textContent].forEach(ch=>{const s=document.createElement('span');s.className='ch';s.textContent=ch;f.appendChild(s)});c.replaceWith(f)}
+    else walk(c)});
+  walk(el);return [...el.querySelectorAll('.ch')];
+}
+const slides=[...document.querySelectorAll('.slide')];
+slides.forEach(s=>{
+  const chip=document.createElement('div');chip.className='chip';chip.innerHTML='<span class="txt">'+(s.dataset.chip||'')+'</span>';
+  if(s.dataset.chip)s.appendChild(chip);
+  s.querySelectorAll('[data-stagger]').forEach(p=>[...p.children].forEach((c,i)=>c.style.transitionDelay=(i*+p.dataset.stagger)+'ms'));
+  s.querySelectorAll('[data-waffle]').forEach(w=>{for(let i=0;i<+w.dataset.waffle;i++)w.appendChild(document.createElement('i'))});
+});
+let si=0,beat=0,timers=[],fx=[],audio=null;
+const later=(f,ms)=>timers.push(setTimeout(f,ms));   // 자동 진행용: 박자마다 초기화
+const anim=(f,ms)=>fx.push(setTimeout(f,ms));       // 연출용: 장면이 바뀔 때만 초기화
+const beatsOf=s=>Math.max(1,s.querySelectorAll('.subs li').length);
+
+function typeIn(el,speed,done){
+  if(!el._chars)el._chars=splitChars(el);
+  el._chars.forEach(c=>c.classList.remove('on'));
+  el._chars.forEach((c,i)=>anim(()=>c.classList.add('on'),i*speed));
+  anim(done||(()=>{}),el._chars.length*speed);
+}
+function countUp(el){const to=+el.dataset.count,from=+(el.dataset.from||0),t0=performance.now();
+  const step=t=>{const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);el.textContent=Math.round(from+(to-from)*e).toLocaleString();if(k<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step)}
+
+function enter(){
+  const s=slides[si];
+  s.querySelectorAll('.on,.gone,.dimmed,.lit').forEach(e=>e.classList.remove('on','gone','dimmed','lit'));
+  s.querySelectorAll('[data-count]').forEach(e=>e.textContent=e.dataset.from||0);
+  s.querySelectorAll('[data-type],[data-count],[data-waffle]').forEach(e=>e._done=0);
+  s.querySelectorAll('[data-width]').forEach(e=>e.style.width=0);
+  s.querySelectorAll('[data-waffle] i').forEach(e=>e.classList.remove('f'));
+  s.querySelectorAll('.bg,.cam').forEach(e=>{e.style.animation='none';e.offsetWidth;e.style.animation=''});
+  const chip=s.querySelector('.chip');
+  if(chip){const car=document.createElement('i');car.className='caret';chip.appendChild(car);
+    typeIn(chip.querySelector('.txt'),55,()=>{car.remove();chip.querySelectorAll('b').forEach(b=>b.classList.add('lit'))})}
+}
+function apply(){
+  const s=slides[si],at=(e,k)=>beat>=+e.dataset[k];
+  s.querySelectorAll('[data-in]').forEach(e=>e.classList.toggle('on',at(e,'in')));
+  s.querySelectorAll('[data-out]').forEach(e=>e.classList.toggle('gone',at(e,'out')));
+  s.querySelectorAll('[data-dim]').forEach(e=>e.classList.toggle('dimmed',at(e,'dim')));
+  s.querySelectorAll('[data-mark]').forEach(e=>e.classList.toggle('on',at(e,'mark')));
+  const once=(e,k,f)=>{if(at(e,k)&&!e._done){e._done=1;f(e)}};   // 박자를 건너뛰어도 한 번은 실행
+  s.querySelectorAll('[data-type]').forEach(e=>once(e,'type',x=>typeIn(x,45)));
+  s.querySelectorAll('[data-count]').forEach(e=>once(e,'at',countUp));
+  s.querySelectorAll('[data-width]').forEach(e=>{if(at(e,'at'))e.style.width=e.dataset.width});
+  s.querySelectorAll('[data-waffle]').forEach(w=>once(w,'at',()=>
+    [...w.children].slice(0,+w.dataset.fill).forEach((c,i)=>anim(()=>c.classList.add('f'),i*14))));
+  const li=s.querySelectorAll('.subs li')[beat];
+  document.getElementById('subbar').textContent=li?li.textContent:'';
+  if(AUTO)schedule(li);
+}
+/* 자동재생: 박자 길이 = 실제 음성 길이(data-audio) > data-ms > 글자수×140ms(최소 1.6초) */
+function schedule(li){
+  if(audio){audio.pause();audio=null}
+  if(li&&li.dataset.audio){audio=new Audio(li.dataset.audio);audio.onended=()=>later(next,250);audio.play().catch(()=>later(next,1600));return}
+  const ms=li?(+li.dataset.ms||Math.max(1600,li.textContent.length*140)):2500;
+  later(next,ms);
+}
+function go(i,b){
+  timers.forEach(clearTimeout);timers=[];
+  if(i!==si){const old=slides[si];old.classList.remove('active');old.classList.add('leaving');
+    setTimeout(()=>old.classList.remove('leaving'),720);fx.forEach(clearTimeout);fx=[];si=i;slides[si].classList.add('active');enter()}
+  beat=b;apply();
+}
+function next(){beat+1<beatsOf(slides[si])?go(si,beat+1):si+1<slides.length&&go(si+1,0)}
+function prev(){beat>0?go(si,beat-1):si>0&&go(si-1,beatsOf(slides[si-1])-1)}
+slides[0].classList.add('active');enter();apply();
+addEventListener('keydown',e=>{
+  if(['ArrowRight',' ','PageDown','Enter'].includes(e.key)){e.preventDefault();next()}
+  else if(['ArrowLeft','PageUp'].includes(e.key))prev();
+  else if(e.key==='s'||e.key==='S')document.body.classList.toggle('show-subs');
+  else if(e.key==='f'||e.key==='F')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();
+});
+addEventListener('click',next);
+</script>
+</body>
+</html>

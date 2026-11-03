@@ -6,7 +6,7 @@ description: >
   "본문에 머무르기", "살아있는 설교", "dwelling sermon", "slow sermon",
   본문 + 머무르기/동행/묵상/뭉근/한 주 키워드 조합.
   사용자가 설교 본문을 제시하면 분석 없이 Stage 1 워크플로우를 즉시 시작한다.
-  분석 중심이 아닌 묵상 중심의 설교 준비를 요청할 때 반드시 이 스킬을 사용한다.
+  분석 중심이 아닌 묵상 중심의 설교 준비를 요청할 때 반드시 이 스킬을 사용한다. 본문 분석·주해(→ sermon-text-analysis-multimethod)나 원고 문장 다듬기(→ sermon-emotive-writing-coach)에는 쓰지 않는다.
 metadata:
   version: "0.1.0"
   author: "Dwelling Sermon Coach"

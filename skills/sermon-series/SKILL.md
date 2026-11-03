@@ -1,6 +1,6 @@
 ---
 name: sermon-series
-description: Plan a multi-week sermon series. Provide a theme or book of the Bible and number of weeks. Get back series title options, weekly breakdown with passages, titles, and big ideas.
+description: Plan a multi-week sermon series. Provide a theme or book of the Bible and number of weeks. Get back series title options, weekly breakdown with passages, titles, and big ideas. Not for a full 52-week year plan (use sermon-planner-52week or churchplan-sermon-planner-52).
 ---
 
 # Sermon Series Planner

@@ -20,7 +20,7 @@ description: "## TLDR — Theodore J. Gordon·Jerome C. Glenn (Millennium Projec
 **Cycle 라우팅·Domain 번호 매핑·PI Chart 계산·Committee 집계는 반드시 아래 Python 스크립트를 Bash로 호출. LLM이 직접 라우팅 결정·곱셈·매핑하는 것은 절대 금지.**
 
 ```bash
-CALC_PY="/Users/cys/Desktop/CYSjavis/cys-claude-vision-coaching-skills/skills/vision-foresight-environmental-scanning/env_scanning_calc.py"
+CALC_PY="/Users/cys/Desktop/CYSjavis/cys-Codex-vision-coaching-skills/skills/vision-foresight-environmental-scanning/env_scanning_calc.py"
 # 스킬 이동 시 이 절대 경로를 업데이트할 것.
 
 # Cycle 라우팅 (사용자 명령 → Cycle A-I):
@@ -275,7 +275,7 @@ python3 "$CALC_PY" --fn cycle_route '{"command":"<사용자 명령 전문>"}'
 #### 1-A. Implications Domain Selection (사용자 답변 대기)
 - 위 10개 옵션 표시
 - 사용자 답변 수신 (1~3개 선택 또는 Custom 또는 skip)
-- 사용자 컨텍스트가 메모리/CLAUDE.md에 *명확히* 있으면 자동 default 확인 모드로 단축
+- 사용자 컨텍스트가 메모리/AGENTS.md에 *명확히* 있으면 자동 default 확인 모드로 단축
 
 #### 1-B. 사용자 명령에서 자동 추출 (Implications 선택과 병행)
 - Topic·도메인 (예: "AGI", "한국 인구", "한반도 통일")
@@ -487,7 +487,7 @@ Pattern C — 풀 시스템 설계:
 - **명확한 답변** (예: "2, 7"): 즉시 적용
 - **Custom**: 사용자가 *자유 텍스트로* 본인 컨텍스트 정의 (1~3 문장). AI Report Editor가 본 컨텍스트로 implications 자동 생성
 - **무응답·skip**: *Generic universal implications* 모드로 진행 (모든 영역 공통 핵심)
-- **이미 메모리/CLAUDE.md에 사용자 컨텍스트 명시**: 사용자에게 *자동 default 확인*만 하고 진행
+- **이미 메모리/AGENTS.md에 사용자 컨텍스트 명시**: 사용자에게 *자동 default 확인*만 하고 진행
   - 예: "이전 대화에서 [목회·미래학·금융] 컨텍스트 사용 — 동일하게? (Y/N, default Y)"
   - Y 또는 침묵 → 자동 진행
   - N → 위 10개 옵션 재제시
@@ -596,7 +596,7 @@ Fallback 사용 시 출력에 `[Source: fallback-tier N]` 명시.
 
 ## 자동화 (cron·daily cadence) 안내
 
-SKILL.md의 "cron 자동 실행"·"daily cadence" 기능은 **Claude Code 스케줄러 또는 외부 cron 설정 필요**. 단독 Claude Code 세션에서는 자동 실행되지 않는다. 해당 기능은 `/schedule` 스킬 또는 시스템 cron으로 별도 구성 필요.
+SKILL.md의 "cron 자동 실행"·"daily cadence" 기능은 **Codex 스케줄러 또는 외부 cron 설정 필요**. 단독 Codex 세션에서는 자동 실행되지 않는다. 해당 기능은 `/schedule` 스킬 또는 시스템 cron으로 별도 구성 필요.
 
 ## 오류 및 예외처리
 
@@ -633,7 +633,7 @@ Python 호출 전 사전 점검:
 본 대표 스킬 산출 전 *반드시* 점검:
 
 - [ ] 사용자 명령을 *Implications Domain 1회 질문 외에는 추가 질문 없이* 자동 처리했는가?
-- [ ] **Step 1-A에서 Implications Domain Selection 질문을 *반드시* 제시**했는가? (사용자가 메모리/CLAUDE.md로 명시했거나 skip한 경우만 생략)
+- [ ] **Step 1-A에서 Implications Domain Selection 질문을 *반드시* 제시**했는가? (사용자가 메모리/AGENTS.md로 명시했거나 skip한 경우만 생략)
 - [ ] 5 하위 스킬을 *사용자에게 노출 없이* 내부 호출했는가?
 - [ ] AI 에이전트 6 페르소나가 *적절히 활성화*되었는가?
 - [ ] **사용자가 선택한 N개 Implications 도메인에 *맞춤* implications 산출했는가?** (특정 도메인 hardcoding X)

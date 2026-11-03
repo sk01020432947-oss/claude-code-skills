@@ -9,7 +9,7 @@ disable-model-invocation: true
 ## 경로 상수 (절대 참조, LLM 추론 금지)
 
 ```bash
-SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-claude-vision-coaching-skills/skills/vision-foresight-environmental-scanning-techniques"
+SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-Codex-vision-coaching-skills/skills/vision-foresight-environmental-scanning-techniques"
 HELPERS="$SKILL_DIR/_helpers.py"
 ```
 

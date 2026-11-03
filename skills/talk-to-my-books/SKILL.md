@@ -8,7 +8,7 @@ description: 사용자의 자료(책·설교·주석·강의안 등)를 talk-to-
 사용자의 모든 자료(책, 설교, 주석, 강의안)를 「책 속에 살아있는 대화」 형식으로 변환해 대화하는 스킬.
 참조 모델: talk-to-algorithms.vercel.app (책 소개 카드 + 책 지도 + 예시 질문 + 본문 근거 답변).
 
-**서재 위치**: `C:\Users\ASUS\Documents\talk-library\`
+**서재 위치**: `/Users/kbg1023/Documents\talk-library\`
 서재 목록은 `talk-library\INDEX.md`. 책 하나 = 폴더 하나(slug).
 
 ```

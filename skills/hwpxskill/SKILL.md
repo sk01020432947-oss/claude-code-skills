@@ -1,5 +1,5 @@
 ---
-name: hwpx
+name: hwpxskill
 description: "한글 HWPX 문서 생성/읽기/편집 스킬. .hwpx 파일, Hancom, OWPML 관련 요청 시 사용. .hwp 바이너리 파일 작성/생성/직접 편집 요청은 거부한다."
 ---
 

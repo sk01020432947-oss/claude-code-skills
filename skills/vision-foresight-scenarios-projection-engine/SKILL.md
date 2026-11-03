@@ -186,7 +186,7 @@ For each key measure KM_i:
 ### Step 3 — validator.py 호출 (입력 검증)
 
 ```bash
-SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-claude-vision-coaching-skills/skills/vision-foresight-scenarios-projection-engine"
+SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-Codex-vision-coaching-skills/skills/vision-foresight-scenarios-projection-engine"
 python3 "$SKILL_DIR/validator.py" --input /tmp/projection_input.json
 ```
 

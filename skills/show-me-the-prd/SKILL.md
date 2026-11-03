@@ -1,6 +1,6 @@
 ---
 name: show-me-the-prd
-description: "인터뷰 기반 PRD 생성 -- 한 문장에서 4종 디자인 문서까지"
+description: "인터뷰 기반 PRD 생성 -- 한 문장에서 4종 디자인 문서까지 아이디어 한 문장을 인터뷰(AskUserQuestion)로 구체화해 PRD 등 디자인 문서 4종으로 만든다. 트리거: '/show-me-the-prd', 'PRD 써줘', '앱 아이디어 기획서', '바이브코딩 전에 문서화'."
 argument-hint: "[아이디어 설명]"
 allowed-tools:
   - Read

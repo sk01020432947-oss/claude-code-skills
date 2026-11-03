@@ -1,0 +1,37 @@
+{
+  "brightness": 28.1,
+  "motion": 1.15,
+  "cut_sec": null,
+  "brightness_range": [
+    28.1,
+    28.1
+  ],
+  "motion_range": [
+    1.15,
+    1.15
+  ],
+  "cut_sec_range": [
+    14.0,
+    14.0
+  ],
+  "max_cuts": 0,
+  "freeze_max": 1.0,
+  "lufs_range": [
+    -16,
+    -12
+  ],
+  "source": [
+    "clip_hq.mp4"
+  ],
+  "refs_path": [
+    "claude-motion-studio/samples/12-sermon-series-intro/clip_hq.mp4"
+  ],
+  "rules": [
+    "72BPM 박자에 맞춘 타자 쌓기·한 박에 핵심어 하나",
+    "따뜻하고 경건한 톤, 금선 모티프",
+    "끝은 시리즈 타이틀 카드로 2초 이상 멈춤",
+    "음악 포함, -14 LUFS 근처"
+  ],
+  "note": "2026-10-09 생성. 참고 1편(음량 보정 후 샘플 12)뿐이라 범위가 한 점. 설교 인트로 납품본이 2편 더 생기면 다시 저장",
+  "render": "render_hq.mjs 납품본(clip_hq, 모션블러) 기준"
+}

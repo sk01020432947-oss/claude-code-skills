@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="kbg-master" data-pptx-master-name="KBG" data-pptx-layout="02_chapter" data-pptx-layout-name="Chapter">
+  <!-- KBG — Chapter -->
+
+  <rect id="master-bg" width="1280" height="720" fill="#FBFAF7" data-pptx-layer="master" data-pptx-editable="false"/>
+
+  <rect x="0" y="0" width="16" height="720" fill="#1F4E79" id="layout-chapter-block" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="656" x2="1224" y2="656" stroke="#E3E0D8" stroke-width="1" id="layout-chapter-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="chapter-number">
+    <text x="56" y="300" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="96" fill="#1F4E79" letter-spacing="-2">{{CHAPTER_NUM}}</text>
+  </g>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-placeholder-bounds="56 336 1168 64">
+    <text id="title-carrier" data-pptx-placeholder-carrier="true" x="56" y="390" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-weight="700" font-size="48" fill="#1D1F24" letter-spacing="-1">{{CHAPTER_TITLE}}</text>
+  </g>
+  <g id="chapter-desc">
+    <text x="56" y="444" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="24" fill="#5D6370">{{CHAPTER_DESC}}</text>
+  </g>
+  <g id="page-number-slot" data-pptx-placeholder="slide-number" data-pptx-placeholder-idx="3" data-pptx-placeholder-bounds="1100 668 124 24">
+    <text id="page-number-carrier" data-pptx-placeholder-carrier="true" x="1224" y="686" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="14" fill="#9AA0A8" text-anchor="end">{{PAGE_NUM}}</text>
+  </g>
+</svg>

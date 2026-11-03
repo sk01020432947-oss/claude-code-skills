@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=1920">
+<title>메신저 목업 템플릿</title>
+<style>
+/* KBG-CHAT: 메신저 대화 목업. 바꿀 곳은 아래 CONFIG뿐. */
+html,body{margin:0;width:1920px;height:1080px;background:#0f1115;overflow:hidden;font-family:"Noto Sans KR","Apple SD Gothic Neo",sans-serif}
+.phone{position:absolute;left:50%;top:50%;width:460px;height:940px;transform:translate(-50%,-50%) scale(1.1);border-radius:64px;background:#111;padding:18px;box-shadow:0 30px 80px #0008}
+.screen{position:relative;width:100%;height:100%;border-radius:48px;overflow:hidden;background:#b2c7da;display:flex;flex-direction:column}
+.top{height:96px;padding:44px 24px 0;box-sizing:border-box;font-size:20px;font-weight:700;color:#222;background:#a9bed0}
+.thread{position:absolute;left:0;right:0;bottom:84px;padding:0 16px 16px;display:flex;flex-direction:column;gap:14px;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.input{position:absolute;left:0;right:0;bottom:0;height:84px;background:#fff;display:flex;align-items:center;padding:0 20px;color:#666;font-size:18px}
+.row{display:flex;gap:10px;align-items:flex-start;opacity:0;transform:translateY(14px) scale(.96);transition:opacity .25s,transform .25s}
+.row.on{opacity:1;transform:none}
+.row.me{justify-content:flex-end}
+.av{width:44px;height:44px;border-radius:16px;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
+.name{font-size:14px;color:#2e3a46;margin:0 0 4px 2px}
+.b{max-width:270px;padding:12px 15px;border-radius:16px;font-size:19px;line-height:1.45;background:#fff;color:#111;word-break:keep-all}
+.me .b{background:#fee500}
+.og{width:290px;border-radius:14px;overflow:hidden;background:#fff;margin-top:6px}
+.og .img{height:150px;background:linear-gradient(135deg,#2b3a55,#6b8cae)}
+.og .t{padding:10px 14px 2px;font-size:17px;font-weight:700}
+.og .d{padding:0 14px 12px;font-size:14px;color:#595959}
+.time{white-space:nowrap;font-size:12px;color:#2e3a46;align-self:flex-end;margin:0 2px}
+</style></head><body>
+<div class="phone"><div class="screen">
+  <div class="top" id="title"></div>
+  <div class="thread" id="thread"></div>
+  <div class="input">메시지 입력</div>
+</div></div>
+<script>
+// ───── 바꿀 곳 ─────
+const CONFIG = {
+  title: "청년부 수련회 준비방",
+  gap: 1.1,            // 메시지 간격(초). 읽는 시간보다 짧게 하지 않는다
+  messages: [
+    {who:"김간사", text:"수련회 장소 확정됐어요 🙌"},
+    {who:"김간사", text:"신청은 여기서 받습니다", og:{title:"2026 겨울 수련회 신청", domain:"forms.example.org"}},
+    {who:"나", text:"공지 올릴게요!"},
+    {who:"이청년", text:"저 벌써 신청했어요 ㅎㅎ"},
+    {who:"나", text:"마감은 11월 30일입니다"}
+  ]
+};
+// ───────────────────
+const COLORS=["#7d93ff","#ff8a65","#4db6ac","#ba68c8"];
+const thread=document.getElementById('thread');
+document.getElementById('title').textContent=CONFIG.title;
+const people={};
+const rows=CONFIG.messages.map(m=>{
+  const me=m.who==="나", r=document.createElement('div');
+  r.className='row'+(me?' me':'');
+  if(!(m.who in people)) people[m.who]=COLORS[Object.keys(people).length%COLORS.length];
+  const og=m.og?`<div class="og"><div class="img"></div><div class="t">${m.og.title}</div><div class="d">${m.og.domain}</div></div>`:'';
+  r.innerHTML=me?`<span class="time">오후 2:0${rowsLen()}</span><div><div class="b">${m.text}</div>${og}</div>`
+    :`<div class="av" style="background:${people[m.who]}">${m.who[0]}</div><div><div class="name">${m.who}</div><div class="b">${m.text}</div>${og}</div><span class="time">오후 2:0${rowsLen()}</span>`;
+  thread.appendChild(r); return r;
+});
+function rowsLen(){return thread.children.length}
+// 결정론: seek(t)로 어느 시점이든 같은 화면. claude-motion-studio/scripts/render_hq.mjs 규약(__seek·__dur·__size·__ready)을 따른다.
+window.duration=CONFIG.messages.length*CONFIG.gap+1.5;
+window.seek=t=>{
+  let shown=0;
+  rows.forEach((r,i)=>{const on=t>=0.4+i*CONFIG.gap; r.classList.toggle('on',on); r.style.display=on?'':'none'; if(on)shown++;});
+};
+window.__seek=window.seek; window.__dur=window.duration; window.__size=[1920,1080];
+if(!/[?&]render/.test(location.search)){const t0=performance.now();(function f(){seek(((performance.now()-t0)/1000)%duration);requestAnimationFrame(f)})();}
+else seek(+(new URLSearchParams(location.search).get('t')||0));
+window.__ready=true;
+</script></body></html>

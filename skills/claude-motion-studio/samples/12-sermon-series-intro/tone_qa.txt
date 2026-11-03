@@ -1,0 +1,19 @@
+[
+  {
+    "file": "clip_hq.mp4",
+    "duration": 14.0,
+    "brightness": 28.1,
+    "motion": 1.2,
+    "cuts": 0,
+    "cut_sec": 14.0,
+    "lufs": -14.3,
+    "freezes_over_1s": [
+      [
+        9.67,
+        1.0
+      ]
+    ]
+  }
+]
+
+[clip_hq.mp4] PASS

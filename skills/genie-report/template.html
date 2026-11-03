@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>꼬리가 몸통을 흔들 때 — 국내 증시 레버리지 ETF 변동성 분석</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+/* ===== 토큰 — 그레이스케일 + 악센트 1색 (기본은 무채색, 톤앤매너 적용 시 브랜드색 하나만) ===== */
+:root{
+  --accent:#1A1A1A;   /* 톤앤매너 단계에서 브랜드 1색으로 교체 (예: #5B2D90) */
+  --ink:#1A1A1A;      /* 제목·강조 */
+  --body:#333333;     /* 본문 */
+  --mute:#777777;     /* 캡션·출처·헤더 */
+  --line:#DDDDDD;     /* 괘선 */
+  --fill:#F4F4F4;     /* 표 머리·박스 채움 */
+  --backdrop:#2B2E33; /* 화면 보기 배경 */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--backdrop);font-family:'Pretendard',sans-serif;color:var(--body);
+  display:flex;flex-direction:column;align-items:center;gap:10mm;padding:10mm 0}
+
+/* ===== A4 세로 페이지 (210×297mm 고정) ===== */
+.page{width:210mm;height:297mm;background:#fff;position:relative;
+  padding:24mm 18mm 20mm;box-shadow:0 4px 22px rgba(0,0,0,.35);overflow:hidden}
+.page::before{content:'';position:absolute;top:0;left:0;right:0;height:1.2mm;background:var(--accent)}
+
+/* 페이지 헤더/푸터 — 보고서 제목 + 페이지 번호 (JS 자동) */
+.phead{position:absolute;top:7mm;left:18mm;right:18mm;display:flex;
+  justify-content:space-between;font-size:8.5pt;color:var(--mute);
+  border-bottom:.4pt solid var(--line);padding-bottom:2.2mm}
+.phead b{font-weight:600;color:var(--mute)}
+.pfoot{position:absolute;bottom:7mm;left:18mm;right:18mm;display:flex;
+  justify-content:space-between;font-size:8pt;color:var(--mute);
+  border-top:.4pt solid var(--line);padding-top:2.2mm}
+
+/* ===== 표제부 (1페이지 상단) ===== */
+.titleblock{margin-bottom:9mm}
+.titleblock .kicker{font-size:10pt;font-weight:600;letter-spacing:.14em;
+  color:var(--accent);margin-bottom:4mm}
+.titleblock h1{font-size:26pt;font-weight:800;line-height:1.3;color:var(--ink);
+  letter-spacing:-.02em;margin-bottom:3.5mm}
+.titleblock .sub{font-size:12.5pt;color:var(--body);line-height:1.5;margin-bottom:6mm}
+.titleblock .meta{display:flex;gap:0;border-top:1.2pt solid var(--ink);
+  border-bottom:.4pt solid var(--line)}
+.titleblock .meta div{flex:1;padding:2.6mm 0;font-size:9pt;color:var(--body)}
+.titleblock .meta b{display:block;font-size:8pt;color:var(--mute);font-weight:600;margin-bottom:1mm}
+
+/* ===== 본문 부품 ===== */
+h2{font-size:13.5pt;font-weight:700;color:var(--ink);margin:8mm 0 4mm;
+  padding-bottom:2mm;border-bottom:1pt solid var(--ink)}
+h2 em{font-style:normal;color:var(--accent);margin-right:2.5mm;font-weight:800}
+h3{font-size:11pt;font-weight:700;color:var(--ink);margin:5mm 0 2.5mm}
+p{font-size:10.5pt;line-height:1.68;margin-bottom:3.2mm;text-align:justify}
+ul{list-style:none;margin-bottom:3.5mm}
+li{position:relative;padding-left:5mm;font-size:10.5pt;line-height:1.62;margin-bottom:1.8mm}
+li::before{content:'';position:absolute;left:1mm;top:2.6mm;width:1.6mm;height:1.6mm;background:var(--ink)}
+b{font-weight:700;color:var(--ink)}
+.src{font-size:8pt;color:var(--mute);margin:1.5mm 0 4mm}
+
+/* 강조 박스 */
+.callout{background:var(--fill);border:.4pt solid var(--line);padding:4.5mm 5.5mm;
+  margin:4mm 0;font-size:10pt;line-height:1.6}
+.callout b:first-child{display:block;margin-bottom:1.5mm;font-size:10.5pt}
+
+/* 표 */
+table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:3mm 0 2mm;
+  border-top:1.2pt solid var(--ink)}
+th{background:var(--fill);font-weight:700;color:var(--ink);padding:2.6mm 3mm;
+  text-align:left;border-bottom:.6pt solid var(--line)}
+td{padding:2.4mm 3mm;border-bottom:.4pt solid var(--line);line-height:1.45}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+td.hl{font-weight:700;color:var(--accent)}
+
+/* KPI 스탯 행 */
+.kpirow{display:flex;gap:4mm;margin:4mm 0}
+.kpi{flex:1;border:.6pt solid var(--line);border-top:1.2pt solid var(--accent);
+  padding:4mm 3mm;text-align:center}
+.kpi b{display:block;font-size:19pt;font-weight:800;color:var(--accent);margin-bottom:1.5mm}
+.kpi i{display:block;font-style:normal;font-size:9.5pt;font-weight:700;color:var(--ink);margin-bottom:1mm}
+.kpi small{font-size:8pt;color:var(--mute);line-height:1.4;display:block}
+
+/* 가로 바 차트 */
+.barchart{margin:4mm 0}
+.brow{display:flex;align-items:center;gap:3mm;margin-bottom:2.4mm;font-size:9pt}
+.brow .lbl{width:34mm;color:var(--body);text-align:right;flex:none}
+.brow .track{flex:1;background:var(--fill);height:6.5mm;position:relative}
+.brow .bar{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.brow .val{width:20mm;font-weight:700;color:var(--ink);flex:none;font-variant-numeric:tabular-nums}
+.chartcap{font-size:8pt;color:var(--mute);margin-top:1mm}
+
+/* 2단 그리드 */
+.grid2{display:flex;gap:6mm;margin:3mm 0}
+.grid2 .col{flex:1;min-width:0}
+
+/* ===== 인쇄 ===== */
+@media print{
+  @page{size:A4 portrait;margin:0}
+  body{background:#fff;padding:0;gap:0;display:block}
+  .page{box-shadow:none;margin:0;page-break-after:always}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ 1페이지: 표제부 + 요약 ═══ -->
+<section class="page">
+  <div class="phead"><b>국내 증시 레버리지 ETF 변동성 분석</b><span class="pn"></span></div>
+
+  <div class="titleblock">
+    <div class="kicker">시장 분석 보고서</div>
+    <h1>꼬리가 몸통을 흔들 때</h1>
+    <div class="sub">금융위기 수준에 도달한 대한민국 증시 변동성 — 레버리지 ETF의 구조적 증폭 메커니즘 분석 및 전망</div>
+    <div class="meta">
+      <div><b>작성일</b>2026. 8. 1.</div>
+      <div><b>작성</b>전략리서치팀</div>
+      <div><b>보고 대상</b>투자심의위원회</div>
+      <div><b>구분</b>대외비</div>
+    </div>
+  </div>
+
+  <h2><em>01</em>핵심 요약</h2>
+  <p>국내 증시의 일중 변동성이 금융위기 국면에 준하는 수준으로 확대되었습니다. 본 보고서는 그 원인을
+  개별 종목의 펀더멘털이 아닌 <b>레버리지 ETF의 구조적 리밸런싱 수요</b>에서 찾고, 파생 수요가 현물 시장을
+  역으로 흔드는 '꼬리-몸통 역전' 현상을 데이터로 검증합니다.</p>
+
+  <div class="kpirow">
+    <div class="kpi"><b>2.8배</b><i>일중 변동성 확대</i><small>최근 3개월 평균, 5년 평균 대비</small></div>
+    <div class="kpi"><b>41%</b><i>레버리지 ETF 거래 비중</i><small>코스피200 선물 시장 내</small></div>
+    <div class="kpi"><b>6.2조원</b><i>일일 리밸런싱 추정액</i><small>변동성 상위 10거래일 평균</small></div>
+  </div>
+
+  <div class="callout"><b>핵심 판단</b>변동성의 진원지는 시장 외부 충격이 아니라 시장 내부의 상품 구조입니다.
+  장 마감 전 리밸런싱 수요가 방향성 없이 낙폭과 상승폭을 동시에 증폭시키고 있어,
+  전통적 헤지 전략의 유효성이 급격히 낮아졌습니다.</div>
+
+  <h2><em>02</em>변동성 현황 진단</h2>
+  <p>최근 분기 코스피 일중 고저 변동폭은 평균 3.4%로, 2008년 금융위기 당시 4.1%에 근접했습니다.
+  특징적인 것은 거시 이벤트가 없는 날에도 변동폭이 유지된다는 점이며, 이는 구조적 요인의 존재를 시사합니다.</p>
+
+  <div class="barchart">
+    <div class="brow"><span class="lbl">2008 금융위기</span><div class="track"><div class="bar" style="width:82%"></div></div><span class="val">4.1%</span></div>
+    <div class="brow"><span class="lbl">2020 팬데믹</span><div class="track"><div class="bar" style="width:76%"></div></div><span class="val">3.8%</span></div>
+    <div class="brow"><span class="lbl">최근 분기</span><div class="track"><div class="bar" style="width:68%"></div></div><span class="val">3.4%</span></div>
+    <div class="brow"><span class="lbl">5년 평균</span><div class="track"><div class="bar" style="width:24%"></div></div><span class="val">1.2%</span></div>
+  </div>
+  <div class="chartcap">코스피 일중 고저 변동폭 비교 (기간 평균)</div>
+
+  <div class="pfoot"><span>전략리서치팀 · 대외비</span><span>Genie Report</span></div>
+</section>
+
+<!-- ═══ 2페이지: 원인 분석 + 전망 ═══ -->
+<section class="page">
+  <div class="phead"><b>국내 증시 레버리지 ETF 변동성 분석</b><span class="pn"></span></div>
+
+  <h2 style="margin-top:0"><em>03</em>구조적 원인 — 레버리지 ETF 리밸런싱</h2>
+  <p>레버리지 ETF는 일간 수익률의 배수를 추종하기 위해 매 거래일 종가 부근에서 포지션을 재조정합니다.
+  이 리밸런싱은 <b>시장이 오른 날에는 추가 매수, 내린 날에는 추가 매도</b>를 기계적으로 발생시켜
+  당일 방향성을 증폭합니다.</p>
+
+  <div class="grid2">
+    <div class="col">
+      <h3>증폭 메커니즘</h3>
+      <ul>
+        <li>상승일: 목표 노출 유지 위해 종가 부근 추가 매수</li>
+        <li>하락일: 손실 배수 방어 위해 종가 부근 추가 매도</li>
+        <li>결과: 일중 마지막 1시간에 변동폭의 47% 집중</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3>왜 '꼬리'가 '몸통'을 흔드는가</h3>
+      <ul>
+        <li>파생·레버리지 상품(꼬리)의 기계적 수요</li>
+        <li>현물 시장(몸통)의 가격을 역으로 결정</li>
+        <li>펀더멘털과 무관한 가격 왜곡 상시화</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <tr><th style="width:26%">구분</th><th>전통적 변동성 국면</th><th>현재 국면</th></tr>
+    <tr><td>진원지</td><td>거시 이벤트 · 외부 충격</td><td class="hl">상품 구조 · 내부 수요</td></tr>
+    <tr><td>변동 시간대</td><td>장 초반 집중</td><td class="hl">장 마감 1시간 집중</td></tr>
+    <tr><td>방향성</td><td>추세 형성</td><td class="hl">양방향 증폭 (방향성 없음)</td></tr>
+    <tr><td>헤지 유효성</td><td>지수 옵션으로 방어 가능</td><td class="hl">시간대 분산 없이는 무력화</td></tr>
+  </table>
+  <div class="src">출처: 한국거래소 시장데이터, 전략리서치팀 추정</div>
+
+  <h2><em>04</em>전망 및 대응 방향</h2>
+  <p>레버리지 상품 잔고가 현 수준을 유지하는 한 변동성 국면은 이벤트가 아니라 <b>상수</b>로 보아야 합니다.
+  대응의 초점은 방향 예측이 아니라 시간대 관리로 이동해야 합니다.</p>
+  <ul>
+    <li>집행 시간 분산: 종가 부근 대량 주문을 장중으로 분산하여 리밸런싱 파도와의 충돌 회피</li>
+    <li>변동성 프리미엄 활용: 마감 1시간 옵션 프리미엄 급등 구간을 매도 전략의 수익원으로 전환</li>
+    <li>모니터링 지표 신설: 레버리지 ETF 설정 잔고와 선물 미결제약정 비율의 일간 추적</li>
+  </ul>
+
+  <div class="callout"><b>결론</b>꼬리가 몸통을 흔드는 시장에서는 몸통의 체력(펀더멘털) 분석만으로 부족합니다.
+  꼬리의 크기와 움직임(레버리지 잔고·리밸런싱 시간대)을 상시 계기판에 올리는 것이 첫 번째 대응입니다.</div>
+
+  <div class="pfoot"><span>전략리서치팀 · 대외비</span><span>Genie Report</span></div>
+</section>
+
+<script>
+/* 페이지 번호 자동 채움 */
+const pages=[...document.querySelectorAll('.page')];
+pages.forEach((p,i)=>{
+  const pn=p.querySelector('.pn');
+  if(pn)pn.textContent=(i+1)+' / '+pages.length;
+});
+</script>
+</body>
+</html>

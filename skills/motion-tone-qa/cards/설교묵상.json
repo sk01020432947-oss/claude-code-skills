@@ -1,0 +1,39 @@
+{
+  "brightness": 25.55,
+  "motion": 0.28,
+  "cut_sec": null,
+  "brightness_range": [
+    20.1,
+    31.0
+  ],
+  "motion_range": [
+    0.2,
+    0.36
+  ],
+  "cut_sec_range": [
+    8.0,
+    40.0
+  ],
+  "max_cuts": 0,
+  "freeze_max": 4.18,
+  "lufs_range": [
+    -16,
+    -12
+  ],
+  "source": [
+    "clip_hq.mp4",
+    "clip_hq.mp4"
+  ],
+  "refs_path": [
+    "모션그래픽/설교핵심문장_시편23_예시/clip_hq.mp4",
+    "모션그래픽/설교본문카드_고전15_3-4/clip_hq.mp4"
+  ],
+  "rules": [
+    "어두운 남색·먹색 바탕",
+    "명조 본문, 밑줄·색으로 핵심어 강조",
+    "장면을 끊지 않고 글자가 이어짐",
+    "장절·인용은 본문에서만"
+  ],
+  "note": "2026-10-09 생성. 참고 2편, 음원 없음(LUFS 기준 미검증). 사도신경 연표는 밝은 종이 톤이라 제외",
+  "render": "render_hq.mjs 납품본(clip_hq, 모션블러) 기준. 미리보기 clip.mp4는 블러가 없어 움직임 값이 1.4~4배 높게 나오므로 이 카드로 재지 않는다"
+}

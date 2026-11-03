@@ -1,0 +1,2584 @@
+{
+ "generated_at": "2026-11-01",
+ "quarter": "2026Q4",
+ "sample_note": "오픈채팅·Threads 자기선택 표본 — 전국 공공부문을 대표하지 않음",
+ "total_cases": 625,
+ "total_champions": 251,
+ "community": {
+  "members": 2758,
+  "kakao_week": 4797,
+  "kakao_total_observed": 63684,
+  "threads_observed": 415
+ },
+ "certified_champions": 5,
+ "unattributed_cases": 162,
+ "ax_distribution": {
+  "AI-Ready": 395,
+  "AI-Enabled": 196,
+  "AX 단계 외": 28,
+  "AI-First": 5,
+  "AI-Native 계획": 1
+ },
+ "c_axis_mean": 0.96,
+ "p_distribution": {
+  "P0": 195,
+  "P1": 410,
+  "P2": 20
+ },
+ "model_dependency": {
+  "미확인": 66,
+  "없음(비LLM)": 301,
+  "해외 오픈웨이트(로컬)": 34,
+  "혼합": 17,
+  "해외 상용 API": 71,
+  "모델 중립(BYO)": 99,
+  "국산 독자모델": 7,
+  "미상": 29,
+  "국산 오픈웨이트": 1
+ },
+ "model_stats": {
+  "models_top": [
+   {
+    "name": "Claude/Codex(상용 에이전트)",
+    "n": 37,
+    "variants": [
+     "Claude",
+     "Claude Code",
+     "Claude Code 스킬(선택)",
+     "Claude Code(BYO 구독)",
+     "Claude Code(플러그인)",
+     "Claude Code/Codex 등 상용 코딩 에이전트(BYO 구독)",
+     "Claude Code/Codex(플러그인)",
+     "Claude Code·Codex 세션(사용자 계정)",
+     "Claude Code·Codex 스킬",
+     "Claude Code·Codex(BYO 구독)",
+     "Claude Code·Codex에서 MCP·CLI로 호출(선택)",
+     "Claude Fable 5.1",
+     "Claude Haiku 5.5",
+     "Claude Opus 5.5",
+     "Claude Sonnet 5.5",
+     "Claude(대조·근거 작성)",
+     "Claude(선택 기능)",
+     "Claude(스킬)",
+     "Codex CLI/Claude CLI(BYO 구독)",
+     "Codex 이미지 생성(BYO 구독)",
+     "상용 API 모드(Claude 등)",
+     "제작: Claude Code Opus 5.5"
+    ],
+    "cases": [
+     {
+      "id": "7acf5f25369c1401",
+      "title": "시연 영상 제작 자동화 스킬 공유"
+     },
+     {
+      "id": "32d199fa9ad4f674",
+      "title": "국민신문고 민원 초안 생성 스킬 minwon-draft"
+     },
+     {
+      "id": "54d599932088897f",
+      "title": "정부 지원사업 전수조사 에이전트 스킬 ir-search"
+     },
+     {
+      "id": "112bf7dc576ed8aa",
+      "title": "공공행정 리서치 스킬 — 공식 근거를 검토용 보고서로 정리"
+     },
+     {
+      "id": "2f4ed1e68a6464c5",
+      "title": "K-Skill — 한국인을 위한 AI 스킬 모음집"
+     },
+     {
+      "id": "f0c21de2b0af63b3",
+      "title": "업무구조도 생성기 korea100studio 오픈소스 공개"
+     },
+     {
+      "id": "7ac3b301c1a8f79d",
+      "title": "발표 슬라이드 밈 삽입 도구 slide-meme-inserter"
+     },
+     {
+      "id": "1c54d608228e0845",
+      "title": "이미지 생성 프롬프트 컴파일 스킬 — 공냥이 프롬프트 킷"
+     },
+     {
+      "id": "ac09bd2e1c0fbb29",
+      "title": "온AI Work — 공무원 보고서 AI 작성 도구"
+     },
+     {
+      "id": "17ed2d7a88c03119",
+      "title": "Rekian — HWPX 공문서 재기안 에이전트 스킬셋"
+     },
+     {
+      "id": "65e1983235232514",
+      "title": "bookforge — 한국어 전자책 PDF 생성 에이전트 스킬"
+     },
+     {
+      "id": "acd684108227b9c2",
+      "title": "DevEval Agents — ODA 사업평가 멀티 에이전트 프레임워크"
+     },
+     {
+      "id": "cb0abc29707cc710",
+      "title": "수정 가능한 PPTX·피그마 슬라이드 스킬 — 공공 카드뉴스 스타일"
+     },
+     {
+      "id": "0b9d4e9c2beed197",
+      "title": "public-doc-to-hwpx — AI 초안을 공공기관 보고서 서식 HWPX로 만드는 스킬"
+     },
+     {
+      "id": "539f90471f451d80",
+      "title": "hwpx-skill — AI 에이전트가 한글(HWPX) 문서를 만들고 고치는 Claude 스킬"
+     },
+     {
+      "id": "4032cd7b445543e6",
+      "title": "바이브코드 하네스 — 기획부터 보안 점검까지 같은 순서로 만드는 실행형 개발 하네스"
+     },
+     {
+      "id": "c54ee4b5fb3ee4c5",
+      "title": "Orca — 병렬 에이전트 플릿을 부리는 에이전트 개발 환경(ADE)"
+     },
+     {
+      "id": "f108979f0d8b2009",
+      "title": "book-to-skill — 기술 서적 PDF를 Claude Code 스킬로 바꾸는 도구"
+     },
+     {
+      "id": "4f136eeeea72fe65",
+      "title": "Archify — 코드베이스·시스템 설명을 검증 가능한 다이어그램으로 바꾸는 에이전트 스킬"
+     },
+     {
+      "id": "3a211aec27b69d0a",
+      "title": "claw-hwp — 한컴 없이 Claude·Codex가 HWP/HWPX를 그대로 읽고 만들고 고치는 플러그인"
+     },
+     {
+      "id": "f5f24469d5ca281f",
+      "title": "소담 패밀리 — 비개발자가 만든 Claude Code 안전벨트 플러그인 7종 묶음"
+     },
+     {
+      "id": "ada7cb6b9fabac8f",
+      "title": "paper-verify — 보고서·논문의 법령·판례·문헌 인용을 원본과 대조하는 Claude Code 스킬"
+     },
+     {
+      "id": "9d19e64aa30f5332",
+      "title": "MiroFish-Ko 개인 수정판 — 로컬 LLM·Codex CLI로 돌리는 정책 여론 시뮬레이터"
+     },
+     {
+      "id": "fe0d33cc718246d6",
+      "title": "Public Cardnews — 정부·공공기관 정책 카드뉴스를 기획부터 이미지까지 만드는 Codex 스킬"
+     },
+     {
+      "id": "8a47740d405286c4",
+      "title": "자치법규 정합성 실측 — 서울시 조례 942건의 법률 인용 2,996개를 현행 조문과 전수 대조"
+     },
+     {
+      "id": "133d7e9c594456be",
+      "title": "서울 자치구 조례 정합성 지도 — 본청과 25개 구 조례의 법률 인용을 현행 조문과 대조해 지도로"
+     },
+     {
+      "id": "fbdee1f08c2ca185",
+      "title": "농해수위 국정감사 온톨로지 — 위원회 회의록을 발언·쟁점·이행약속 지식그래프로 엮어 국감 브리핑을 만드는 서비스"
+     },
+     {
+      "id": "7c3c1b02b4a981ec",
+      "title": "KSAT AI Benchmark — 2026학년도 수능 147문항으로 AI 모델 11종의 정답률·기권률·시간·비용 비교"
+     },
+     {
+      "id": "0a767bb6906996f4",
+      "title": "DentalAX — 코딩을 모르는 치과의사가 프롬프트 한 번으로 만든 원내 행정 도우미(인수인계·재고·발주·근무표·문서)"
+     },
+     {
+      "id": "d4b32884df29e99a",
+      "title": "krmap — 보고서·PPT용 대한민국 행정구역 지도를 골라 칠해 편집 가능한 PPTX로 저장하는 도구"
+     },
+     {
+      "id": "3241bc9ff9f0fa16",
+      "title": "awesome-ai-motion — 발표·영상용 모션 기법 637종을 에이전트가 읽는 카드와 스킬로 정리한 안내서"
+     },
+     {
+      "id": "3c88a43775f80a67",
+      "title": "Scrolline — deck.yaml 한 장으로 스크롤형 발표 자료를 만들고 MP4로 내보내는 도구"
+     },
+     {
+      "id": "b52bd17cf637a1cc",
+      "title": "Colorfigures — 사물을 한 문장으로 설명하면 버튼이 실제로 작동하는 손그림풍 아이소메트릭 그림을 HTML 한 파일로 그리는 Claude 스킬"
+     },
+     {
+      "id": "f4f1360681627431",
+      "title": "이음오피스 — 한컴오피스 없이 한글·워드·엑셀·PDF를 한 창에서 고치고 옆 AI 창에 표 채우기를 맡기는 무료 오픈소스 오피스(MCP 포함)"
+     },
+     {
+      "id": "4efcc1e5f8fcf032",
+      "title": "ppt-j — 에이전트가 만든 HTML 발표자료를 웹 편집기에서 고치고 HTML·PDF·PPTX로 내보내는 Claude Code 플러그인"
+     },
+     {
+      "id": "31d885ce7241ceae",
+      "title": "잘하나 행감팩 — 지방의회 회의록을 AI로 사안별로 엮어 행정사무감사 질문·자료를 지역별로 정리한 서비스"
+     },
+     {
+      "id": "7ec0b61bbdad48ba",
+      "title": "Claw Office — 여러 컴퓨터의 AI 코딩 에이전트 세션을 3D 사무실 직원으로 보여 주고 지휘하는 오픈소스 플러그인"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "GPT(OpenAI)",
+    "n": 19,
+    "variants": [
+     "ChatGPT GPTs",
+     "ChatGPT(웹)",
+     "ChatGPT(팀계정)",
+     "ChatGPT/Claude/Codex(승인 문서 MCP 조회)",
+     "GPT(OpenAI API)",
+     "GPT-5.6 Luna",
+     "GPT-5.6 Luna(OpenRouter, 동의 시)",
+     "GPT-5.6 Terra",
+     "GPT-6 Astra",
+     "GPT-6.1 Sol",
+     "OpenAI Codex",
+     "OpenAI GPT 계열(예시 설정)",
+     "OpenAI GPT-5(Responses API)",
+     "OpenAI Realtime API(음성 에이전트, 선택)",
+     "OpenAI Vision",
+     "OpenAI/Anthropic(사용자 키)",
+     "OpenAI/Claude(제공자 전환형)",
+     "OpenAI·Claude·OpenRouter 계정 연결(BYO)",
+     "gpt-4.1-mini(조항 AI 검수)",
+     "gpt-5.6-luna(기본 설정)"
+    ],
+    "cases": [
+     {
+      "id": "6a2d1fa6e385ef2b",
+      "title": "부서 수요 기반 ChatGPT 팀계정 지원 후 보안형 AI SaaS 도입"
+     },
+     {
+      "id": "ea2bce110972762e",
+      "title": "공공기관 규정 MCP 생성기"
+     },
+     {
+      "id": "92d5147e02f7ae36",
+      "title": "NCS 기반 구조화 면접 질문 생성기 NCScope"
+     },
+     {
+      "id": "00411127055c4a07",
+      "title": "공무원 필수교육 이수 관리 시스템 공개"
+     },
+     {
+      "id": "a7abbaedd53db684",
+      "title": "국회 법안·회의록 탐색 MCP — 공식 기록 검증"
+     },
+     {
+      "id": "e18d5e018e0cd10d",
+      "title": "오토한글 — 브라우저·터미널용 HWP 편집 엔진"
+     },
+     {
+      "id": "d6c35b2999da8ca0",
+      "title": "모두의 일기장 — 공무원 감정 기록·AI 답장 웹앱"
+     },
+     {
+      "id": "ccee126dc9e23cf6",
+      "title": "경북 면사무소 토목직의 AX — 토목 전용 GPTs와 횡단면도 작성 앱"
+     },
+     {
+      "id": "b3294bcc65e7f2e7",
+      "title": "소방기술민원 답변생성기 — 법령·유사민원 검색과 참고 답변 초안"
+     },
+     {
+      "id": "a3b9afb1d17d15a0",
+      "title": "설계도면을 3차원으로 — 공공 시설사업 검토에 생성형 3D 모델링 적용"
+     },
+     {
+      "id": "90f8afce65c6f327",
+      "title": "영수증 사진으로 공용차량 세차내역 자동 입력"
+     },
+     {
+      "id": "96added28c5e4ec7",
+      "title": "Liberaflow — 로컬 마크다운 노트 위에 AI 문서 작성·브라우저 자동화를 얹은 데스크톱 작업 공간"
+     },
+     {
+      "id": "2085370092f99007",
+      "title": "God's Eye View — 항공기·선박·위성·지진·공개 카메라를 한 3D 지구본에 띄우는 오픈소스 공간정보 관제 참고 도구"
+     },
+     {
+      "id": "5af7491b4ca15345",
+      "title": "MOPAN(모판) — RAG·MCP·모델·워크플로우를 직접 등록해 조합하는 에이전트 바탕 시스템"
+     },
+     {
+      "id": "0fbe6800c85c1ae4",
+      "title": "AI 공간개발·공간관리 앱 — 함양군 지적도로 구역선 필지 교차 분석과 산업단지 입주 검증을 하는 두 갈래 도구"
+     },
+     {
+      "id": "48a2fe695d62b13f",
+      "title": "소담 라이노 GH코드 Codex — Rhino 7 그래스호퍼 스크립트 노드 코드를 짜 주는 Codex 플러그인"
+     },
+     {
+      "id": "7c3c1b02b4a981ec",
+      "title": "KSAT AI Benchmark — 2026학년도 수능 147문항으로 AI 모델 11종의 정답률·기권률·시간·비용 비교"
+     },
+     {
+      "id": "90017f701b103627",
+      "title": "Connect to Aside — 웹 ChatGPT가 PC 파일 편집과 Aside 브라우저 조작을 하게 하는 로컬 MCP 브리지"
+     },
+     {
+      "id": "f09b6852266e39b7",
+      "title": "KRDS UI·UX 개선 스킬 — 정부 디자인 가이드 기준으로 웹·앱 화면을 진단·개선·검증하는 Codex 스킬"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Gemini",
+    "n": 18,
+    "variants": [
+     "Chrome 내장 AI(Gemini Nano)",
+     "Claude Code/Codex/Gemini(스킬 팩)",
+     "Claude/Codex/Gemini(어댑터)",
+     "Claude·OpenAI·Gemini 중 선택(API 키)",
+     "Gemini",
+     "Gemini 2.5 Flash-Lite",
+     "Gemini 3.5 Flash",
+     "Gemini API",
+     "Gemini API(File Search)",
+     "Gemini GEM",
+     "Gemini(옵션 전환)",
+     "Gemini(옵션)",
+     "Google Gemini(NotebookLM)",
+     "OpenAI/Gemini/Claude(사용자 선택)",
+     "OpenRouter·Gemini 무료 한도(선택)",
+     "구글 제미나이(외부 연계)"
+    ],
+    "cases": [
+     {
+      "id": "de4b2dab339d69b7",
+      "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기"
+     },
+     {
+      "id": "48e33f2318bdffae",
+      "title": "클릭 과정을 PDF 가이드로 만드는 ClickGuide Local"
+     },
+     {
+      "id": "1502d338e8e99382",
+      "title": "공문을 10초 만에 할 일 카드로 바꾸는 전자문서 요약 도구"
+     },
+     {
+      "id": "c5aa260668941b92",
+      "title": "MoAI Cowork — 비개발자용 한국 실무 AI 코워커"
+     },
+     {
+      "id": "4c918008fd4eff60",
+      "title": "민원 답변 작성 스킬 팩 — Codex·Claude Code·Gemini CLI 겸용"
+     },
+     {
+      "id": "a384b647830b2bf7",
+      "title": "쉽다공문 — 제미나이 GEM 공문서 초안 생성기 무료 배포"
+     },
+     {
+      "id": "539d5aacb03635db",
+      "title": "민원 신고 스크리너 — 신고 7유형·근거법령·소관부서 자동 판별 모듈"
+     },
+     {
+      "id": "fcfac85b15998dee",
+      "title": "한국서부발전 위피봇 — 발전 현장 안전·설비 업무에 붙인 사내 생성형 AI 에이전트"
+     },
+     {
+      "id": "7df3c5d297166cb2",
+      "title": "교육행정 질의응답 사례 검색 도구"
+     },
+     {
+      "id": "2349c4b45eb48e38",
+      "title": "지역사회보장계획 작성지원 플랫폼 — 제6기 시·군·구 계획을 절 단위로 써서 한글 문서로 내는 도구"
+     },
+     {
+      "id": "b194429543f8a93b",
+      "title": "코러스AI 챗봇 — 국립대학자원관리시스템(KORUS) 매뉴얼·법령 안내 챗봇 3종"
+     },
+     {
+      "id": "2264c26461d1c4a8",
+      "title": "일일 언론 동향 요약기 — 신문 스크랩 PDF를 간부 보고용 개조식 요약으로"
+     },
+     {
+      "id": "0a767bb6906996f4",
+      "title": "DentalAX — 코딩을 모르는 치과의사가 프롬프트 한 번으로 만든 원내 행정 도우미(인수인계·재고·발주·근무표·문서)"
+     },
+     {
+      "id": "f4f1360681627431",
+      "title": "이음오피스 — 한컴오피스 없이 한글·워드·엑셀·PDF를 한 창에서 고치고 옆 AI 창에 표 채우기를 맡기는 무료 오픈소스 오피스(MCP 포함)"
+     },
+     {
+      "id": "fc35def61f0d6128",
+      "title": "AI 행정업무·민원 검색 — 자연어 질문으로 관련 업무와 담당 부서·직원을 찾아 주는 안내 도우미"
+     },
+     {
+      "id": "a75a254a0e86d0f7",
+      "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+     },
+     {
+      "id": "f6380187bd3cef67",
+      "title": "오늘 뭐 먹지 — 주변 식당을 찾아 룰렛으로 정하고 동행자에 맞춰 AI가 추천하는 점심 웹앱"
+     },
+     {
+      "id": "94b5f173ebc5880e",
+      "title": "AX-SOS — 공공AX 오픈채팅의 기존 질의응답을 정리하고 새 질문을 받는 커뮤니티 지식인 PoC"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Gemma",
+    "n": 13,
+    "variants": [
+     "Gemma 4",
+     "Gemma 4 E2B(Ollama 기본 예시)",
+     "Gemma 4 E2B(Ollama 번들)",
+     "Gemma 4 E2B(Ollama)",
+     "Gemma 4 E2B(Ollama, 선택형 요약)",
+     "Gemma 4 E4B(Ollama 권장)",
+     "Gemma 4 E4B(Ollama)",
+     "Gemma 4(Ollama)",
+     "Gemma(gemma4:e2b, Ollama 로컬)",
+     "Gemma4 e2b",
+     "LLM42-Gemma4(멀티모달 전환)"
+    ],
+    "cases": [
+     {
+      "id": "2c14f2adaa83a00e",
+      "title": "로컬 인수인계 도구 MVP 공개 — 공공 AX 로컬 시리즈 3"
+     },
+     {
+      "id": "58420e002644542c",
+      "title": "행안부, 엑사원·Gemma4를 행정 내부망에 도입"
+     },
+     {
+      "id": "9d115930495a1e65",
+      "title": "공무원용 로컬 AI 에이전트 워크플레이스 개발"
+     },
+     {
+      "id": "ec17e6cd86e7aaa1",
+      "title": "PDF 번역·검토 작업장 — 공공 AX 로컬 시리즈 6"
+     },
+     {
+      "id": "50ab356bb2ee3f4d",
+      "title": "범정부 내부망 AI 브라우저 사이드바 어시스턴트"
+     },
+     {
+      "id": "75b6a86d91aea955",
+      "title": "AI지원담당 — 공공 실무용 로컬 AI 메신저 MVP (공공 AX 로컬 시리즈 1)"
+     },
+     {
+      "id": "204ab9b684be3cca",
+      "title": "myAI — 로컬 모델로 도는 업무 비서 웹앱"
+     },
+     {
+      "id": "dee1a1ceb4432cd3",
+      "title": "DeskNote — 바탕화면 메모에 붙인 로컬 요약·유사 검색"
+     },
+     {
+      "id": "c110733ddf085d0d",
+      "title": "sAIde — 내 PC의 Ollama 모델로 웹페이지를 요약·번역하고 승인 후 조작하는 크롬 사이드패널 확장"
+     },
+     {
+      "id": "c161b0158876229b",
+      "title": "온나라 sAIde — 문서등록대장을 열어 보지 않고 목록에서 공문을 AI로 요약·분석하고 첨부를 일괄 내려받는 엣지 사이드패널"
+     },
+     {
+      "id": "14db134a31c11bf2",
+      "title": "DataFinder AI — 기획서를 넣으면 로컬 AI가 맞는 공공데이터 API와 연동 코드를 추천하는 도구"
+     },
+     {
+      "id": "a75a254a0e86d0f7",
+      "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+     },
+     {
+      "id": "a3536654c4057b12",
+      "title": "온톡 sAIde — 온톡 메신저 옆 패널에서 쪽지 요약·할 일 정리·답변 초안을 로컬 AI로 돕는 윈도우 도우미"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "로컬 서빙(Ollama·vLLM 등)",
+    "n": 13,
+    "variants": [
+     "LM Studio 로컬 모델(OpenAI 호환)",
+     "Ollama 로컬 모델",
+     "Ollama 로컬 모델(Spring AI)",
+     "Ollama 로컬 모델(멀티 호스트)",
+     "Ollama 오픈웨이트 모드(로컬 완결)",
+     "Ollama(로컬)",
+     "Ollama/vLLM 로컬(기본)",
+     "Qwen(Ollama)",
+     "Qwen3 4B Instruct(Ollama)",
+     "Qwen3 8B(로컬 답변, Ollama)",
+     "Qwen3.5(Ollama)",
+     "WebGPU 브라우저 모델",
+     "vLLM/Ollama/LiteLLM 로컬(OpenAI 호환)",
+     "자체호스팅 vLLM(모델 미명시)"
+    ],
+    "cases": [
+     {
+      "id": "de4b2dab339d69b7",
+      "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기"
+     },
+     {
+      "id": "ea2bce110972762e",
+      "title": "공공기관 규정 MCP 생성기"
+     },
+     {
+      "id": "1502d338e8e99382",
+      "title": "공문을 10초 만에 할 일 카드로 바꾸는 전자문서 요약 도구"
+     },
+     {
+      "id": "fe3bb0d913e27677",
+      "title": "로컬 Ollama 기반 MCP 멀티 호스트"
+     },
+     {
+      "id": "edf9a8632ff74a99",
+      "title": "망분리 환경용 로컬 AI 에이전트, 국가통계포털 MCP 연동 시연"
+     },
+     {
+      "id": "e7949c7bc45ca8e6",
+      "title": "출장 여비 서류 자동화 오픈소스 — 신청서·명세서·복명서 일괄 생성"
+     },
+     {
+      "id": "8c5458af8f13435d",
+      "title": "한글 AI 도우미 — 로컬 LLM 웹한글 보고서 확장"
+     },
+     {
+      "id": "acd684108227b9c2",
+      "title": "DevEval Agents — ODA 사업평가 멀티 에이전트 프레임워크"
+     },
+     {
+      "id": "e65b0800852d5e5f",
+      "title": "RuleLens AI — 기준 법령·지침과 내 자료를 로컬 Ollama로 대조하는 적합성 검토 도구"
+     },
+     {
+      "id": "42267bcd8527ba4a",
+      "title": "침해사고 신고 24시간 초과 검증 파이프라인 — 신고 자료에서 사실만 뽑고 과태료 대상 여부는 코드가 재계산"
+     },
+     {
+      "id": "ed6bc584d40026ae",
+      "title": "스마트 인수인계 — 평소 업무 정리로 공식 인계·인수서와 후임자 매뉴얼을 만드는 로컬 LLM 데스크톱 프로그램"
+     },
+     {
+      "id": "06eff148d1990930",
+      "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+     },
+     {
+      "id": "a75a254a0e86d0f7",
+      "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "bge-m3",
+    "n": 4,
+    "variants": [
+     "bge-m3"
+    ],
+    "cases": [
+     {
+      "id": "204ab9b684be3cca",
+      "title": "myAI — 로컬 모델로 도는 업무 비서 웹앱"
+     },
+     {
+      "id": "14db134a31c11bf2",
+      "title": "DataFinder AI — 기획서를 넣으면 로컬 AI가 맞는 공공데이터 API와 연동 코드를 추천하는 도구"
+     },
+     {
+      "id": "ed6bc584d40026ae",
+      "title": "스마트 인수인계 — 평소 업무 정리로 공식 인계·인수서와 후임자 매뉴얼을 만드는 로컬 LLM 데스크톱 프로그램"
+     },
+     {
+      "id": "a3536654c4057b12",
+      "title": "온톡 sAIde — 온톡 메신저 옆 패널에서 쪽지 요약·할 일 정리·답변 초안을 로컬 AI로 돕는 윈도우 도우미"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Whisper",
+    "n": 3,
+    "variants": [
+     "Whisper",
+     "Whisper(STT)",
+     "whisper.cpp 한국어 모델(번들)"
+    ],
+    "cases": [
+     {
+      "id": "edf9a8632ff74a99",
+      "title": "망분리 환경용 로컬 AI 에이전트, 국가통계포털 MCP 연동 시연"
+     },
+     {
+      "id": "d7422aa63cfaeb0e",
+      "title": "Stream-Record — 의회 중계 영상의 한국어 녹음·전사·회의록 작성을 윈도우 PC에서 끝내는 앱"
+     },
+     {
+      "id": "06eff148d1990930",
+      "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "HyperCLOVA X",
+    "n": 3,
+    "variants": [
+     "HCX-GOV-THINK-V1-32B(범정부 AI 공통기반)",
+     "HyperCLOVA X SEED 1.5B(Q4 로컬)"
+    ],
+    "cases": [
+     {
+      "id": "50ab356bb2ee3f4d",
+      "title": "범정부 내부망 AI 브라우저 사이드바 어시스턴트"
+     },
+     {
+      "id": "0dd22d6d0375bc39",
+      "title": "온나라 AI 문서 분배기 — 접수대기 문서를 범정부 AI 공통기반으로 분석해 담당 배분"
+     },
+     {
+      "id": "95635604261b7867",
+      "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다"
+     }
+    ],
+    "domestic": true
+   },
+   {
+    "name": "schift(자체 학습)",
+    "n": 3,
+    "variants": [
+     "schift-ko-pii(자체 학습)",
+     "schift-ko-pii-v6(자체 학습)",
+     "schift-ko-pii-v7(40M NER, 로컬)"
+    ],
+    "cases": [
+     {
+      "id": "8f7e23fec614657c",
+      "title": "한국어 개인정보 탐지 모델 schift-ko-pii 오픈소스 공개"
+     },
+     {
+      "id": "dcba0f654467bdc9",
+      "title": "schift-ko-pii-v6 — 한국어 개인정보 검출·마스킹 경량 모델"
+     },
+     {
+      "id": "afef30356a841dac",
+      "title": "개인정보 마스킹 웹앱 — 국산 탐지 모델에 규칙·사용자 단어를 얹고 법원식 표기까지 고르는 로컬 도구"
+     }
+    ],
+    "domestic": true
+   },
+   {
+    "name": "Qwen",
+    "n": 2,
+    "variants": [
+     "Qwen2.5-Coder-1.5B-Instruct(GGUF, llama.cpp)",
+     "Qwen3.5 2B(로컬 CPU)"
+    ],
+    "cases": [
+     {
+      "id": "3c5015d6c385a815",
+      "title": "KLEF 공람문서 요약 — K-에듀파인 공람 목록에 핵심·조치·기한을 붙이는 로컬 AI 도우미"
+     },
+     {
+      "id": "9719b550772ed1b2",
+      "title": "CODERX — 폐쇄망 기관 PC 안에서 한국어 요구사항만으로 코드 생성·개선·보안점검을 하는 온프레미스 AI 코딩 도구"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Jev(TypeSafe AI 판정 모델)",
+    "n": 2,
+    "variants": [
+     "Jev(TypeSafe AI 판정 모델)"
+    ],
+    "cases": [
+     {
+      "id": "8a47740d405286c4",
+      "title": "자치법규 정합성 실측 — 서울시 조례 942건의 법률 인용 2,996개를 현행 조문과 전수 대조"
+     },
+     {
+      "id": "133d7e9c594456be",
+      "title": "서울 자치구 조례 정합성 지도 — 본청과 25개 구 조례의 법률 인용을 현행 조문과 대조해 지도로"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "상용 API(세부 미상)",
+    "n": 1,
+    "variants": [
+     "상용 API(세부 미상)"
+    ],
+    "cases": [
+     {
+      "id": "cbe008b504b9dd18",
+      "title": "의학 연구 동료 AI 플러그인 ResearchFellow"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "EXAONE(엑사원)",
+    "n": 1,
+    "variants": [
+     "EXAONE(엑사원)"
+    ],
+    "cases": [
+     {
+      "id": "58420e002644542c",
+      "title": "행안부, 엑사원·Gemma4를 행정 내부망에 도입"
+     }
+    ],
+    "domestic": true
+   },
+   {
+    "name": "GLM",
+    "n": 1,
+    "variants": [
+     "GLM-5.3(에이전트 레지스트리)"
+    ],
+    "cases": [
+     {
+      "id": "c5aa260668941b92",
+      "title": "MoAI Cowork — 비개발자용 한국 실무 AI 코워커"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "로컬 음성인식 모델(세부 미상)",
+    "n": 1,
+    "variants": [
+     "로컬 음성인식 모델(세부 미상)"
+    ],
+    "cases": [
+     {
+      "id": "cbda9aefec586c48",
+      "title": "맥 전용 로컬 실시간 음성전사 도구 murmur 공유"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Solar Open 2(온AI 서빙 탑재 — 09-02 실무자 관측)",
+    "n": 1,
+    "variants": [
+     "Solar Open 2(온AI 서빙 탑재 — 09-02 실무자 관측)"
+    ],
+    "cases": [
+     {
+      "id": "ac09bd2e1c0fbb29",
+      "title": "온AI Work — 공무원 보고서 AI 작성 도구"
+     }
+    ],
+    "domestic": true
+   },
+   {
+    "name": "상용 AI(내부망 도입, 세부 미상)",
+    "n": 1,
+    "variants": [
+     "상용 AI(내부망 도입, 세부 미상)"
+    ],
+    "cases": [
+     {
+      "id": "b0b96e656d3572e9",
+      "title": "남양주 AI-Agent 시스템 베타 — 내부망 상용 AI"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "로컬 분석(기본)",
+    "n": 1,
+    "variants": [
+     "로컬 분석(기본)"
+    ],
+    "cases": [
+     {
+      "id": "c7e0862df664bbe5",
+      "title": "AI Survey Insight — 설문 주관식 수백 건을 주제·감정별로 정리하는 분석 도구"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "외부 AI(선택 연결)",
+    "n": 1,
+    "variants": [
+     "외부 AI(선택 연결)"
+    ],
+    "cases": [
+     {
+      "id": "c7e0862df664bbe5",
+      "title": "AI Survey Insight — 설문 주관식 수백 건을 주제·감정별로 정리하는 분석 도구"
+     }
+    ],
+    "domestic": false
+   },
+   {
+    "name": "Kanana 2.1B(Q4 로컬)",
+    "n": 1,
+    "variants": [
+     "Kanana 2.1B(Q4 로컬)"
+    ],
+    "cases": [
+     {
+      "id": "95635604261b7867",
+      "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다"
+     }
+    ],
+    "domestic": true
+   }
+  ],
+  "domestic_cases": [
+   {
+    "id": "58420e002644542c",
+    "title": "행안부, 엑사원·Gemma4를 행정 내부망에 도입",
+    "models": [
+     "EXAONE(엑사원)",
+     "Gemma 4"
+    ]
+   },
+   {
+    "id": "ac09bd2e1c0fbb29",
+    "title": "온AI Work — 공무원 보고서 AI 작성 도구",
+    "models": [
+     "Claude Code/Codex 등 상용 코딩 에이전트(BYO 구독)",
+     "Solar Open 2(온AI 서빙 탑재 — 09-02 실무자 관측)"
+    ]
+   },
+   {
+    "id": "50ab356bb2ee3f4d",
+    "title": "범정부 내부망 AI 브라우저 사이드바 어시스턴트",
+    "models": [
+     "HCX-GOV-THINK-V1-32B(범정부 AI 공통기반)",
+     "LLM42-Gemma4(멀티모달 전환)"
+    ]
+   },
+   {
+    "id": "8f7e23fec614657c",
+    "title": "한국어 개인정보 탐지 모델 schift-ko-pii 오픈소스 공개",
+    "models": [
+     "schift-ko-pii(자체 학습)"
+    ]
+   },
+   {
+    "id": "dcba0f654467bdc9",
+    "title": "schift-ko-pii-v6 — 한국어 개인정보 검출·마스킹 경량 모델",
+    "models": [
+     "schift-ko-pii-v6(자체 학습)"
+    ]
+   },
+   {
+    "id": "0dd22d6d0375bc39",
+    "title": "온나라 AI 문서 분배기 — 접수대기 문서를 범정부 AI 공통기반으로 분석해 담당 배분",
+    "models": [
+     "HCX-GOV-THINK-V1-32B(범정부 AI 공통기반)"
+    ]
+   },
+   {
+    "id": "95635604261b7867",
+    "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다",
+    "models": [
+     "HyperCLOVA X SEED 1.5B(Q4 로컬)",
+     "Kanana 2.1B(Q4 로컬)",
+     "Mi:dm 2.0 Mini 2.3B(Q4 로컬)"
+    ]
+   },
+   {
+    "id": "42ac1d043a40db1b",
+    "title": "교사 개발자 연수 플랫폼 시안 — 수합·양식·사례집을 한 흐름으로",
+    "models": [
+     "Upstage Solar"
+    ]
+   },
+   {
+    "id": "e57919fda43f59c0",
+    "title": "모두의 AI — 전 국민 무료 범용 AI 챗봇·행정 지원 에이전트 사업, 3개 컨소시엄 선정",
+    "models": []
+   },
+   {
+    "id": "b0808306ddb06317",
+    "title": "범정부 AI 준실시간 회의 자막 — 겹침 녹음과 CLOVA Studio GOV STT로 내부망 뷰어에 자막을 뿌리는 오프라인 실행형 시스템",
+    "models": [
+     "CLOVA Studio GOV STT(범정부 AI 공통기반)"
+    ]
+   },
+   {
+    "id": "afef30356a841dac",
+    "title": "개인정보 마스킹 웹앱 — 국산 탐지 모델에 규칙·사용자 단어를 얹고 법원식 표기까지 고르는 로컬 도구",
+    "models": [
+     "schift-ko-pii-v7(40M NER, 로컬)"
+    ]
+   },
+   {
+    "id": "f540e0bf44948f2e",
+    "title": "korean-tax-mcp — 국세청 해석·판례·통칙·시점별 조문을 문서번호와 함께 찾아 주는 세법 근거 MCP",
+    "models": [
+     "사용자 AI(기본)",
+     "Upstage Solar(선택 — 번역·사실관계 대조)"
+    ]
+   },
+   {
+    "id": "8cb6daa7f1249b65",
+    "title": "Solar Planets — 업스테이지 Solar Pro 4로 만든 공공·세무 AI 도구를 행성으로 둘러보는 소개 공간",
+    "models": [
+     "Solar Pro 4",
+     "Solar Decide"
+    ]
+   }
+  ],
+  "dist_detail": {
+   "미확인": {
+    "n": 66,
+    "specified": 0
+   },
+   "없음(비LLM)": {
+    "n": 301,
+    "specified": 1
+   },
+   "해외 오픈웨이트(로컬)": {
+    "n": 34,
+    "specified": 21
+   },
+   "혼합": {
+    "n": 17,
+    "specified": 15
+   },
+   "해외 상용 API": {
+    "n": 71,
+    "specified": 56
+   },
+   "모델 중립(BYO)": {
+    "n": 99,
+    "specified": 10
+   },
+   "국산 독자모델": {
+    "n": 7,
+    "specified": 6
+   },
+   "미상": {
+    "n": 29,
+    "specified": 1
+   },
+   "국산 오픈웨이트": {
+    "n": 1,
+    "specified": 1
+   }
+  },
+  "models_by_dep": [
+   {
+    "dep": "국산 독자모델",
+    "n": 7,
+    "families": [
+     {
+      "name": "schift(자체 학습)",
+      "n": 3,
+      "cases": [
+       {
+        "id": "8f7e23fec614657c",
+        "title": "한국어 개인정보 탐지 모델 schift-ko-pii 오픈소스 공개"
+       },
+       {
+        "id": "dcba0f654467bdc9",
+        "title": "schift-ko-pii-v6 — 한국어 개인정보 검출·마스킹 경량 모델"
+       },
+       {
+        "id": "afef30356a841dac",
+        "title": "개인정보 마스킹 웹앱 — 국산 탐지 모델에 규칙·사용자 단어를 얹고 법원식 표기까지 고르는 로컬 도구"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "schift-ko-pii(자체 학습)",
+       "schift-ko-pii-v6(자체 학습)",
+       "schift-ko-pii-v7(40M NER, 로컬)"
+      ]
+     },
+     {
+      "name": "HyperCLOVA X",
+      "n": 1,
+      "cases": [
+       {
+        "id": "0dd22d6d0375bc39",
+        "title": "온나라 AI 문서 분배기 — 접수대기 문서를 범정부 AI 공통기반으로 분석해 담당 배분"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "HCX-GOV-THINK-V1-32B(범정부 AI 공통기반)"
+      ]
+     },
+     {
+      "name": "Upstage Solar",
+      "n": 1,
+      "cases": [
+       {
+        "id": "42ac1d043a40db1b",
+        "title": "교사 개발자 연수 플랫폼 시안 — 수합·양식·사례집을 한 흐름으로"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "Upstage Solar"
+      ]
+     },
+     {
+      "name": "Solar Pro 4",
+      "n": 1,
+      "cases": [
+       {
+        "id": "8cb6daa7f1249b65",
+        "title": "Solar Planets — 업스테이지 Solar Pro 4로 만든 공공·세무 AI 도구를 행성으로 둘러보는 소개 공간"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "Solar Pro 4"
+      ]
+     },
+     {
+      "name": "Solar Decide",
+      "n": 1,
+      "cases": [
+       {
+        "id": "8cb6daa7f1249b65",
+        "title": "Solar Planets — 업스테이지 Solar Pro 4로 만든 공공·세무 AI 도구를 행성으로 둘러보는 소개 공간"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "Solar Decide"
+      ]
+     }
+    ]
+   },
+   {
+    "dep": "국산 오픈웨이트",
+    "n": 1,
+    "families": [
+     {
+      "name": "HyperCLOVA X",
+      "n": 1,
+      "cases": [
+       {
+        "id": "95635604261b7867",
+        "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "HyperCLOVA X SEED 1.5B(Q4 로컬)"
+      ]
+     },
+     {
+      "name": "Kanana 2.1B(Q4 로컬)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "95635604261b7867",
+        "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "Kanana 2.1B(Q4 로컬)"
+      ]
+     },
+     {
+      "name": "Mi:dm 2.0 Mini 2.3B(Q4 로컬)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "95635604261b7867",
+        "title": "국산 경량 오픈모델 3종 조례 심사 실측 — 전패, 그리고 답이 흔들린다"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Mi:dm 2.0 Mini 2.3B(Q4 로컬)"
+      ]
+     }
+    ]
+   },
+   {
+    "dep": "혼합",
+    "n": 17,
+    "families": [
+     {
+      "name": "Gemini",
+      "n": 5,
+      "cases": [
+       {
+        "id": "de4b2dab339d69b7",
+        "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기"
+       },
+       {
+        "id": "1502d338e8e99382",
+        "title": "공문을 10초 만에 할 일 카드로 바꾸는 전자문서 요약 도구"
+       },
+       {
+        "id": "fcfac85b15998dee",
+        "title": "한국서부발전 위피봇 — 발전 현장 안전·설비 업무에 붙인 사내 생성형 AI 에이전트"
+       },
+       {
+        "id": "2264c26461d1c4a8",
+        "title": "일일 언론 동향 요약기 — 신문 스크랩 PDF를 간부 보고용 개조식 요약으로"
+       },
+       {
+        "id": "a75a254a0e86d0f7",
+        "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Chrome 내장 AI(Gemini Nano)",
+       "Gemini API",
+       "Gemini(옵션 전환)",
+       "Gemini(옵션)",
+       "구글 제미나이(외부 연계)"
+      ]
+     },
+     {
+      "name": "로컬 서빙(Ollama·vLLM 등)",
+      "n": 5,
+      "cases": [
+       {
+        "id": "de4b2dab339d69b7",
+        "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기"
+       },
+       {
+        "id": "ea2bce110972762e",
+        "title": "공공기관 규정 MCP 생성기"
+       },
+       {
+        "id": "1502d338e8e99382",
+        "title": "공문을 10초 만에 할 일 카드로 바꾸는 전자문서 요약 도구"
+       },
+       {
+        "id": "acd684108227b9c2",
+        "title": "DevEval Agents — ODA 사업평가 멀티 에이전트 프레임워크"
+       },
+       {
+        "id": "a75a254a0e86d0f7",
+        "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Ollama 오픈웨이트 모드(로컬 완결)",
+       "Ollama/vLLM 로컬(기본)",
+       "Qwen3 8B(로컬 답변, Ollama)",
+       "Qwen3.5(Ollama)",
+       "vLLM/Ollama/LiteLLM 로컬(OpenAI 호환)"
+      ]
+     },
+     {
+      "name": "Claude/Codex(상용 에이전트)",
+      "n": 5,
+      "cases": [
+       {
+        "id": "acd684108227b9c2",
+        "title": "DevEval Agents — ODA 사업평가 멀티 에이전트 프레임워크"
+       },
+       {
+        "id": "9d19e64aa30f5332",
+        "title": "MiroFish-Ko 개인 수정판 — 로컬 LLM·Codex CLI로 돌리는 정책 여론 시뮬레이터"
+       },
+       {
+        "id": "8a47740d405286c4",
+        "title": "자치법규 정합성 실측 — 서울시 조례 942건의 법률 인용 2,996개를 현행 조문과 전수 대조"
+       },
+       {
+        "id": "133d7e9c594456be",
+        "title": "서울 자치구 조례 정합성 지도 — 본청과 25개 구 조례의 법률 인용을 현행 조문과 대조해 지도로"
+       },
+       {
+        "id": "7c3c1b02b4a981ec",
+        "title": "KSAT AI Benchmark — 2026학년도 수능 147문항으로 AI 모델 11종의 정답률·기권률·시간·비용 비교"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Claude Fable 5.1",
+       "Claude Haiku 5.5",
+       "Claude Opus 5.5",
+       "Claude Sonnet 5.5",
+       "Claude(대조·근거 작성)",
+       "Codex CLI/Claude CLI(BYO 구독)",
+       "상용 API 모드(Claude 등)"
+      ]
+     },
+     {
+      "name": "Gemma",
+      "n": 3,
+      "cases": [
+       {
+        "id": "58420e002644542c",
+        "title": "행안부, 엑사원·Gemma4를 행정 내부망에 도입"
+       },
+       {
+        "id": "50ab356bb2ee3f4d",
+        "title": "범정부 내부망 AI 브라우저 사이드바 어시스턴트"
+       },
+       {
+        "id": "a75a254a0e86d0f7",
+        "title": "전자문서 AI 요약 — 공문 열람 화면에서 본문·첨부를 추출해 종류·조치 여부·기한을 정리하는 엣지 확장"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Gemma 4",
+       "Gemma 4(Ollama)",
+       "LLM42-Gemma4(멀티모달 전환)"
+      ]
+     },
+     {
+      "name": "GPT(OpenAI)",
+      "n": 2,
+      "cases": [
+       {
+        "id": "ea2bce110972762e",
+        "title": "공공기관 규정 MCP 생성기"
+       },
+       {
+        "id": "7c3c1b02b4a981ec",
+        "title": "KSAT AI Benchmark — 2026학년도 수능 147문항으로 AI 모델 11종의 정답률·기권률·시간·비용 비교"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "ChatGPT/Claude/Codex(승인 문서 MCP 조회)",
+       "GPT-6 Astra",
+       "GPT-6.1 Sol",
+       "gpt-4.1-mini(조항 AI 검수)"
+      ]
+     },
+     {
+      "name": "Jev(TypeSafe AI 판정 모델)",
+      "n": 2,
+      "cases": [
+       {
+        "id": "8a47740d405286c4",
+        "title": "자치법규 정합성 실측 — 서울시 조례 942건의 법률 인용 2,996개를 현행 조문과 전수 대조"
+       },
+       {
+        "id": "133d7e9c594456be",
+        "title": "서울 자치구 조례 정합성 지도 — 본청과 25개 구 조례의 법률 인용을 현행 조문과 대조해 지도로"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Jev(TypeSafe AI 판정 모델)"
+      ]
+     },
+     {
+      "name": "EXAONE(엑사원)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "58420e002644542c",
+        "title": "행안부, 엑사원·Gemma4를 행정 내부망에 도입"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "EXAONE(엑사원)"
+      ]
+     },
+     {
+      "name": "HyperCLOVA X",
+      "n": 1,
+      "cases": [
+       {
+        "id": "50ab356bb2ee3f4d",
+        "title": "범정부 내부망 AI 브라우저 사이드바 어시스턴트"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "HCX-GOV-THINK-V1-32B(범정부 AI 공통기반)"
+      ]
+     },
+     {
+      "name": "로컬 분석(기본)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "c7e0862df664bbe5",
+        "title": "AI Survey Insight — 설문 주관식 수백 건을 주제·감정별로 정리하는 분석 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "로컬 분석(기본)"
+      ]
+     },
+     {
+      "name": "외부 AI(선택 연결)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "c7e0862df664bbe5",
+        "title": "AI Survey Insight — 설문 주관식 수백 건을 주제·감정별로 정리하는 분석 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "외부 AI(선택 연결)"
+      ]
+     },
+     {
+      "name": "사내 모델(비공개)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "fcfac85b15998dee",
+        "title": "한국서부발전 위피봇 — 발전 현장 안전·설비 업무에 붙인 사내 생성형 AI 에이전트"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "사내 모델(비공개)"
+      ]
+     },
+     {
+      "name": "로컬 LLM(세부 미상)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "9d19e64aa30f5332",
+        "title": "MiroFish-Ko 개인 수정판 — 로컬 LLM·Codex CLI로 돌리는 정책 여론 시뮬레이터"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "로컬 LLM(세부 미상)"
+      ]
+     },
+     {
+      "name": "로컬 AI(비식별화)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "e72eed20d3744266",
+        "title": "정보보호 공시 검증 자동화 — 공개 데이터는 규칙으로, 기업 기밀은 로컬 AI로 비식별화한 뒤에만 상용 AI에 묻는 설계"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "로컬 AI(비식별화)"
+      ]
+     },
+     {
+      "name": "상용 AI(판단)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "e72eed20d3744266",
+        "title": "정보보호 공시 검증 자동화 — 공개 데이터는 규칙으로, 기업 기밀은 로컬 AI로 비식별화한 뒤에만 상용 AI에 묻는 설계"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "상용 AI(판단)"
+      ]
+     },
+     {
+      "name": "Kimi K3",
+      "n": 1,
+      "cases": [
+       {
+        "id": "7c3c1b02b4a981ec",
+        "title": "KSAT AI Benchmark — 2026학년도 수능 147문항으로 AI 모델 11종의 정답률·기권률·시간·비용 비교"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Kimi K3"
+      ]
+     }
+    ]
+   },
+   {
+    "dep": "해외 상용 API",
+    "n": 71,
+    "families": [
+     {
+      "name": "Claude/Codex(상용 에이전트)",
+      "n": 26,
+      "cases": [
+       {
+        "id": "7acf5f25369c1401",
+        "title": "시연 영상 제작 자동화 스킬 공유"
+       },
+       {
+        "id": "32d199fa9ad4f674",
+        "title": "국민신문고 민원 초안 생성 스킬 minwon-draft"
+       },
+       {
+        "id": "54d599932088897f",
+        "title": "정부 지원사업 전수조사 에이전트 스킬 ir-search"
+       },
+       {
+        "id": "112bf7dc576ed8aa",
+        "title": "공공행정 리서치 스킬 — 공식 근거를 검토용 보고서로 정리"
+       },
+       {
+        "id": "2f4ed1e68a6464c5",
+        "title": "K-Skill — 한국인을 위한 AI 스킬 모음집"
+       },
+       {
+        "id": "f0c21de2b0af63b3",
+        "title": "업무구조도 생성기 korea100studio 오픈소스 공개"
+       },
+       {
+        "id": "7ac3b301c1a8f79d",
+        "title": "발표 슬라이드 밈 삽입 도구 slide-meme-inserter"
+       },
+       {
+        "id": "1c54d608228e0845",
+        "title": "이미지 생성 프롬프트 컴파일 스킬 — 공냥이 프롬프트 킷"
+       },
+       {
+        "id": "ac09bd2e1c0fbb29",
+        "title": "온AI Work — 공무원 보고서 AI 작성 도구"
+       },
+       {
+        "id": "17ed2d7a88c03119",
+        "title": "Rekian — HWPX 공문서 재기안 에이전트 스킬셋"
+       },
+       {
+        "id": "65e1983235232514",
+        "title": "bookforge — 한국어 전자책 PDF 생성 에이전트 스킬"
+       },
+       {
+        "id": "cb0abc29707cc710",
+        "title": "수정 가능한 PPTX·피그마 슬라이드 스킬 — 공공 카드뉴스 스타일"
+       },
+       {
+        "id": "0b9d4e9c2beed197",
+        "title": "public-doc-to-hwpx — AI 초안을 공공기관 보고서 서식 HWPX로 만드는 스킬"
+       },
+       {
+        "id": "539f90471f451d80",
+        "title": "hwpx-skill — AI 에이전트가 한글(HWPX) 문서를 만들고 고치는 Claude 스킬"
+       },
+       {
+        "id": "4032cd7b445543e6",
+        "title": "바이브코드 하네스 — 기획부터 보안 점검까지 같은 순서로 만드는 실행형 개발 하네스"
+       },
+       {
+        "id": "c54ee4b5fb3ee4c5",
+        "title": "Orca — 병렬 에이전트 플릿을 부리는 에이전트 개발 환경(ADE)"
+       },
+       {
+        "id": "f108979f0d8b2009",
+        "title": "book-to-skill — 기술 서적 PDF를 Claude Code 스킬로 바꾸는 도구"
+       },
+       {
+        "id": "4f136eeeea72fe65",
+        "title": "Archify — 코드베이스·시스템 설명을 검증 가능한 다이어그램으로 바꾸는 에이전트 스킬"
+       },
+       {
+        "id": "3a211aec27b69d0a",
+        "title": "claw-hwp — 한컴 없이 Claude·Codex가 HWP/HWPX를 그대로 읽고 만들고 고치는 플러그인"
+       },
+       {
+        "id": "f5f24469d5ca281f",
+        "title": "소담 패밀리 — 비개발자가 만든 Claude Code 안전벨트 플러그인 7종 묶음"
+       },
+       {
+        "id": "ada7cb6b9fabac8f",
+        "title": "paper-verify — 보고서·논문의 법령·판례·문헌 인용을 원본과 대조하는 Claude Code 스킬"
+       },
+       {
+        "id": "fe0d33cc718246d6",
+        "title": "Public Cardnews — 정부·공공기관 정책 카드뉴스를 기획부터 이미지까지 만드는 Codex 스킬"
+       },
+       {
+        "id": "fbdee1f08c2ca185",
+        "title": "농해수위 국정감사 온톨로지 — 위원회 회의록을 발언·쟁점·이행약속 지식그래프로 엮어 국감 브리핑을 만드는 서비스"
+       },
+       {
+        "id": "b52bd17cf637a1cc",
+        "title": "Colorfigures — 사물을 한 문장으로 설명하면 버튼이 실제로 작동하는 손그림풍 아이소메트릭 그림을 HTML 한 파일로 그리는 Claude 스킬"
+       },
+       {
+        "id": "4efcc1e5f8fcf032",
+        "title": "ppt-j — 에이전트가 만든 HTML 발표자료를 웹 편집기에서 고치고 HTML·PDF·PPTX로 내보내는 Claude Code 플러그인"
+       },
+       {
+        "id": "31d885ce7241ceae",
+        "title": "잘하나 행감팩 — 지방의회 회의록을 AI로 사안별로 엮어 행정사무감사 질문·자료를 지역별로 정리한 서비스"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Claude",
+       "Claude Code",
+       "Claude Code(BYO 구독)",
+       "Claude Code(플러그인)",
+       "Claude Code/Codex 등 상용 코딩 에이전트(BYO 구독)",
+       "Claude Code/Codex(플러그인)",
+       "Claude(선택 기능)",
+       "Claude(스킬)",
+       "Codex 이미지 생성(BYO 구독)"
+      ]
+     },
+     {
+      "name": "GPT(OpenAI)",
+      "n": 15,
+      "cases": [
+       {
+        "id": "6a2d1fa6e385ef2b",
+        "title": "부서 수요 기반 ChatGPT 팀계정 지원 후 보안형 AI SaaS 도입"
+       },
+       {
+        "id": "92d5147e02f7ae36",
+        "title": "NCS 기반 구조화 면접 질문 생성기 NCScope"
+       },
+       {
+        "id": "00411127055c4a07",
+        "title": "공무원 필수교육 이수 관리 시스템 공개"
+       },
+       {
+        "id": "a7abbaedd53db684",
+        "title": "국회 법안·회의록 탐색 MCP — 공식 기록 검증"
+       },
+       {
+        "id": "e18d5e018e0cd10d",
+        "title": "오토한글 — 브라우저·터미널용 HWP 편집 엔진"
+       },
+       {
+        "id": "d6c35b2999da8ca0",
+        "title": "모두의 일기장 — 공무원 감정 기록·AI 답장 웹앱"
+       },
+       {
+        "id": "ccee126dc9e23cf6",
+        "title": "경북 면사무소 토목직의 AX — 토목 전용 GPTs와 횡단면도 작성 앱"
+       },
+       {
+        "id": "b3294bcc65e7f2e7",
+        "title": "소방기술민원 답변생성기 — 법령·유사민원 검색과 참고 답변 초안"
+       },
+       {
+        "id": "a3b9afb1d17d15a0",
+        "title": "설계도면을 3차원으로 — 공공 시설사업 검토에 생성형 3D 모델링 적용"
+       },
+       {
+        "id": "90f8afce65c6f327",
+        "title": "영수증 사진으로 공용차량 세차내역 자동 입력"
+       },
+       {
+        "id": "2085370092f99007",
+        "title": "God's Eye View — 항공기·선박·위성·지진·공개 카메라를 한 3D 지구본에 띄우는 오픈소스 공간정보 관제 참고 도구"
+       },
+       {
+        "id": "0fbe6800c85c1ae4",
+        "title": "AI 공간개발·공간관리 앱 — 함양군 지적도로 구역선 필지 교차 분석과 산업단지 입주 검증을 하는 두 갈래 도구"
+       },
+       {
+        "id": "48a2fe695d62b13f",
+        "title": "소담 라이노 GH코드 Codex — Rhino 7 그래스호퍼 스크립트 노드 코드를 짜 주는 Codex 플러그인"
+       },
+       {
+        "id": "90017f701b103627",
+        "title": "Connect to Aside — 웹 ChatGPT가 PC 파일 편집과 Aside 브라우저 조작을 하게 하는 로컬 MCP 브리지"
+       },
+       {
+        "id": "f09b6852266e39b7",
+        "title": "KRDS UI·UX 개선 스킬 — 정부 디자인 가이드 기준으로 웹·앱 화면을 진단·개선·검증하는 Codex 스킬"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "ChatGPT GPTs",
+       "ChatGPT(웹)",
+       "ChatGPT(팀계정)",
+       "GPT(OpenAI API)",
+       "GPT-5.6 Luna",
+       "GPT-5.6 Luna(OpenRouter, 동의 시)",
+       "GPT-5.6 Terra",
+       "GPT-6 Astra",
+       "OpenAI Codex",
+       "OpenAI GPT-5(Responses API)",
+       "OpenAI Realtime API(음성 에이전트, 선택)",
+       "OpenAI Vision",
+       "OpenAI/Anthropic(사용자 키)",
+       "OpenAI/Claude(제공자 전환형)",
+       "gpt-5.6-luna(기본 설정)"
+      ]
+     },
+     {
+      "name": "Gemini",
+      "n": 11,
+      "cases": [
+       {
+        "id": "48e33f2318bdffae",
+        "title": "클릭 과정을 PDF 가이드로 만드는 ClickGuide Local"
+       },
+       {
+        "id": "c5aa260668941b92",
+        "title": "MoAI Cowork — 비개발자용 한국 실무 AI 코워커"
+       },
+       {
+        "id": "4c918008fd4eff60",
+        "title": "민원 답변 작성 스킬 팩 — Codex·Claude Code·Gemini CLI 겸용"
+       },
+       {
+        "id": "a384b647830b2bf7",
+        "title": "쉽다공문 — 제미나이 GEM 공문서 초안 생성기 무료 배포"
+       },
+       {
+        "id": "539d5aacb03635db",
+        "title": "민원 신고 스크리너 — 신고 7유형·근거법령·소관부서 자동 판별 모듈"
+       },
+       {
+        "id": "7df3c5d297166cb2",
+        "title": "교육행정 질의응답 사례 검색 도구"
+       },
+       {
+        "id": "2349c4b45eb48e38",
+        "title": "지역사회보장계획 작성지원 플랫폼 — 제6기 시·군·구 계획을 절 단위로 써서 한글 문서로 내는 도구"
+       },
+       {
+        "id": "b194429543f8a93b",
+        "title": "코러스AI 챗봇 — 국립대학자원관리시스템(KORUS) 매뉴얼·법령 안내 챗봇 3종"
+       },
+       {
+        "id": "fc35def61f0d6128",
+        "title": "AI 행정업무·민원 검색 — 자연어 질문으로 관련 업무와 담당 부서·직원을 찾아 주는 안내 도우미"
+       },
+       {
+        "id": "f6380187bd3cef67",
+        "title": "오늘 뭐 먹지 — 주변 식당을 찾아 룰렛으로 정하고 동행자에 맞춰 AI가 추천하는 점심 웹앱"
+       },
+       {
+        "id": "94b5f173ebc5880e",
+        "title": "AX-SOS — 공공AX 오픈채팅의 기존 질의응답을 정리하고 새 질문을 받는 커뮤니티 지식인 PoC"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Claude Code/Codex/Gemini(스킬 팩)",
+       "Claude/Codex/Gemini(어댑터)",
+       "Gemini",
+       "Gemini 2.5 Flash-Lite",
+       "Gemini 3.5 Flash",
+       "Gemini API",
+       "Gemini API(File Search)",
+       "Gemini GEM",
+       "Google Gemini(NotebookLM)",
+       "OpenAI/Gemini/Claude(사용자 선택)"
+      ]
+     },
+     {
+      "name": "상용 API(세부 미상)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "cbe008b504b9dd18",
+        "title": "의학 연구 동료 AI 플러그인 ResearchFellow"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "상용 API(세부 미상)"
+      ]
+     },
+     {
+      "name": "GLM",
+      "n": 1,
+      "cases": [
+       {
+        "id": "c5aa260668941b92",
+        "title": "MoAI Cowork — 비개발자용 한국 실무 AI 코워커"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "GLM-5.3(에이전트 레지스트리)"
+      ]
+     },
+     {
+      "name": "Solar Open 2(온AI 서빙 탑재 — 09-02 실무자 관측)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "ac09bd2e1c0fbb29",
+        "title": "온AI Work — 공무원 보고서 AI 작성 도구"
+       }
+      ],
+      "domestic": true,
+      "variants": [
+       "Solar Open 2(온AI 서빙 탑재 — 09-02 실무자 관측)"
+      ]
+     },
+     {
+      "name": "상용 AI(내부망 도입, 세부 미상)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "b0b96e656d3572e9",
+        "title": "남양주 AI-Agent 시스템 베타 — 내부망 상용 AI"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "상용 AI(내부망 도입, 세부 미상)"
+      ]
+     },
+     {
+      "name": "Jev(TypeSafe AI System One, Vercel AI Gateway 경유)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "fdee8ff722146b48",
+        "title": "조례 인용 검증 게이트 실험 — AI 답변이 인용한 조문에 실제로 근거하는지 다른 모델로 채점한 재현 패키지"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Jev(TypeSafe AI System One, Vercel AI Gateway 경유)"
+      ]
+     },
+     {
+      "name": "Jev",
+      "n": 1,
+      "cases": [
+       {
+        "id": "f6683d8732c2c718",
+        "title": "Jev Search — 질문에 맞춰 검색처·기간·검색어를 고르고 결과 순위를 매기는 검색 서비스"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Jev"
+      ]
+     }
+    ]
+   },
+   {
+    "dep": "해외 오픈웨이트(로컬)",
+    "n": 34,
+    "families": [
+     {
+      "name": "Gemma",
+      "n": 10,
+      "cases": [
+       {
+        "id": "2c14f2adaa83a00e",
+        "title": "로컬 인수인계 도구 MVP 공개 — 공공 AX 로컬 시리즈 3"
+       },
+       {
+        "id": "9d115930495a1e65",
+        "title": "공무원용 로컬 AI 에이전트 워크플레이스 개발"
+       },
+       {
+        "id": "ec17e6cd86e7aaa1",
+        "title": "PDF 번역·검토 작업장 — 공공 AX 로컬 시리즈 6"
+       },
+       {
+        "id": "75b6a86d91aea955",
+        "title": "AI지원담당 — 공공 실무용 로컬 AI 메신저 MVP (공공 AX 로컬 시리즈 1)"
+       },
+       {
+        "id": "204ab9b684be3cca",
+        "title": "myAI — 로컬 모델로 도는 업무 비서 웹앱"
+       },
+       {
+        "id": "dee1a1ceb4432cd3",
+        "title": "DeskNote — 바탕화면 메모에 붙인 로컬 요약·유사 검색"
+       },
+       {
+        "id": "c110733ddf085d0d",
+        "title": "sAIde — 내 PC의 Ollama 모델로 웹페이지를 요약·번역하고 승인 후 조작하는 크롬 사이드패널 확장"
+       },
+       {
+        "id": "c161b0158876229b",
+        "title": "온나라 sAIde — 문서등록대장을 열어 보지 않고 목록에서 공문을 AI로 요약·분석하고 첨부를 일괄 내려받는 엣지 사이드패널"
+       },
+       {
+        "id": "14db134a31c11bf2",
+        "title": "DataFinder AI — 기획서를 넣으면 로컬 AI가 맞는 공공데이터 API와 연동 코드를 추천하는 도구"
+       },
+       {
+        "id": "a3536654c4057b12",
+        "title": "온톡 sAIde — 온톡 메신저 옆 패널에서 쪽지 요약·할 일 정리·답변 초안을 로컬 AI로 돕는 윈도우 도우미"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Gemma 4 E2B(Ollama 기본 예시)",
+       "Gemma 4 E2B(Ollama 번들)",
+       "Gemma 4 E2B(Ollama)",
+       "Gemma 4 E2B(Ollama, 선택형 요약)",
+       "Gemma 4 E4B(Ollama 권장)",
+       "Gemma 4 E4B(Ollama)",
+       "Gemma(gemma4:e2b, Ollama 로컬)",
+       "Gemma4 e2b"
+      ]
+     },
+     {
+      "name": "로컬 서빙(Ollama·vLLM 등)",
+      "n": 7,
+      "cases": [
+       {
+        "id": "fe3bb0d913e27677",
+        "title": "로컬 Ollama 기반 MCP 멀티 호스트"
+       },
+       {
+        "id": "edf9a8632ff74a99",
+        "title": "망분리 환경용 로컬 AI 에이전트, 국가통계포털 MCP 연동 시연"
+       },
+       {
+        "id": "e7949c7bc45ca8e6",
+        "title": "출장 여비 서류 자동화 오픈소스 — 신청서·명세서·복명서 일괄 생성"
+       },
+       {
+        "id": "8c5458af8f13435d",
+        "title": "한글 AI 도우미 — 로컬 LLM 웹한글 보고서 확장"
+       },
+       {
+        "id": "e65b0800852d5e5f",
+        "title": "RuleLens AI — 기준 법령·지침과 내 자료를 로컬 Ollama로 대조하는 적합성 검토 도구"
+       },
+       {
+        "id": "ed6bc584d40026ae",
+        "title": "스마트 인수인계 — 평소 업무 정리로 공식 인계·인수서와 후임자 매뉴얼을 만드는 로컬 LLM 데스크톱 프로그램"
+       },
+       {
+        "id": "06eff148d1990930",
+        "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "LM Studio 로컬 모델(OpenAI 호환)",
+       "Ollama 로컬 모델",
+       "Ollama 로컬 모델(Spring AI)",
+       "Ollama 로컬 모델(멀티 호스트)",
+       "Ollama(로컬)",
+       "Qwen(Ollama)",
+       "Qwen3 4B Instruct(Ollama)",
+       "WebGPU 브라우저 모델"
+      ]
+     },
+     {
+      "name": "bge-m3",
+      "n": 4,
+      "cases": [
+       {
+        "id": "204ab9b684be3cca",
+        "title": "myAI — 로컬 모델로 도는 업무 비서 웹앱"
+       },
+       {
+        "id": "14db134a31c11bf2",
+        "title": "DataFinder AI — 기획서를 넣으면 로컬 AI가 맞는 공공데이터 API와 연동 코드를 추천하는 도구"
+       },
+       {
+        "id": "ed6bc584d40026ae",
+        "title": "스마트 인수인계 — 평소 업무 정리로 공식 인계·인수서와 후임자 매뉴얼을 만드는 로컬 LLM 데스크톱 프로그램"
+       },
+       {
+        "id": "a3536654c4057b12",
+        "title": "온톡 sAIde — 온톡 메신저 옆 패널에서 쪽지 요약·할 일 정리·답변 초안을 로컬 AI로 돕는 윈도우 도우미"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "bge-m3"
+      ]
+     },
+     {
+      "name": "Whisper",
+      "n": 2,
+      "cases": [
+       {
+        "id": "edf9a8632ff74a99",
+        "title": "망분리 환경용 로컬 AI 에이전트, 국가통계포털 MCP 연동 시연"
+       },
+       {
+        "id": "06eff148d1990930",
+        "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Whisper",
+       "Whisper(STT)"
+      ]
+     },
+     {
+      "name": "Qwen",
+      "n": 2,
+      "cases": [
+       {
+        "id": "3c5015d6c385a815",
+        "title": "KLEF 공람문서 요약 — K-에듀파인 공람 목록에 핵심·조치·기한을 붙이는 로컬 AI 도우미"
+       },
+       {
+        "id": "9719b550772ed1b2",
+        "title": "CODERX — 폐쇄망 기관 PC 안에서 한국어 요구사항만으로 코드 생성·개선·보안점검을 하는 온프레미스 AI 코딩 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Qwen2.5-Coder-1.5B-Instruct(GGUF, llama.cpp)",
+       "Qwen3.5 2B(로컬 CPU)"
+      ]
+     },
+     {
+      "name": "로컬 음성인식 모델(세부 미상)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "cbda9aefec586c48",
+        "title": "맥 전용 로컬 실시간 음성전사 도구 murmur 공유"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "로컬 음성인식 모델(세부 미상)"
+      ]
+     },
+     {
+      "name": "LFM2.5 230M/1.2B(로컬)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "3c5015d6c385a815",
+        "title": "KLEF 공람문서 요약 — K-에듀파인 공람 목록에 핵심·조치·기한을 붙이는 로컬 AI 도우미"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "LFM2.5 230M/1.2B(로컬)"
+      ]
+     },
+     {
+      "name": "PP-OCRv5 한국어 인식 모델(파인튜닝, ONNX 15MB)",
+      "n": 1,
+      "cases": [
+       {
+        "id": "60f137f66d3975af",
+        "title": "한국어 손글씨 OCR 모델 — PP-OCRv5를 손글씨·공문서 460만 단어로 추가 학습해 민원 서식 손글씨 인식률을 67%에서 97%로"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "PP-OCRv5 한국어 인식 모델(파인튜닝, ONNX 15MB)"
+      ]
+     },
+     {
+      "name": "MMS",
+      "n": 1,
+      "cases": [
+       {
+        "id": "06eff148d1990930",
+        "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "MMS"
+      ]
+     },
+     {
+      "name": "Piper",
+      "n": 1,
+      "cases": [
+       {
+        "id": "06eff148d1990930",
+        "title": "통일 이음 AI — 음성 합성·전사·AI 브리핑·결과보고서 초안을 PC 안에서 처리하는 로컬 업무 도구"
+       }
+      ],
+      "domestic": false,
+      "variants": [
+       "Piper"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "domestic_model_rate": 0.062,
+ "local_model_rate": 0.269,
+ "model_known": 130,
+ "license_tagged": 465,
+ "license_stated_rate": 0.492,
+ "gitlab_cases": 308,
+ "gitlab_mirror_pairs": 42,
+ "gitlab_open_rate": 0.136,
+ "mcp_cases": 97,
+ "transition_funnel": {
+  "기관 공식": 34,
+  "미확인": 543,
+  "부서 공유": 8,
+  "타 기관 재사용": 2,
+  "범정부 탑재": 1,
+  "개인 사용": 37
+ },
+ "unknown_rates": {
+  "approval_gate": 1.0,
+  "feedback": 0.786
+ },
+ "maintenance_distribution": {
+  "활발": 308,
+  "정체": 118,
+  "방치": 14
+ },
+ "stars_collected": 440,
+ "repo_stats": {
+  "gitlab": {
+   "count": 308,
+   "starred": 306,
+   "stars_sum": 684,
+   "maintenance": {
+    "활발": 220,
+    "정체": 86
+   },
+   "top": [
+    {
+     "id": "8ff758ac1d5e40eb",
+     "title": "한국 문서 파싱 오픈소스 Kordoc, 문서 생산까지 확장",
+     "stars": 20,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "류승인"
+    },
+    {
+     "id": "43dc7f4ab2500260",
+     "title": "국가법령정보 MCP — 법령·판례·조례 검색과 인용 검증",
+     "stars": 16,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "류승인"
+    },
+    {
+     "id": "a8492663acf67b99",
+     "title": "나라예산 한눈에 — 중앙관서 세출예산서 8,500건 웹서비스",
+     "stars": 11,
+     "maintenance": "활발",
+     "license": "명시 없음",
+     "developer": "김기현"
+    },
+    {
+     "id": "2798c2e0b79ab291",
+     "title": "KODA — 폐쇄망용 보안취약점 점검 도구",
+     "stars": 10,
+     "maintenance": "활발",
+     "license": "Apache-2.0",
+     "developer": "김지현"
+    },
+    {
+     "id": "17ed2d7a88c03119",
+     "title": "Rekian — HWPX 공문서 재기안 에이전트 스킬셋",
+     "stars": 10,
+     "maintenance": "정체",
+     "license": "MIT",
+     "developer": "정솔현"
+    },
+    {
+     "id": "de4b2dab339d69b7",
+     "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기",
+     "stars": 9,
+     "maintenance": "활발",
+     "license": "Other",
+     "developer": "류승인"
+    },
+    {
+     "id": "ac09bd2e1c0fbb29",
+     "title": "온AI Work — 공무원 보고서 AI 작성 도구",
+     "stars": 9,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "정준우"
+    },
+    {
+     "id": "d6c35b2999da8ca0",
+     "title": "모두의 일기장 — 공무원 감정 기록·AI 답장 웹앱",
+     "stars": 8,
+     "maintenance": "활발",
+     "license": "명시 없음",
+     "developer": "한종훈"
+    },
+    {
+     "id": "d08bc7e9a69190af",
+     "title": "내부망용 빠른 메모·구조화 앱",
+     "stars": 7,
+     "maintenance": "활발",
+     "license": "AGPL-3.0",
+     "developer": "우성균"
+    },
+    {
+     "id": "8c5458af8f13435d",
+     "title": "한글 AI 도우미 — 로컬 LLM 웹한글 보고서 확장",
+     "stars": 7,
+     "maintenance": "활발",
+     "license": "명시 없음",
+     "developer": "정재경"
+    }
+   ]
+  },
+  "github": {
+   "count": 180,
+   "starred": 174,
+   "stars_sum": 785994,
+   "maintenance": {
+    "정체": 41,
+    "활발": 120,
+    "방치": 14
+   },
+   "top": [
+    {
+     "id": "3f7b3180bf404e54",
+     "title": "rea — 에이전트로 앱 동작부터 네이티브 바이너리까지 역공학하는 오픈소스",
+     "stars": 384309,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "morluto"
+    },
+    {
+     "id": "c54ee4b5fb3ee4c5",
+     "title": "Orca — 병렬 에이전트 플릿을 부리는 에이전트 개발 환경(ADE)",
+     "stars": 105738,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "stablyai"
+    },
+    {
+     "id": "4f136eeeea72fe65",
+     "title": "Archify — 코드베이스·시스템 설명을 검증 가능한 다이어그램으로 바꾸는 에이전트 스킬",
+     "stars": 89150,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "tt-a1i"
+    },
+    {
+     "id": "2085370092f99007",
+     "title": "God's Eye View — 항공기·선박·위성·지진·공개 카메라를 한 3D 지구본에 띄우는 오픈소스 공간정보 관제 참고 도구",
+     "stars": 60034,
+     "maintenance": "활발",
+     "license": "Other",
+     "developer": "bilawalsidhu"
+    },
+    {
+     "id": "04af7fa6f99a64e4",
+     "title": "CL4R1T4S — 주요 AI 서비스의 시스템 프롬프트를 모아 공개한 투명성 저장소",
+     "stars": 51501,
+     "maintenance": "활발",
+     "license": "AGPL-3.0",
+     "developer": "elder-plinius"
+    },
+    {
+     "id": "f108979f0d8b2009",
+     "title": "book-to-skill — 기술 서적 PDF를 Claude Code 스킬로 바꾸는 도구",
+     "stars": 36073,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "virgiliojr94"
+    },
+    {
+     "id": "5cda81d84c79d926",
+     "title": "ai-memory — 여러 코딩 에이전트가 하나의 장기 기억을 나눠 쓰고 작업을 넘겨받게 하는 자체 운영 메모리 서버(MIT)",
+     "stars": 13504,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "akitaonrails"
+    },
+    {
+     "id": "b64e832490a6c814",
+     "title": "MCP Inspector — MCP 서버를 눈으로 검사하는 공식 테스트 도구",
+     "stars": 11149,
+     "maintenance": "활발",
+     "license": "명시 없음",
+     "developer": "modelcontextprotocol"
+    },
+    {
+     "id": "2f4ed1e68a6464c5",
+     "title": "K-Skill — 한국인을 위한 AI 스킬 모음집",
+     "stars": 8118,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "NomaDamas"
+    },
+    {
+     "id": "0292062a6328545a",
+     "title": "public-apis-4Kr — 한국 공개 API 300+ 커뮤니티 큐레이션 목록",
+     "stars": 3306,
+     "maintenance": "활발",
+     "license": "MIT",
+     "developer": "yoobin_mion"
+    }
+   ]
+  }
+ },
+ "license_distribution": {
+  "명시 없음": 236,
+  "MIT": 150,
+  "Apache-2.0": 36,
+  "Other": 20,
+  "AGPL-3.0": 5,
+  "기타(비표준)": 5,
+  "GNU AGPLv3": 5,
+  "BUSL-1.1": 1,
+  "ISC": 1,
+  "POLYFORM-NONCOMMERCIAL-1.0.0": 1,
+  "GPL-3.0+": 1,
+  "CC0-1.0": 1,
+  "Unlicense": 1,
+  "CC-BY-NC-SA-4.0": 1,
+  "X11-DISTRIBUTE-MODIFICATIONS-VARIANT": 1
+ },
+ "license_matrix": {
+  "명시 없음": {
+   "github": 64,
+   "gitlab": 172
+  },
+  "MIT": {
+   "github": 86,
+   "gitlab": 63
+  },
+  "Apache-2.0": {
+   "github": 14,
+   "gitlab": 22
+  },
+  "Other": {
+   "github": 20,
+   "gitlab": 0
+  },
+  "AGPL-3.0": {
+   "github": 4,
+   "gitlab": 1
+  },
+  "기타(비표준)": {
+   "github": 0,
+   "gitlab": 5
+  },
+  "GNU AGPLv3": {
+   "github": 0,
+   "gitlab": 5
+  },
+  "BUSL-1.1": {
+   "github": 0,
+   "gitlab": 1
+  },
+  "ISC": {
+   "github": 1,
+   "gitlab": 0
+  },
+  "POLYFORM-NONCOMMERCIAL-1.0.0": {
+   "github": 0,
+   "gitlab": 1
+  },
+  "GPL-3.0+": {
+   "github": 0,
+   "gitlab": 1
+  },
+  "CC0-1.0": {
+   "github": 0,
+   "gitlab": 1
+  },
+  "Unlicense": {
+   "github": 1,
+   "gitlab": 0
+  },
+  "CC-BY-NC-SA-4.0": {
+   "github": 0,
+   "gitlab": 1
+  },
+  "X11-DISTRIBUTE-MODIFICATIONS-VARIANT": {
+   "github": 0,
+   "gitlab": 1
+  }
+ },
+ "license_by_source": {
+  "github": {
+   "total": 166,
+   "stated": 119
+  },
+  "github-pages": {
+   "total": 24,
+   "stated": 7
+  },
+  "gitlab": {
+   "total": 274,
+   "stated": 102
+  }
+ },
+ "mcp_stats": {
+  "total": 97,
+  "official": 4,
+  "unofficial": 56,
+  "roles": {
+   "Planned": 1,
+   "Server": 83,
+   "Client/Host": 7,
+   "Unknown/None": 6
+  },
+  "c_grades": {
+   "C0": 69,
+   "C2": 10,
+   "C3": 1,
+   "C1": 17
+  },
+  "maintenance": {
+   "정체": 22,
+   "활발": 48,
+   "방치": 13
+  }
+ },
+ "mirror_pair_cases": [
+  {
+   "id": "de4b2dab339d69b7",
+   "title": "Anything(Docufinder) — 본문으로 찾는 오프라인 문서 검색기",
+   "github": "https://github.com/chrisryugj/Docufinder",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/Docufinder"
+  },
+  {
+   "id": "7acf5f25369c1401",
+   "title": "시연 영상 제작 자동화 스킬 공유",
+   "github": "https://github.com/Kminer2053/demo-video-skill",
+   "gitlab": "https://gitlab.aigov.go.kr/Kminer2053/demo-video-skill"
+  },
+  {
+   "id": "d08bc7e9a69190af",
+   "title": "내부망용 빠른 메모·구조화 앱",
+   "github": "https://github.com/Milkbuttercheese2/What-I-have-to-do",
+   "gitlab": "https://gitlab.aigov.go.kr/rhamasel3/What-I-have-to-do"
+  },
+  {
+   "id": "ea2bce110972762e",
+   "title": "공공기관 규정 MCP 생성기",
+   "github": "https://github.com/koul777/Public-Regulation-MCP-Builder",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/public-regulation-mcp-builder"
+  },
+  {
+   "id": "f5abed24ff6bdd4a",
+   "title": "엑셀 업무 자동화 도구 VHLookup",
+   "github": "https://github.com/koul777/VHLookup",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/vhlookup"
+  },
+  {
+   "id": "48e33f2318bdffae",
+   "title": "클릭 과정을 PDF 가이드로 만드는 ClickGuide Local",
+   "github": "https://github.com/koul777/clickguide-local-private",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/clickguide-local-private"
+  },
+  {
+   "id": "92d5147e02f7ae36",
+   "title": "NCS 기반 구조화 면접 질문 생성기 NCScope",
+   "github": "https://github.com/koul777/NCScope",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/ncscope"
+  },
+  {
+   "id": "9d115930495a1e65",
+   "title": "공무원용 로컬 AI 에이전트 워크플레이스 개발",
+   "github": "https://github.com/Kminer2053/gongmuwon",
+   "gitlab": "https://gitlab.aigov.go.kr/Kminer2053/gongmuwon"
+  },
+  {
+   "id": "1502d338e8e99382",
+   "title": "공문을 10초 만에 할 일 카드로 바꾸는 전자문서 요약 도구",
+   "github": "https://github.com/chrisryugj/edoc-summarizer",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/edoc-summarizer"
+  },
+  {
+   "id": "fe3bb0d913e27677",
+   "title": "로컬 Ollama 기반 MCP 멀티 호스트",
+   "github": "https://github.com/chrisryugj/ollama-mcp-host",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/ollama-mcp-host"
+  },
+  {
+   "id": "cba450dfb5c8fadf",
+   "title": "표준주소실록 — 주소 표준화 정리 도구",
+   "github": "https://github.com/chrisryugj/gjdong",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/gjdong"
+  },
+  {
+   "id": "8ff758ac1d5e40eb",
+   "title": "한국 문서 파싱 오픈소스 Kordoc, 문서 생산까지 확장",
+   "github": "https://github.com/chrisryugj/kordoc",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/kordoc"
+  },
+  {
+   "id": "f76a328f43c0766f",
+   "title": "KIPRIS 특허 검색 MCP 공개",
+   "github": "https://github.com/chrisryugj/korean-patent-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/korean-patent-mcp"
+  },
+  {
+   "id": "798f4e6bef72fc13",
+   "title": "한 장으로 끝내는 조달제도 100",
+   "github": "https://github.com/Milkbuttercheese2/procurement-system-100",
+   "gitlab": "https://gitlab.aigov.go.kr/rhamasel3/how-did-they-do-all-that-procurement"
+  },
+  {
+   "id": "112bf7dc576ed8aa",
+   "title": "공공행정 리서치 스킬 — 공식 근거를 검토용 보고서로 정리",
+   "github": "https://github.com/Kminer2053/public-sector-research-skill",
+   "gitlab": "https://gitlab.aigov.go.kr/Kminer2053/public-sector-research-skill"
+  },
+  {
+   "id": "578e4da94db0682d",
+   "title": "표준품셈 MCP — 건설·전기·정보통신·소방 4개 분야 2,888개 항목 검색",
+   "github": "https://github.com/seum8660/pumsem",
+   "gitlab": "https://gitlab.aigov.go.kr/archimin/pumsem"
+  },
+  {
+   "id": "759835514b4b7ca4",
+   "title": "레스큐79 — CCTV 팔 동작 인식 구조요청 감지 PoC",
+   "github": "https://github.com/obundh/gonggong-disaster-series-rescue79",
+   "gitlab": "https://gitlab.aigov.go.kr/tyui22/gonggong-disaster-series-rescue79"
+  },
+  {
+   "id": "43dc7f4ab2500260",
+   "title": "국가법령정보 MCP — 법령·판례·조례 검색과 인용 검증",
+   "github": "https://github.com/chrisryugj/korean-law-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/korean-law-mcp"
+  },
+  {
+   "id": "83bb0ac0ed9f576d",
+   "title": "OpenDART 전자공시 MCP — 83개 API를 15개 도구로",
+   "github": "https://github.com/chrisryugj/korean-dart-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/korean-dart-mcp"
+  },
+  {
+   "id": "76f07692203606ad",
+   "title": "건축HUB MCP — 건축물대장·인허가·필지 종합카드",
+   "github": "https://github.com/chrisryugj/archhub-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/archhub-mcp"
+  },
+  {
+   "id": "6a9c5da9f1d3210f",
+   "title": "KORAIL 공공데이터 MCP 서버 모음",
+   "github": "https://github.com/lovelyquality/korail-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/mechuri/korail-mcp"
+  },
+  {
+   "id": "75b6a86d91aea955",
+   "title": "AI지원담당 — 공공 실무용 로컬 AI 메신저 MVP (공공 AX 로컬 시리즈 1)",
+   "github": "https://github.com/obundh/gonggong-ax-local-series-1-AISupportMessnger",
+   "gitlab": "https://gitlab.aigov.go.kr/tyui22/gonggong-ax-local-series-1-AISupportMessnger"
+  },
+  {
+   "id": "0d94258abac0b093",
+   "title": "바로업무(TaskCalendar) — 일정·메모·문서·업무 관리와 AI 업무 도우미를 갖춘 실무자용 Windows 앱",
+   "github": "https://github.com/wookoon2024/TaskCalendar",
+   "gitlab": "https://gitlab.aigov.go.kr/westock/TaskCalendar"
+  },
+  {
+   "id": "9c850ff3e7429a24",
+   "title": "소방 장비서무 인수인계 대시보드 — 3교대 공용 PC용 로컬 관제판",
+   "github": "https://github.com/MuyeongKim/equipment-handover-releases",
+   "gitlab": "https://gitlab.aigov.go.kr/tenmoo/sobang-EMD"
+  },
+  {
+   "id": "33c36cc77c4bfc5c",
+   "title": "Korean Stats MCP — KOSIS 통계를 자연어로, 출처 자동 인용",
+   "github": "https://github.com/chrisryugj/korean-stats-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/chrisryugj/korean-stats-mcp"
+  },
+  {
+   "id": "c7e0862df664bbe5",
+   "title": "AI Survey Insight — 설문 주관식 수백 건을 주제·감정별로 정리하는 분석 도구",
+   "github": "https://github.com/koul777/AI-Survey-Insight",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/ai-survey-insight"
+  },
+  {
+   "id": "1d90d7ec74b027d1",
+   "title": "Attendance Checker — 근태 기록에서 확인할 대상을 먼저 찾아주는 점검 도구",
+   "github": "https://github.com/koul777/attendance-checker",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/attendance-checker"
+  },
+  {
+   "id": "655d61608d54c98a",
+   "title": "HRMCP — NCS 온톨로지 기반 HR 실무 MCP 서버",
+   "github": "https://github.com/koul777/HRMCP",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/hrmcp"
+  },
+  {
+   "id": "01963ce2b093182c",
+   "title": "ReportAI — 내부망 로컬 LLM으로 보고서 초안·보충자료·월간계획을 잇는 온프레미스 에이전트",
+   "github": "https://github.com/DaeUng79/ReportAI",
+   "gitlab": "https://gitlab.aigov.go.kr/odw0902/reportai"
+  },
+  {
+   "id": "30c55330885db6d6",
+   "title": "지역사회보장정책 데이터 분석 대시보드 — 정책 수립 지원 지표 시각화",
+   "github": "https://github.com/beaver21c/kihasa-indicator-new",
+   "gitlab": "https://gitlab.aigov.go.kr/beaver21c/kihasa-indicator-new"
+  },
+  {
+   "id": "2dabf0fbae5c557b",
+   "title": "헬로라이트하우스 — 등대 1,480개를 잇는 원스톱 해양관광 서비스",
+   "github": "https://github.com/emdeo/hellolighthouse",
+   "gitlab": "https://gitlab.aigov.go.kr/scout202/hellolighthouse"
+  },
+  {
+   "id": "1128dadf532a4f06",
+   "title": "KSPO 데이터 지도 — 공단 보유 데이터 한 화면 검색",
+   "github": "https://github.com/pinkshark1/kspo_data_explorer",
+   "gitlab": "https://gitlab.aigov.go.kr/doongju1/kspo_data_explorer"
+  },
+  {
+   "id": "6e2574c0914f8813",
+   "title": "SlideForge — 로컬에서 도는 발표자료 초안 생성 도구",
+   "github": "https://github.com/koul777/slideforge",
+   "gitlab": "https://gitlab.aigov.go.kr/kyci/slideforge"
+  },
+  {
+   "id": "dee1a1ceb4432cd3",
+   "title": "DeskNote — 바탕화면 메모에 붙인 로컬 요약·유사 검색",
+   "github": "https://github.com/Ubermensch216/deskNote_petAI",
+   "gitlab": "https://gitlab.aigov.go.kr/Ubermensch/deskNote_petAI"
+  },
+  {
+   "id": "0d6b2a5a76072edf",
+   "title": "광주지명필터 — 통합 특별시 지명을 옛 권역으로 나눠 보기",
+   "github": "https://github.com/obundh/Hassle-Reduction-series-2-Gwangju-Place-Name-Filter",
+   "gitlab": "https://gitlab.aigov.go.kr/tyui22/Hassle-Reduction-series-2-Gwangju-Place-Name-Filter"
+  },
+  {
+   "id": "5af7491b4ca15345",
+   "title": "MOPAN(모판) — RAG·MCP·모델·워크플로우를 직접 등록해 조합하는 에이전트 바탕 시스템",
+   "github": "https://github.com/soonkun/MOPAN",
+   "gitlab": "https://gitlab.aigov.go.kr/soonkun/MOPAN"
+  },
+  {
+   "id": "2a1ab7f937e160a1",
+   "title": "webcheck MCP — 홈페이지 점검처럼 결정적 계산으로 끝나는 URL 확인을 코드에 맡겨 토큰을 아끼는 범용 MCP 서버",
+   "github": "https://github.com/deinteger/webcheck-mcp",
+   "gitlab": "https://gitlab.aigov.go.kr/kwakkh22/webcheck_mcp"
+  },
+  {
+   "id": "25f9560f0a6fa203",
+   "title": "Path Finder — 나이스 학교 목록에서 방문지를 고르고 기간을 정하면 일자별 출장·배달 동선을 짜 주는 웹앱",
+   "github": "https://github.com/soonpyopark/Path-Finder",
+   "gitlab": "https://gitlab.aigov.go.kr/soonpyo/pathfinder"
+  },
+  {
+   "id": "9f6be40ee87d4b84",
+   "title": "법의 궤도 — 조문 하나에서 뻗어 나가는 법령 인용 관계를 입체 지도로 펼치는 탐색기",
+   "github": "https://github.com/gschamisle/law-orbit",
+   "gitlab": "https://gitlab.aigov.go.kr/gslee0819/law-orbit"
+  },
+  {
+   "id": "471dabbd273eab34",
+   "title": "한글편집 후처리 도구 — 보고서의 자간·서식·문두기호를 한글 프로그램 자동 조작으로 한 번에 다듬는 데스크톱 앱",
+   "github": "https://github.com/haijun93/hwp-auto-docfit",
+   "gitlab": "https://gitlab.aigov.go.kr/haijun93/hwp_autodocfit"
+  },
+  {
+   "id": "d0ab0506a35ee03a",
+   "title": "소규모 건설공사 설계 자동화 — 읍면 토목직이 야장만 넣으면 도면·수량산출서·원가계산까지 만드는 도구",
+   "github": "https://github.com/lsh573928-rgb/sangju-estimate-public",
+   "gitlab": "https://gitlab.aigov.go.kr/lsh5739/sangju-estimate-public"
+  },
+  {
+   "id": "3dc441126cfdec9e",
+   "title": "문서나르미 — 엑셀·CSV 행을 누름틀 서식에 채워 HWPX 문서를 일괄 생성하는 윈도우 앱",
+   "github": "https://github.com/rfastball/hwpx-filler",
+   "gitlab": "https://gitlab.aigov.go.kr/anjm3145/hwpx-filler"
+  }
+ ]
+}

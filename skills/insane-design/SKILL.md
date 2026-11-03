@@ -1,6 +1,6 @@
 ---
-name: analysis
-description: "URL 하나로 실제 CSS 기반 디자인 시스템 분석 — design.md + HTML 리포트 생성"
+name: insane-design
+description: "URL 하나로 실제 CSS 기반 디자인 시스템 분석 — design.md + HTML 리포트 생성 인자 없이 실행하면 URL을 묻고, URL을 받으면 실제 CSS를 분석해 design.md와 report.ko.html을 만든다. 트리거: '/insane-design', '이 사이트 디자인 시스템 뽑아줘', '웹사이트 CSS 분석', '디자인 토큰 추출'."
 argument-hint: "[URL]"
 allowed-tools:
   - Bash

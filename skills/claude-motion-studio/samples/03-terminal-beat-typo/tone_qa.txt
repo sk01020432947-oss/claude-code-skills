@@ -1,0 +1,21 @@
+[
+  {
+    "file": "clip_hq.mp4",
+    "duration": 38.5,
+    "brightness": 37.0,
+    "motion": 3.11,
+    "cuts": 5,
+    "cut_sec": 6.42,
+    "lufs": -14.4,
+    "freezes_over_1s": [
+      [
+        28.13,
+        1.23
+      ],
+      [
+        35.77,
+        1.27
+      ]
+    ]
+  }
+]

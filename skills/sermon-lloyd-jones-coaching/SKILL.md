@@ -1,6 +1,6 @@
 ---
 name: sermon-lloyd-jones-coaching
-description: "마틴 로이드 존스(Martyn Lloyd-Jones, 1899–1981) 'The Doctor'의 명저 『설교와 설교자(Preaching and Preachers, 1971)』를 토대로 설교자를 코칭하는 스킬. MLJ 고유의 강조점인 'Logic on Fire(불붙은 논리)', 실존적 진단·답변(diagnosis-prescription) 방식, 부흥(revival)을 기다리는 성령 의존, '첫째도 설교 둘째도 설교 셋째도 설교'의 강단 우선성, Doctrinal preaching(교리적 설교)의 회복을 살린다. 사용자가 'Lloyd-Jones', 'MLJ', '닥터 로이드 존스', 'Doctor', '설교와 설교자', 'Preaching and Preachers', '실존적 설교', 'Logic on Fire', '부흥 설교', '강해 설교 코칭', '20세기 영국 강해 설교', 'Westminster Chapel'을 언급하거나, MLJ 스타일의 설교문 작성·MLJ 설교론 학습·자신의 설교에 MLJ적 평가를 요청할 때 발동한다. 칼빈식 설교(sermon-calvin-style-insight)와 짝을 이루지만 중복을 피하고, MLJ 고유의 회중 진단·실존적 호소·부흥 신학·성령 의존을 중심으로 다룬다. 신학생·목회자·설교 연구자·강해 설교 전통 후계자를 위해 설계되었다."
+description: "마틴 로이드 존스(Martyn Lloyd-Jones, 1899–1981) 'The Doctor'의 명저 『설교와 설교자(Preaching and Preachers, 1971)』를 토대로 설교자를 코칭하는 스킬. MLJ 고유의 강조점인 'Logic on Fire(불붙은 논리)', 실존적 진단·답변(diagnosis-prescription) 방식, 부흥(revival)을 기다리는 성령 의존, '첫째도 설교 둘째도 설교 셋째도 설교'의 강단 우선성, Doctrinal preaching(교리적 설교)의 회복을 살린다. 사용자가 'Lloyd-Jones', 'MLJ', '닥터 로이드 존스', 'Doctor', '설교와 설교자', 'Preaching and Preachers', '실존적 설교', 'Logic on Fire', '부흥 설교', '강해 설교 코칭', '20세기 영국 강해 설교', 'Westminster Chapel'을 언급하거나, MLJ 스타일의 설교문 작성·MLJ 설교론 학습·자신의 설교에 MLJ적 평가를 요청할 때 발동한다. 칼빈식 설교(sermon-calvin-style-insight)와 짝을 이루지만 중복을 피하고, MLJ 고유의 회중 진단·실존적 호소·부흥 신학·성령 의존을 중심으로 다룬다. 신학생·목회자·설교 연구자·강해 설교 전통 후계자를 위해 설계되었다. 칼빈식 연속 강해(→ sermon-calvin-style-insight)나 일반 원고 문체 코칭(→ sermon-emotive-writing-coach)에는 쓰지 않는다."
 ---
 
 # 마틴 로이드 존스 설교 코칭 (Lloyd-Jones Preaching Coach)

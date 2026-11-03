@@ -1,6 +1,6 @@
 ---
 name: sermon-research
-description: Deep research assistant for weekly sermon preparation. Provide a scripture passage, topic, and questions -- get back commentary insights, historical context, original language notes, and thinking prompts. Research only -- no outlines, no sermon writing.
+description: Deep research assistant for weekly sermon preparation. Provide a scripture passage, topic, and questions -- get back commentary insights, historical context, original language notes, and thinking prompts. Research only -- no outlines, no sermon writing. Not for outlines or manuscripts (use sermon-expository-daeji) or footnoted research notes (use sermon-bible-research-writing).
 ---
 
 # Sermon Research Assistant

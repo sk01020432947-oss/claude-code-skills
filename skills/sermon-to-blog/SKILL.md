@@ -1,6 +1,6 @@
 ---
 name: sermon-to-blog
-description: Turn a sermon transcript into a readable 800-1200 word blog post. Not a transcript. A standalone article. SEO-friendly title, meta description, and web-formatted body.
+description: Turn a sermon transcript into a readable 800-1200 word blog post. Not a transcript. A standalone article. SEO-friendly title, meta description, and web-formatted body. Not for YouTube metadata (use sermon-to-youtube) or for revising the sermon itself (use sermon-toego-revision).
 ---
 
 # Sermon to Blog Post

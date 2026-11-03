@@ -114,7 +114,7 @@ Wack 1985 HBR *"Scenarios: Shooting the Rapids"* (Nov-Dec 1985):
 WC pool이 확정된 후, LLM 시나리오 적용 전에 **반드시** 다음을 실행:
 
 ```bash
-SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-claude-vision-coaching-skills/skills/vision-foresight-wild-cards-scenario-integration"
+SKILL_DIR="/Users/cys/Desktop/CYSjavis/cys-Codex-vision-coaching-skills/skills/vision-foresight-wild-cards-scenario-integration"
 
 # R-4 빠른 체크 (n = WC pool 크기)
 python3 "$SKILL_DIR/scenario_integration_validator.py" r4 <n>

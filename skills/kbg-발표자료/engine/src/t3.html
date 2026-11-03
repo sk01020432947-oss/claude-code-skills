@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>손글씨 원페이지 맵</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Pen+Script&display=swap">
+<style>
+/*BASE*/
+/* ── kbg-발표자료-3 · 손글씨 원페이지 맵 (혼잡스 「지도 한 장」 패닝 장면 실측) ── */
+:root{
+  --bg:#FFFFFF; --ink:#1A1A1A; --soft:#555; --red:#E2362B; --blue:#2A6CF0; --yellow:#FADC46; --dimbg:#8E918E;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,sans-serif;
+  --hand:'Gaegu','Nanum Pen Script',cursive; --pen:'Nanum Pen Script','Gaegu',cursive;
+}
+body{font-family:var(--hand)}
+/* 하단 자막: 흰 테두리 글자 */
+.cap{position:absolute;left:0;right:0;bottom:64px;text-align:center;font:700 50px/1.3 var(--sans);color:#111;letter-spacing:-.02em;z-index:5;pointer-events:none;
+  text-shadow:0 0 6px #fff,0 0 6px #fff,0 0 12px #fff}
+.cap b{color:var(--red)}
+/* 큰 지도: 카메라가 박자마다 이동(data-cams), 마지막에 전체 보기 */
+.world{width:3600px;height:2100px}
+.at{position:absolute}
+/* 손글씨 쓰기: 왼쪽→오른쪽으로 드러남 */
+.hw{font:700 80px/1.25 var(--hand);color:var(--ink);white-space:nowrap}
+.hw.s{font-size:58px}.hw.xl{font-size:120px}.hw.red{color:var(--red)}.hw.blue{color:var(--blue)}
+[data-in].hw{opacity:1;transform:none;clip-path:inset(-20% 100% -20% 0);transition:clip-path 1s cubic-bezier(.45,.05,.55,.95) .05s}
+[data-in].hw.on{clip-path:inset(-20% -2% -20% 0)}
+.arrow{font:700 54px/1 var(--hand);color:var(--soft)}
+/* 선 그리기(밑줄·체크·X·화살표·동그라미) */
+svg.draw{overflow:visible}
+svg.draw path{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s cubic-bezier(.65,0,.35,1) .35s}
+[data-in].draw{opacity:0;transform:none;transition:opacity .1s}[data-in].draw.on{opacity:1}
+svg.draw.on path{stroke-dashoffset:0}
+.on svg.draw path{stroke-dashoffset:0}
+/* 빨간 번호 동그라미 */
+.no{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--red);color:#fff;font:700 56px/1 var(--hand)}
+/* 낙서 아이콘 */
+.doodle{width:150px;height:150px;color:var(--ink)}.doodle svg{width:100%;height:100%;stroke-width:1.6;filter:url(#rough)}
+.hi{background:linear-gradient(transparent 58%,var(--yellow) 58%)}
+.chk{display:inline-grid;place-items:center;width:58px;height:58px;border:4px solid #1A1A1A;border-radius:8px;vertical-align:middle;margin-right:18px}
+/* 포커스 카드: 회색으로 어둡게 + 흰 라운드 카드 */
+.focus{position:absolute;inset:0;background:var(--dimbg);display:grid;place-items:center}
+.card{width:1280px;background:#fff;border-radius:34px;padding:34px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.shot{height:560px;border-radius:18px;border:3px solid #ddd;background:#F6F7F9;padding:30px 36px;font:500 34px/1.6 var(--sans);color:#333;overflow:hidden}
+.shot .bar{height:22px;border-radius:11px;background:#E2E5EA;margin:16px 0}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="2.5"/></filter></defs></svg>
+<div id="stage">
+<div id="cap" class="cap"></div>
+
+  <!-- 1. 원페이지 맵: 박자마다 카메라 이동, 마지막에 전체 보기 -->
+  <section class="scene" data-cams="1800,330,1.3|780,760,1.35|780,780,1.35|2780,760,1.35|780,1560,1.35|2780,1560,1.35|1800,1050,.52">
+    <ol class="caps">
+      <li>설교 준비를 <b>지도 한 장</b>에 그려 보면</li>
+      <li>먼저 <b>본문 읽기</b>입니다</li>
+      <li>여기서 <b>핵심 단어</b>에 밑줄</li>
+      <li>그다음 <b>배경 조사</b> — 여기부터 AI</li>
+      <li><b>개요</b>는 내가 잡고</li>
+      <li><b>원고 대필</b>은 맡기지 않습니다</li>
+      <li>전체로 보면 <b>이런 모양</b>입니다</li>
+    </ol>
+    <div class="world">
+      <div class="at hw xl" data-in="0" style="left:0;width:3600px;text-align:center;top:240px"><span class="hi">설교 준비 지도</span></div>
+      <svg class="at draw" data-in="0" style="left:1300px;top:400px" width="1000" height="40"><path pathLength="1" d="M10 20C300 8 700 34 990 14" stroke="#E2362B" stroke-width="7"/></svg>
+      <!-- ① -->
+      <div class="at no" data-in="1" style="left:300px;top:600px">1</div>
+      <div class="at doodle" data-in="1" data-icon="book" style="left:420px;top:560px"></div>
+      <div class="at hw" data-in="1" style="left:600px;top:600px">본문 읽기</div>
+      <div class="at hw s" data-in="1" style="left:600px;top:700px">↳ 세 번, 소리 내어</div>
+      <div class="at hw s" data-in="2" style="left:600px;top:780px">↳ <span class="hi">핵심 단어</span> 표시하기</div>
+      <svg class="at draw" data-in="2" style="left:660px;top:850px" width="300" height="30"><path pathLength="1" d="M5 15C80 5 200 25 295 10" stroke="#E2362B" stroke-width="6"/></svg>
+      <div class="at" data-in="2" style="left:600px;top:900px"><span class="chk"><svg class="draw" width="40" height="40"><path pathLength="1" d="M4 22l10 10L36 6" stroke="#E2362B" stroke-width="7"/></svg></span><span class="hw s" style="vertical-align:middle">AI 없이</span></div>
+      <!-- 연결 화살표 -->
+      <svg class="at draw" data-in="3" style="left:1250px;top:680px" width="900" height="120"><path pathLength="1" d="M10 60C300 10 600 110 880 50M850 25l32 25-36 22" stroke="#555" stroke-width="5"/></svg>
+      <!-- ② -->
+      <div class="at no" data-in="3" style="left:2300px;top:600px">2</div>
+      <div class="at doodle" data-in="3" data-icon="search" style="left:2420px;top:560px"></div>
+      <div class="at hw" data-in="3" style="left:2600px;top:600px">배경 조사</div>
+      <div class="at hw s blue" data-in="3" style="left:2600px;top:700px">↳ 연대·지명·인물</div>
+      <div class="at hw s blue" data-in="3" style="left:2600px;top:780px">↳ 출처 꼭 확인</div>
+      <div class="at" data-in="3" style="left:2600px;top:880px"><span class="chk"><svg class="draw" width="40" height="40"><path pathLength="1" d="M4 22l10 10L36 6" stroke="#E2362B" stroke-width="7"/></svg></span><span class="hw s" style="vertical-align:middle">AI 도움</span></div>
+      <!-- ③ -->
+      <div class="at no" data-in="4" style="left:300px;top:1400px">3</div>
+      <div class="at doodle" data-in="4" data-icon="map" style="left:420px;top:1360px"></div>
+      <div class="at hw" data-in="4" style="left:600px;top:1400px">개요 잡기</div>
+      <div class="at hw s" data-in="4" style="left:600px;top:1500px">↳ 대지 한 문장 → 대지 셋</div>
+      <div class="at hw s red" data-in="4" style="left:600px;top:1580px">↳ 내가 직접!</div>
+      <!-- ④ -->
+      <div class="at no" data-in="5" style="left:2300px;top:1400px">4</div>
+      <div class="at doodle" data-in="5" data-icon="pen" style="left:2420px;top:1360px"></div>
+      <div class="at hw" data-in="5" style="left:2600px;top:1400px">원고 대필</div>
+      <svg class="at draw" data-in="5" style="left:2580px;top:1390px" width="300" height="100"><path pathLength="1" d="M5 50C100 40 200 60 295 45" stroke="#E2362B" stroke-width="8"/></svg>
+      <div class="at" data-in="5" style="left:2600px;top:1510px"><span class="chk"><svg class="draw" width="40" height="40"><path pathLength="1" d="M6 6l28 28M34 6L6 34" stroke="#E2362B" stroke-width="7"/></svg></span><span class="hw s red" style="vertical-align:middle">맡기지 않기</span></div>
+      <svg class="at draw" data-in="4" style="left:1250px;top:1480px" width="900" height="120"><path pathLength="1" d="M10 60C300 10 600 110 880 50M850 25l32 25-36 22" stroke="#555" stroke-width="5"/></svg>
+      <svg class="at draw" data-in="4" style="left:1700px;top:960px" width="200" height="400"><path pathLength="1" d="M150 10C40 120 40 260 120 380M90 350l30 32 20-40" stroke="#555" stroke-width="5"/></svg>
+    </div>
+  </section>
+
+  <!-- 2. 포커스 카드: 화면 캡처를 회색 배경 위에 띄움 -->
+  <section class="scene">
+    <ol class="caps"><li>실제로는 <b>이런 화면</b>입니다</li><li>출처가 <b>같이 나오는지</b>만 보세요</li></ol>
+    <div class="focus">
+      <div class="card" data-in="0">
+        <div class="shot"><!-- 실제 화면 캡처는 <img src="..." style="width:100%"> 로 교체 -->
+          <b>질문</b> 에베소서가 쓰인 시기와 장소는?<div class="bar" style="width:92%"></div><div class="bar" style="width:80%"></div><div class="bar" style="width:86%"></div>
+          <div style="margin-top:30px;font-size:28px;color:#2A6CF0">[1] 주석 A, 12쪽 · [2] 성경사전 B</div>
+        </div>
+      </div>
+      <div class="at hw red" data-in="1" style="left:880px;top:478px">↳ 출처 확인!</div>
+      <svg class="at draw" data-in="1" style="left:360px;top:478px" width="480" height="90"><path pathLength="1" d="M240 6C400 6 474 24 470 44 462 74 200 86 40 76 0 70 -4 30 40 18 100 6 180 6 240 6" stroke="#E2362B" stroke-width="6"/></svg>
+    </div>
+  </section>
+
+  <!-- 3. 체크리스트: 빨간 체크가 하나씩 그려짐 -->
+  <section class="scene">
+    <ol class="caps"><li>정리하면 <b>세 가지</b></li><li>읽기는 직접</li><li>조사는 함께</li><li>쓰기는 다시 직접</li></ol>
+    <div class="at hw xl" data-in="0" style="left:300px;top:150px">오늘의 정리</div>
+    <div class="at" style="left:320px;top:400px;display:grid;gap:60px">
+      <div data-in="1"><span class="chk" style="width:84px;height:84px"><svg class="draw" width="60" height="60"><path pathLength="1" d="M6 32l16 16L56 8" stroke="#E2362B" stroke-width="9"/></svg></span><span class="hw" style="font-size:80px;vertical-align:middle">읽기는 <span class="hi">직접</span></span></div>
+      <div data-in="2"><span class="chk" style="width:84px;height:84px"><svg class="draw" width="60" height="60"><path pathLength="1" d="M6 32l16 16L56 8" stroke="#E2362B" stroke-width="9"/></svg></span><span class="hw" style="font-size:80px;vertical-align:middle">조사는 <span class="hi">함께</span></span></div>
+      <div data-in="3"><span class="chk" style="width:84px;height:84px"><svg class="draw" width="60" height="60"><path pathLength="1" d="M6 32l16 16L56 8" stroke="#E2362B" stroke-width="9"/></svg></span><span class="hw" style="font-size:80px;vertical-align:middle">쓰기는 <span class="hi">다시 직접</span></span></div>
+    </div>
+    <div class="at doodle" data-in="3" data-icon="heart" style="left:1420px;top:520px;width:300px;height:300px;color:#E2362B"></div>
+  </section>
+</div>
+<div id="hud"></div>
+<script>/*ENGINE*/</script>
+</body></html>

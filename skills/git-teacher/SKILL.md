@@ -1,6 +1,6 @@
 ---
 name: git-teacher
-description: "바르다 깃선생 — Git/GitHub를 쉽게 도와주는 명령어"
+description: "바르다 깃선생 — Git/GitHub를 쉽게 도와주는 명령어 비개발자용으로 Git 설치·GitHub 연결(시작), 상태 보기, 저장(커밋), 올리기(푸시), 검토 요청(PR), 용어 도움말을 한국어로 안내한다. 트리거: '깃선생', '/git-teacher', '깃허브에 올려줘', '커밋이 뭐야'. 숙련 개발자의 일반 git 작업에는 쓰지 않는다."
 argument-hint: "[시작|상태|저장|올리기|검토|도움말]"
 allowed-tools:
   - Bash

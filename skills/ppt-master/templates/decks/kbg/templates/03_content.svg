@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="kbg-master" data-pptx-master-name="KBG" data-pptx-layout="03_content" data-pptx-layout-name="Content">
+  <!-- KBG — Content -->
+
+  <rect id="master-bg" width="1280" height="720" fill="#FBFAF7" data-pptx-layer="master" data-pptx-editable="false"/>
+
+  <line x1="56" y1="176" x2="1224" y2="176" stroke="#E3E0D8" stroke-width="1" id="layout-head-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="656" x2="1224" y2="656" stroke="#E3E0D8" stroke-width="1" id="layout-foot-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="section-name">
+    <text x="56" y="62" font-family="'Pretendard SemiBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="14" fill="#1F4E79" letter-spacing="0.6">{{SECTION_NAME}}</text>
+  </g>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-placeholder-bounds="56 76 1168 48">
+    <text id="title-carrier" data-pptx-placeholder-carrier="true" x="56" y="114" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1D1F24" font-weight="700" letter-spacing="-0.8">{{PAGE_TITLE}}</text>
+  </g>
+  <g id="page-subtitle">
+    <text x="56" y="154" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#5D6370">{{PAGE_SUBTITLE}}</text>
+  </g>
+  <g id="author-slot" data-pptx-placeholder="footer" data-pptx-placeholder-idx="2" data-pptx-placeholder-bounds="56 668 800 24">
+    <text id="author-carrier" data-pptx-placeholder-carrier="true" x="56" y="686" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="14" fill="#9AA0A8">{{AUTHOR}}</text>
+  </g>
+  <g id="page-number-slot" data-pptx-placeholder="slide-number" data-pptx-placeholder-idx="3" data-pptx-placeholder-bounds="1100 668 124 24">
+    <text id="page-number-carrier" data-pptx-placeholder-carrier="true" x="1224" y="686" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="14" fill="#9AA0A8" text-anchor="end">{{PAGE_NUM}}</text>
+  </g>
+
+  <!-- CONTENT AREA (Executor composes freely): x=56, y=196, w=1168, h=440 -->
+</svg>

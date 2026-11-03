@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: "AI 딥리서치 -- 멀티에이전트 기반 종합 리서치 시스템"
+description: "AI 딥리서치 -- 멀티에이전트 기반 종합 리서치 시스템 주제를 받아 범위 설정→멀티에이전트 검색→출처 검증→종합 보고서로 진행하고, resume·status로 이전 리서치 세션을 이어 간다. 트리거: '딥리서치', '깊게 조사해줘', '종합 리서치', '/deep-research'. 단순 사실 한 줄 확인은 WebSearch로 충분하다."
 argument-hint: "[topic|resume|status|query]"
 allowed-tools:
   - Agent

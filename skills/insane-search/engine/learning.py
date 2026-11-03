@@ -31,7 +31,7 @@ TTL_DAYS = int(os.environ.get("INSANE_LEARN_TTL_DAYS", "30"))
 MAX_ENTRIES = int(os.environ.get("INSANE_LEARN_MAX", "500"))
 EVICT_AFTER_FAILS = 2
 
-# stop_reason values that mean the access ROUTE genuinely failed (→ strike).
+# stop_reason values that mean the bypass ROUTE genuinely failed (→ strike).
 # Everything else (rate_limited / unknown / budget / auth_required / not_found /
 # success / "") is transient or URL-level and never strikes the route.
 PENALIZE_REASONS = frozenset({"exhausted", "challenge", "blocked"})
@@ -54,11 +54,7 @@ def is_real_failure(stop_reason: str) -> bool:
 
 
 def key_for(url: str, device_class: str) -> str:
-    # Use hostname (not netloc) so the learning key matches the session pool /
-    # profile-dir host key (transport._host_of, executor._profile_dir_for),
-    # which both drop port + userinfo. netloc kept them, so a URL with a port
-    # (or credentials) learned under a different key than it fetched under.
-    host = (urlsplit(url).hostname or "").lower()
+    host = (urlsplit(url).netloc or "").lower()
     dev = "mobile" if device_class == "mobile" else "desktop"
     return f"{host}::{dev}"
 

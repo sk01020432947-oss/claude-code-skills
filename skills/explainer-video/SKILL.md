@@ -8,7 +8,7 @@ description: "유튜브 정보성 해설 영상(바이브랩스 스타일)을 �
 레퍼런스: 바이브랩스 채널의 Fable 5 해설 영상(rkQaJGSbbak, 12분 37초). 사람은 **대본 작성 + 목소리 녹음**만 하고, 장면 분할·이미지 제작·자막·조립·썸네일은 전부 이 파이프라인이 수행한다.
 
 관련 스킬 (규약 원본 — 중복 기술하지 않고 따른다):
-- `remotion` — 조립 엔진. audio / images / import-srt-captions / display-captions / transitions / timing / calculate-metadata / transcribe-captions 규칙을 그대로 사용.
+- `remotion-best-practices` — 조립 엔진(공식 라우터). `remotion-markup`(audio·images·transitions·timing·calculate-metadata)와 `remotion-captions`(import-srt·display·transcribe) 규칙을 그대로 사용. 한국어 보강은 `remotion-kr`.
 - `webtoon-panel-render` — codex-image 호출 방식·동시 5장 규약·0바이트/md5 검증의 원본. 단 **텍스트 정책은 정반대**(아래 참조).
 
 ## 사전 점검 (프로젝트당 1회)
@@ -58,7 +58,7 @@ video-project/{slug}/
 ### 2단계 — 오디오 확보 + 타이밍
 
 - 오디오 길이 측정: `ffprobe -v error -show_entries format=duration -of csv=p=0 narration.mp3`
-- **자막 전사**: remotion 스킬의 `rules/transcribe-captions.md`(whisper.cpp)로 단어 단위 타임스탬프를 뽑아 `narration.srt` 생성. 전사 결과를 대본 원문과 대조해 오탈자를 대본 기준으로 교정한다(자막은 대본이 정답, whisper는 타이밍만 제공).
+- **자막 전사**: `remotion-captions` 스킬의 `transcribe-captions.md`(whisper.cpp)로 단어 단위 타임스탬프를 뽑아 `narration.srt` 생성. 전사 결과를 대본 원문과 대조해 오탈자를 대본 기준으로 교정한다(자막은 대본이 정답, whisper는 타이밍만 제공).
 - 각 장면의 시작/끝 시각을 SRT에서 찾아 scenes.md에 `start:`/`end:`로 기록한다. 이것이 이미지 표시 구간이다.
 
 ### 3단계 — 장면 이미지 렌더 (codex-image)
@@ -85,7 +85,7 @@ video-project/{slug}/
 
 ### 4단계 — Remotion 조립
 
-`04_remotion/`에 프로젝트 생성(`npx create-video@latest --blank` 또는 기존 템플릿 재사용). **remotion 스킬의 규칙 파일을 반드시 읽고 따른다.** 구성:
+`04_remotion/`에 프로젝트 생성(`npx create-video@latest --blank` 또는 기존 템플릿 재사용). **`remotion-best-practices`(공식 라우터)와 `remotion-kr`(한국어 보강)을 반드시 읽고 따른다.** 구성:
 
 1. **Audio** — narration.mp3 전체를 깔고, `calculate-metadata`로 composition 길이를 오디오 길이에 맞춘다.
 2. **장면 시퀀스** — scenes.md의 start/end로 `<Sequence>` 배치. 각 이미지는 느린 Ken Burns(1.0→1.08 스케일 + 약간의 팬)로 정적 이미지의 지루함을 죽인다. 장면 전환은 0.5초 크로스페이드(`transitions.md`).

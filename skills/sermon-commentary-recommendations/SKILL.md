@@ -1,6 +1,6 @@
 ---
 name: sermon-commentary-recommendations
-description: 성경 66권 각 권별로 신학적으로 신뢰할 만한 추천 주석(Ligonier Ministries·Keith Mathison 선정 목록 기반, WBC·NICOT·NICNT·TOTC·BST·NIVAC·PNTC 등 표준 시리즈 병합)을 제공하는 공용 참고 자료 스킬. 사용자가 특정 성경 본문·권을 놓고 성경연구를 하거나 설교를 준비할 때 — 즉 sermon-*, pbs-personal-bible-study, sermon-expository-daeji, sermon-bible-dictionary, dwelling-sermon-coach 등 어떤 성경연구·설교 준비 작업이든 특정 책(예: 창세기, 로마서, 시편)이나 본문이 특정된 순간 — 이 스킬을 함께 소환해 references/commentary-list.md에서 해당 권의 추천 주석 목록을 찾아 응답에 자연스럽게 반영해야 한다. 사용자가 "주석 추천", "이 본문 주석 뭐 볼까", "성경주석추천", "무슨 주석 참고할까", "설교 준비 주석", "이 책 좋은 주석"을 언급할 때도 발동한다. 이 목록은 방대한 신학 서적 전체를 담은 것이 아니라 "각 권마다 우선 참고할 만한 주석 몇 권"을 정리한 추천 큐레이션이며, 완전한 목록이 아니다.
+description: '성경 66권 각 권별로 신학적으로 신뢰할 만한 추천 주석(Ligonier Ministries·Keith Mathison 선정 목록 기반, WBC·NICOT·NICNT·TOTC·BST·NIVAC·PNTC 등 표준 시리즈 병합)을 제공하는 공용 참고 자료 스킬. 사용자가 특정 성경 본문·권을 놓고 성경연구를 하거나 설교를 준비할 때 — 즉 sermon-*, pbs-personal-bible-study, sermon-expository-daeji, sermon-bible-dictionary, dwelling-sermon-coach 등 어떤 성경연구·설교 준비 작업이든 특정 책(예: 창세기, 로마서, 시편)이나 본문이 특정된 순간 — 이 스킬을 함께 소환해 references/commentary-list.md에서 해당 권의 추천 주석 목록을 찾아 응답에 자연스럽게 반영해야 한다. 사용자가 "주석 추천", "이 본문 주석 뭐 볼까", "성경주석추천", "무슨 주석 참고할까", "설교 준비 주석", "이 책 좋은 주석"을 언급할 때도 발동한다. 이 목록은 방대한 신학 서적 전체를 담은 것이 아니라 "각 권마다 우선 참고할 만한 주석 몇 권"을 정리한 추천 큐레이션이며, 완전한 목록이 아니다.'
 ---
 
 # 성경주석추천 성경연구 (Recommended Commentaries for Bible Study)

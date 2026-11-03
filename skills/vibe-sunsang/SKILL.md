@@ -1,6 +1,6 @@
 ---
 name: vibe-sunsang
-description: "바선생 — AI 활용 성장 멘토 에이전트"
+description: "바선생 — AI 활용 성장 멘토 에이전트 인자에 따라 초기 설정(onboard)·대화 로그 변환과 회고(retro)·AI 활용 코칭(mentor)·성장 리포트(growth)·개념 학습(knowledge)으로 분기한다. 트리거: '바선생', '/vibe-sunsang', 'AI 활용 회고', '내 프롬프트 습관 코칭', '성장 리포트'."
 argument-hint: "[시작|변환|멘토링|성장|지식]"
 allowed-tools:
   - Bash

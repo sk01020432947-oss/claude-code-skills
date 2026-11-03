@@ -1,6 +1,6 @@
 ---
 name: nopal
-description: "Google Workspace 오케스트레이션 — 자연어로 9개 서비스를 자동 조합"
+description: "Google Workspace 오케스트레이션 — 자연어로 9개 서비스를 자동 조합 Gmail·Calendar·Drive·Sheets·Docs·Slides·Chat·Tasks·Meet을 gws CLI로 조합한다. 읽기 조회는 바로 실행하고 쓰기·변경은 확인을 받는다. 트리거: '/nopal', '메일 확인하고 일정 잡아줘', '구글 워크스페이스로 자동화'."
 argument-hint: "[자연어 요청]"
 allowed-tools:
   - Read

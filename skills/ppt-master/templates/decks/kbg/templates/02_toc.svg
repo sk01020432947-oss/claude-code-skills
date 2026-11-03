@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="kbg-master" data-pptx-master-name="KBG" data-pptx-layout="02_toc" data-pptx-layout-name="Contents">
+  <!-- KBG — Contents -->
+
+  <rect id="master-bg" width="1280" height="720" fill="#FBFAF7" data-pptx-layer="master" data-pptx-editable="false"/>
+
+  <line x1="56" y1="176" x2="1224" y2="176" stroke="#E3E0D8" stroke-width="1" id="layout-toc-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="280" x2="1224" y2="280" stroke="#E3E0D8" stroke-width="1" id="layout-toc-sep-1" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="368" x2="1224" y2="368" stroke="#E3E0D8" stroke-width="1" id="layout-toc-sep-2" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="456" x2="1224" y2="456" stroke="#E3E0D8" stroke-width="1" id="layout-toc-sep-3" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="544" x2="1224" y2="544" stroke="#E3E0D8" stroke-width="1" id="layout-toc-sep-4" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-placeholder-bounds="56 76 1168 48">
+    <text id="title-carrier" data-pptx-placeholder-carrier="true" x="56" y="114" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1D1F24" font-weight="700" letter-spacing="-0.8">{{PAGE_TITLE}}</text>
+  </g>
+  <g id="toc-item-1">
+    <text x="56" y="240" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1F4E79">01</text>
+    <text x="148" y="230" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#1D1F24" font-weight="700">{{TOC_ITEM_1_TITLE}}</text>
+    <text x="148" y="262" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370">{{TOC_ITEM_1_DESC}}</text>
+  </g>
+  <g id="toc-item-2">
+    <text x="56" y="328" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1F4E79">02</text>
+    <text x="148" y="318" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#1D1F24" font-weight="700">{{TOC_ITEM_2_TITLE}}</text>
+    <text x="148" y="350" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370">{{TOC_ITEM_2_DESC}}</text>
+  </g>
+  <g id="toc-item-3">
+    <text x="56" y="416" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1F4E79">03</text>
+    <text x="148" y="406" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#1D1F24" font-weight="700">{{TOC_ITEM_3_TITLE}}</text>
+    <text x="148" y="438" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370">{{TOC_ITEM_3_DESC}}</text>
+  </g>
+  <g id="toc-item-4">
+    <text x="56" y="504" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1F4E79">04</text>
+    <text x="148" y="494" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#1D1F24" font-weight="700">{{TOC_ITEM_4_TITLE}}</text>
+    <text x="148" y="526" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370">{{TOC_ITEM_4_DESC}}</text>
+  </g>
+  <g id="toc-item-5">
+    <text x="56" y="592" font-family="'Pretendard ExtraBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="40" fill="#1F4E79">05</text>
+    <text x="148" y="582" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#1D1F24" font-weight="700">{{TOC_ITEM_5_TITLE}}</text>
+    <text x="148" y="614" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370">{{TOC_ITEM_5_DESC}}</text>
+  </g>
+  <g id="page-number-slot" data-pptx-placeholder="slide-number" data-pptx-placeholder-idx="3" data-pptx-placeholder-bounds="1100 668 124 24">
+    <text id="page-number-carrier" data-pptx-placeholder-carrier="true" x="1224" y="686" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="14" fill="#9AA0A8" text-anchor="end">{{PAGE_NUM}}</text>
+  </g>
+</svg>

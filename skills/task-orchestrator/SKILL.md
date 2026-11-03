@@ -1,6 +1,6 @@
 ---
 name: task-orchestrator
-description: Autonomous multi-agent task orchestration with dependency analysis, parallel tmux/Codex execution, and self-healing heartbeat monitoring. Use for large projects with multiple issues/tasks that need coordinated parallel execution.
+description: 'Autonomous multi-agent task orchestration with dependency analysis, parallel tmux/Codex execution, and self-healing heartbeat monitoring. Use for large projects with multiple issues/tasks that need coordinated parallel execution. For a single delegation brief or evidence-based done check of one task, use dots-delegate instead.'
 metadata: {"clawdbot":{"emoji":"🎭","requires":{"anyBins":["tmux","codex","gh"]}}}
 permissions:
   - exec: "Runs local git, tmux, gh, and codex commands to coordinate isolated task workers."

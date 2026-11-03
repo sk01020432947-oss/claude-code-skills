@@ -1,6 +1,6 @@
 ---
 name: sermon-to-youtube
-description: Optimize a sermon video for YouTube. Provide the title and transcript. Get back optimized titles, description with timestamps, tags, thumbnail concepts, and a short-form clip recommendation.
+description: Optimize a sermon video for YouTube. Provide the title and transcript. Get back optimized titles, description with timestamps, tags, thumbnail concepts, and a short-form clip recommendation. Not for blog articles (use sermon-to-blog).
 ---
 
 # Sermon to YouTube

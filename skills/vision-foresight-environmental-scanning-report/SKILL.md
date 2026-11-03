@@ -18,7 +18,7 @@ disable-model-invocation: true
 **Issue ID 생성·날짜 계산·보고서 구조 검증·Sources 수량 검사·Implications 커버리지 확인은 반드시 아래 Python 스크립트를 Bash로 호출. LLM이 순번 추측·날짜 계산·검증을 자체 수행하는 것은 절대 금지.**
 
 ```bash
-CALC_PY="/Users/cys/Desktop/CYSjavis/cys-claude-vision-coaching-skills/skills/vision-foresight-environmental-scanning-report/report_calc.py"
+CALC_PY="/Users/cys/Desktop/CYSjavis/cys-Codex-vision-coaching-skills/skills/vision-foresight-environmental-scanning-report/report_calc.py"
 # 스킬 이동 시 이 절대 경로를 업데이트할 것.
 
 # Issue ID 생성:

@@ -1,6 +1,6 @@
 ---
 name: kosis-stats
-description: 국가데이터처가 운영하는 KOSIS(국가통계포털, kosis.kr) Open API로 한국 공식 통계표를 검색하고 메타데이터·데이터·대용량 자료를 조회한다. Use when the user asks for 한국 공식 통계 수치 조회, 특히 공공기관·공무원 보고서/사업계획/정책근거에 자주 쓰는 인구, 고령화, 청년, 가구, 고용, 물가, 지역경제, 교육, 복지 지표 탐색과 KOSIS table id 확인이 필요할 때 사용한다. Not for visualization or broad policy analysis.
+description: '국가데이터처가 운영하는 KOSIS(국가통계포털, kosis.kr) Open API로 한국 공식 통계표를 검색하고 메타데이터·데이터·대용량 자료를 조회한다. Use when the user asks for 한국 공식 통계 수치 조회, 특히 공공기관·공무원 보고서/사업계획/정책근거에 자주 쓰는 인구, 고령화, 청년, 가구, 고용, 물가, 지역경제, 교육, 복지 지표 탐색과 KOSIS table id 확인이 필요할 때 사용한다. Not for visualization or broad policy analysis. 설교 예화·교회 지역 브리프·통합돌봄 강의처럼 목회·사회복지 맥락에 통계를 끼워 넣는 일은 stats-ministry-lens가 맡는다.'
 license: See docs/attribution.md
 metadata:
   category: data

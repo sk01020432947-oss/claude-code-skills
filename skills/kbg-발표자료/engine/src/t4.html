@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>데스크톱 타임라인 덱</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/*BASE*/
+/* ── kbg-발표자료-4 · 데스크톱 윈도우 타임라인 (혼잡스 「1년 회고」 장면 실측) ── */
+:root{
+  --bg:#F3F3F0; --grid:#E1E1DC; --ink:#111; --soft:#666; --muted:#9A9A9A; --red:#E8342A; --blue:#2A6CF0; --sel:#B5D3FF; --yellow:#FADC46;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,'Apple SD Gothic Neo',sans-serif;
+  --title:'Black Han Sans','Pretendard Variable',sans-serif; --mono:'JetBrains Mono','SF Mono',Menlo,monospace;
+}
+body{font-family:var(--sans)}
+/* 모눈종이 바탕 */
+#stage{background:linear-gradient(var(--grid) 2px,transparent 2px) 0 0/48px 48px,linear-gradient(90deg,var(--grid) 2px,transparent 2px) 0 0/48px 48px,var(--bg)}
+.scene{background:none}
+/* 자막: 창 아래 가운데, 흰 박스 + 검은 테두리 */
+.cap{position:absolute;left:0;right:0;bottom:70px;text-align:center;z-index:8;pointer-events:none}
+.cap span{display:inline-block;background:#fff;border:3px solid #111;border-radius:10px;padding:14px 30px;font:700 44px/1.3 var(--sans);color:#111;letter-spacing:-.02em;box-shadow:4px 5px 0 #111}
+.cap b{color:var(--red)}
+/* 왼쪽 앱 독 */
+.dock{position:absolute;left:34px;top:50%;translate:0 -50%;display:grid;gap:30px;z-index:6}
+.dock div{display:grid;justify-items:center;gap:8px;font:600 18px/1 var(--sans);color:#444}
+.dock i{display:grid;place-items:center;width:78px;height:78px;border-radius:20px;background:#fff;border:2.5px solid #222;box-shadow:0 4px 0 #222;font:800 30px/1 var(--sans);font-style:normal}
+.dock i svg{width:40px;height:40px}
+.dock .ai{background:#FF9A00;color:#2B0F00}.dock .nt{background:#fff;font:400 40px/1 var(--title)}
+/* 오른쪽 월 레일: 현재 월은 빨간색 */
+.months{position:absolute;right:46px;top:50%;translate:0 -50%;list-style:none;text-align:right;z-index:6;font:600 26px/1 var(--sans);color:#AAA}
+.months b{display:block;font:800 30px/1 var(--sans);color:#111;margin-bottom:24px}
+.months li{margin:13px 0;transition:all .4s;transform-origin:right center}
+#stage[data-mark="1"] .months li:nth-child(2),#stage[data-mark="2"] .months li:nth-child(3),#stage[data-mark="3"] .months li:nth-child(4),
+#stage[data-mark="4"] .months li:nth-child(5),#stage[data-mark="5"] .months li:nth-child(6),#stage[data-mark="6"] .months li:nth-child(7),
+#stage[data-mark="7"] .months li:nth-child(8),#stage[data-mark="8"] .months li:nth-child(9),#stage[data-mark="9"] .months li:nth-child(10),
+#stage[data-mark="10"] .months li:nth-child(11),#stage[data-mark="11"] .months li:nth-child(12),#stage[data-mark="12"] .months li:nth-child(13)
+{color:var(--red);font-weight:800;transform:scale(1.45)}
+/* macOS 창 */
+.win{position:absolute;background:#fff;border:3px solid #111;border-radius:16px;overflow:hidden;box-shadow:10px 12px 0 rgba(0,0,0,.12),0 18px 40px rgba(0,0,0,.10)}
+.win>header{height:58px;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:3px solid #111;background:#FAFAFA;font:700 24px/1 var(--sans);color:#333}
+.win>header:before{content:"";width:16px;height:16px;border-radius:50%;background:#FF5F57;box-shadow:26px 0 #FEBC2E,52px 0 #28C840;margin-right:56px}
+.win>header em{flex:1;text-align:center;font-style:normal;margin-right:70px}
+.win>header:after{content:"⤢";font:700 26px/1 var(--sans);color:#666}
+.win .body{padding:40px 50px}
+.win.dark{background:#1C1C1E;color:#eee}.win.dark>header{background:#2A2A2C;color:#ddd;border-color:#111}
+/* 달력 */
+.cal{display:grid;grid-template-columns:repeat(7,1fr);border-top:2px solid #ddd;border-left:2px solid #ddd}
+.cal span{height:112px;border-right:2px solid #ddd;border-bottom:2px solid #ddd;padding:8px 12px;font:600 24px/1 var(--sans);color:#555;position:relative}
+.cal span.h{height:auto;padding:12px;font-weight:800;color:#111;text-align:center}
+.cal span.today{color:#fff;background:radial-gradient(circle 22px at 26px 20px,var(--red) 96%,transparent 100%)}
+.ev{display:block;margin-top:12px;padding:6px 8px;border-radius:6px;background:#E9F0FE;color:var(--blue);font:700 18px/1.2 var(--sans);border-left:4px solid var(--blue)}
+.ev.r{background:#FDECEA;color:var(--red);border-color:var(--red)}
+.popup{position:absolute;width:520px;background:#fff;border:3px solid #111;border-radius:16px;padding:26px 30px;box-shadow:8px 10px 0 #111;font:700 34px/1.35 var(--sans);color:#111;z-index:4}
+.popup small{display:block;font:500 24px/1.5 var(--sans);color:#666;margin-top:8px}
+/* 커서: 장면의 data-beat에 따라 이동, 클릭 물결 */
+.cursor{position:absolute;width:44px;height:56px;z-index:7;transition:left .7s cubic-bezier(.65,0,.35,1),top .7s cubic-bezier(.65,0,.35,1);filter:drop-shadow(2px 3px 0 rgba(0,0,0,.25))}
+.ripple{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;border:4px solid var(--blue);opacity:0}
+.ripple.on{animation:rip .6s ease-out .1s both}
+@keyframes rip{from{transform:scale(.2);opacity:1}to{transform:scale(1.4);opacity:0}}
+/* 웹캠 창 */
+.cam{background:radial-gradient(circle at 50% 40%,#4A4F57,#1E2126)}
+.cam .body{position:relative;height:calc(100% - 58px);padding:0;display:grid;place-items:end center}
+.rec{position:absolute;left:22px;top:20px;font:800 22px/1 var(--sans);color:#fff;display:flex;gap:10px;align-items:center}
+.rec:before{content:"";width:16px;height:16px;border-radius:50%;background:#FF3B30;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+/* 기사·노트 본문 */
+.doc{font:500 34px/1.75 var(--sans);color:#333}
+.doc h3{font:800 46px/1.3 var(--sans);color:#111;margin-bottom:22px}
+[data-in].sel,[data-in].mk{opacity:1;transform:none}
+.sel{transition:background .35s}.sel.on{background:var(--sel)}
+.mk{background:linear-gradient(transparent 55%,var(--yellow) 55%) no-repeat 0 0/0 100%;transition:background-size .7s .1s}.mk.on{background-size:100% 100%}
+.mono{font:500 30px/1.7 var(--mono);color:#222}
+.big{font:400 130px/1.05 var(--title);color:#111}
+.chip{display:inline-block;border:3px solid #111;border-radius:999px;padding:8px 22px;font:800 28px/1 var(--sans);background:var(--yellow)}
+</style></head>
+<body>
+<svg width="0" height="0" style="position:absolute"><symbol id="cur" viewBox="0 0 44 56"><path d="M4 4v42l11-10 8 17 8-4-8-16h15z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></symbol>
+<symbol id="person" viewBox="0 0 300 260"><circle cx="150" cy="96" r="62" fill="#C9CDD3"/><path d="M30 260c10-70 60-104 120-104s110 34 120 104z" fill="#C9CDD3"/></symbol></svg>
+<div id="stage">
+<div id="cap" class="cap"></div>
+<nav class="dock">
+  <div><i data-icon="folder"></i>모션그래픽</div><div><i data-icon="music"></i>음악</div><div><i class="ai">Ai</i>Ai</div><div><i class="nt">N</i>Notion</div>
+</nav>
+<ol class="months"><b>2026</b><li>1월</li><li>2월</li><li>3월</li><li>4월</li><li>5월</li><li>6월</li><li>7월</li><li>8월</li><li>9월</li><li>10월</li><li>11월</li><li>12월</li></ol>
+
+  <!-- 1. 표지 창 + 웹캠 -->
+  <section class="scene" data-mark="1">
+    <ol class="caps"><li>올해 <b>설교 준비</b>를 돌아보겠습니다</li></ol>
+    <div class="win pop" data-in="0" style="left:250px;top:110px;width:1180px;height:640px"><header><em>2026_설교준비_회고.key</em></header>
+      <div class="body" style="padding:110px 80px"><div class="chip">1년 회고</div><div class="big" style="margin-top:34px">설교 준비,<br>1년의 기록</div></div></div>
+    <div class="win dark cam pop" data-in="0" style="left:1250px;top:470px;width:460px;height:330px"><header><em>Web Cam</em></header><div class="body"><span class="rec">REC</span><svg width="300" height="240"><use href="#person"/></svg></div></div>
+  </section>
+
+  <!-- 2. 달력: 커서가 날짜로 가서 클릭 → 일정 팝업 -->
+  <section class="scene c2" data-mark="3">
+    <ol class="caps"><li>3월 달력을 열어 보면</li><li>주일마다 <b>설교 일정</b>이 있고</li><li>이날이 <b>첫 시도</b>였습니다</li></ol>
+    <div class="win" data-in="0" style="left:250px;top:90px;width:1380px;height:760px"><header><em>캘린더 — 2026년 3월</em></header>
+      <div class="body" style="padding:24px 30px">
+        <div class="cal">
+          <span class="h">일</span><span class="h">월</span><span class="h">화</span><span class="h">수</span><span class="h">목</span><span class="h">금</span><span class="h">토</span>
+          <span>1<i class="ev">주일 설교</i></span><span>2</span><span>3</span><span>4<i class="ev r">수요예배</i></span><span>5</span><span>6</span><span>7</span>
+          <span>8<i class="ev">주일 설교</i></span><span>9</span><span>10</span><span>11<i class="ev r">수요예배</i></span><span>12</span><span>13</span><span>14</span>
+          <span class="today">15<i class="ev">주일 설교</i></span><span>16</span><span>17</span><span>18<i class="ev r">수요예배</i></span><span>19</span><span>20</span><span>21</span>
+          <span>22<i class="ev">주일 설교</i></span><span>23</span><span>24</span><span>25<i class="ev r">수요예배</i></span><span>26</span><span>27</span><span>28</span>
+        </div>
+      </div></div>
+    <div class="ripple" data-in="2" style="left:340px;top:500px"></div>
+    <div class="popup pop" data-in="2" style="left:480px;top:430px"><b>3월 15일 주일</b><small>에베소서 2장 · AI로 배경 조사 첫 시도</small></div>
+    <svg class="cursor"><use href="#cur"/></svg>
+  </section>
+
+  <!-- 3. 창이 하나씩 겹쳐 쌓임 -->
+  <section class="scene" data-mark="4">
+    <ol class="caps"><li>준비 파일이 <b>쌓이기</b> 시작했어요</li><li>조사 메모 위에 <b>개요</b></li><li>그리고 <b>원고</b></li></ol>
+    <div class="win pop" data-in="0" style="left:300px;top:110px;width:860px;height:520px"><header><em>조사메모.txt</em></header><div class="body mono">- 에베소: 소아시아 항구 도시<br>- 기록 시기: 주후 60년경(학설 다양)<br>- 출처: 주석 A 12쪽</div></div>
+    <div class="win pop" data-in="1" style="left:520px;top:230px;width:860px;height:520px"><header><em>개요.md</em></header><div class="body mono"># 대지 한 문장<br>은혜로 구원받은 사람은…<br>## 1. 죽었던 우리<br>## 2. 살리신 하나님</div></div>
+    <div class="win pop" data-in="2" style="left:740px;top:350px;width:860px;height:470px"><header><em>원고_최종.docx</em></header><div class="body doc"><h3>은혜로 산 사람</h3>오늘 본문은 '전에는'과 '이제는'을 나란히 놓습니다…</div></div>
+  </section>
+
+  <!-- 4. 기사 본문: 파란 선택 → 노란 형광 -->
+  <section class="scene" data-mark="5">
+    <ol class="caps"><li>읽다가 <b>좋은 문장</b>을 만나면</li><li>먼저 <b>선택</b>하고</li><li>노란색으로 <b>표시</b>해 둡니다</li></ol>
+    <div class="win" data-in="0" style="left:270px;top:90px;width:1360px;height:760px"><header><em>읽을거리 — 설교와 도구.html</em></header>
+      <div class="body doc" style="padding:50px 70px"><h3>도구는 손을 대신하지 않는다</h3>
+      좋은 도구는 일을 빠르게 하지만, 무엇을 할지는 정해 주지 않는다. <span class="sel" data-in="1"><span class="mk" data-in="2">본문 앞에 오래 머무는 시간은 여전히 설교자의 몫이다.</span></span> 남는 시간은 사람에게 쓰면 된다. 조사는 함께, 묵상은 혼자.</div></div>
+  </section>
+
+  <!-- 5. 웹캠 크게 + 메모 창 -->
+  <section class="scene" data-mark="6">
+    <ol class="caps"><li>직접 말로 <b>설명</b>해 보면</li><li>이렇게 <b>세 줄</b>입니다</li></ol>
+    <div class="win dark cam" data-in="0" style="left:250px;top:100px;width:900px;height:640px"><header><em>Web Cam</em></header><div class="body"><span class="rec">REC</span><svg width="560" height="480"><use href="#person"/></svg></div></div>
+    <div class="win pop" data-in="1" style="left:1080px;top:300px;width:600px;height:420px"><header><em>메모</em></header><div class="body doc">① 읽기는 직접<br>② 조사는 함께<br>③ 쓰기는 다시 직접</div></div>
+  </section>
+
+  <!-- 6. 맺음 -->
+  <section class="scene" data-mark="12">
+    <ol class="caps"><li>내년에도 <b>같은 원칙</b>으로</li></ol>
+    <div class="win pop" data-in="0" style="left:330px;top:170px;width:1240px;height:560px"><header><em>2027_계획.md</em></header>
+      <div class="body" style="padding:90px 80px"><div class="big" style="font-size:110px">도구는 바꾸고,<br><span class="mk" data-in="0">원칙은 그대로.</span></div></div></div>
+  </section>
+</div>
+<style>
+/* 커서 경로(장면2): 박자별 위치 */
+.c2 .cursor{left:1500px;top:900px}
+.c2[data-beat="1"] .cursor{left:330px;top:250px}
+.c2[data-beat="2"] .cursor{left:332px;top:492px}
+</style>
+<div id="hud"></div>
+<script>/*ENGINE*/</script>
+</body></html>

@@ -301,7 +301,7 @@ output 생성 전 반드시 다음 결정론 계산을 **순서대로** 실행�
 SKILL=skills/vision-foresight-wild-cards-implications-synthesis
 
 # 0. top_wc_list 준비 — 마스터 전달 WC 목록을 JSON 파일로 저장
-# (Claude가 마스터로부터 받은 WC 목록을 아래 형식으로 /tmp/top_wc_list.json에 저장)
+# (Codex가 마스터로부터 받은 WC 목록을 아래 형식으로 /tmp/top_wc_list.json에 저장)
 
 # 1. domain 검증 → domain 값 확정
 python3 "$SKILL/_helpers.py" validate_domain "[마스터가 전달한 domain_selection]"

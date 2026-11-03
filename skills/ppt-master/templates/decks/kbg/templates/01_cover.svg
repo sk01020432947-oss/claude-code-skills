@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="kbg-master" data-pptx-master-name="KBG" data-pptx-layout="01_cover" data-pptx-layout-name="Cover">
+  <!-- KBG — Cover -->
+
+  <rect id="master-bg" width="1280" height="720" fill="#FBFAF7" data-pptx-layer="master" data-pptx-editable="false"/>
+
+  <rect x="56" y="204" width="6" height="212" fill="#1F4E79" id="layout-cover-bar" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <line x1="56" y1="600" x2="1224" y2="600" stroke="#E3E0D8" stroke-width="1" id="layout-cover-rule" data-pptx-layer="layout" data-pptx-editable="false"/>
+  <g id="cover-eyebrow">
+    <text x="88" y="232" font-family="'Pretendard SemiBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="16" fill="#1F4E79" letter-spacing="0.6">{{EYEBROW}}</text>
+  </g>
+  <g id="title-slot" data-pptx-placeholder="title" data-pptx-placeholder-bounds="88 256 1136 76">
+    <text id="title-carrier" data-pptx-placeholder-carrier="true" x="88" y="318" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-weight="700" font-size="60" fill="#1D1F24" letter-spacing="-1.6">{{TITLE}}</text>
+  </g>
+  <g id="subtitle-slot" data-pptx-placeholder="subtitle" data-pptx-placeholder-idx="2" data-pptx-placeholder-bounds="88 356 1136 36">
+    <text id="subtitle-carrier" data-pptx-placeholder-carrier="true" x="88" y="384" font-family="'Pretendard Medium', Pretendard, 'Malgun Gothic', sans-serif" font-size="26" fill="#5D6370">{{SUBTITLE}}</text>
+  </g>
+  <g id="cover-footer">
+    <text x="56" y="644" font-family="'Pretendard SemiBold', Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#1D1F24">{{AUTHOR}}</text>
+    <text x="1224" y="644" font-family="Pretendard, 'Malgun Gothic', sans-serif" font-size="18" fill="#5D6370" text-anchor="end">{{DATE}}</text>
+  </g>
+</svg>
