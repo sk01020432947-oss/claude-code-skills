@@ -1,5 +1,5 @@
 ---
-name: ppt-master
+name: ppt-master-v6
 description: >
   AI-driven presentation workflow for generating editable PPTX decks and slides,
   reconstructing page visuals, creating reusable Brand/Style/Layout/Deck

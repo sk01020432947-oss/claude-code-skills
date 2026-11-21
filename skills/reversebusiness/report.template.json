@@ -1,0 +1,70 @@
+{
+  "schema": "rebiz/report@1",
+  "meta": {
+    "target": {
+      "name": "",
+      "kind": "web-service",
+      "url": "",
+      "relation": "third-party"
+    },
+    "analyzed_at": "",
+    "analyst": "",
+    "scope": "",
+    "method": [],
+    "terms": {
+      "status": "checked",
+      "note": "",
+      "evidence": []
+    },
+    "one_line": ""
+  },
+  "evidence": [
+    { "id": "E1", "type": "url", "ref": "", "note": "", "seen_at": "" }
+  ],
+  "sections": {
+    "money": {
+      "customer": [
+        { "text": "", "status": "unknown", "evidence": [] }
+      ],
+      "problem": [
+        { "text": "", "status": "unknown", "evidence": [] }
+      ],
+      "price": [
+        { "text": "", "status": "unknown", "evidence": [] }
+      ],
+      "revenue": []
+    },
+    "flow": {
+      "steps": [
+        { "stage": "signup", "label": "가입", "text": "", "status": "unknown", "evidence": [] },
+        { "stage": "first_value", "label": "첫 가치", "text": "", "status": "unknown", "evidence": [] },
+        { "stage": "payment", "label": "결제", "text": "", "status": "unknown", "evidence": [] }
+      ]
+    },
+    "map": {
+      "screens": [
+        { "name": "", "purpose": "", "features": [], "status": "unknown", "evidence": [] }
+      ]
+    },
+    "tech": {
+      "items": [
+        { "layer": "", "text": "", "status": "unknown", "evidence": [] }
+      ]
+    },
+    "unknowns": [
+      { "question": "", "why": "", "next": "" }
+    ],
+    "my_version": {
+      "working_name": "",
+      "same_problem": "",
+      "who": "",
+      "mvp": [],
+      "differences": [
+        { "title": "", "text": "" },
+        { "title": "", "text": "" },
+        { "title": "", "text": "" }
+      ],
+      "not_taken": []
+    }
+  }
+}

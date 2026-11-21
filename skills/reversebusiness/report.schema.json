@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rebiz/report@1",
+  "title": "reversebusiness 리포트",
+  "description": "서비스 하나를 사업으로 읽은 결과. 6칸 고정. 주장마다 상태(관찰, 추정, 모름)와 근거를 붙인다. 이 파일은 사람이 읽는 규칙서이고, 실제 검사는 tools/check-report.mjs 가 한다.",
+  "type": "object",
+  "required": ["schema", "meta", "evidence", "sections"],
+  "properties": {
+    "skeleton": {
+      "type": "object",
+      "description": "선택. 페이지 한 장의 구역을 위에서 아래로 적은 뼈대. 해부 장면이 이것으로 그려진다. 이름은 내 말로 쓰고, 원본의 문구, 그림, 로고는 넣지 않는다.",
+      "required": ["blocks"],
+      "properties": {
+        "note": { "type": "string" },
+        "evidence": { "$ref": "#/$defs/evidenceRefs" },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "role", "weight"],
+            "properties": {
+              "name": { "type": "string", "description": "내 말로 붙인 구역 이름." },
+              "role": { "enum": ["attract", "value", "pay", "return", "other"], "description": "attract 데려오는 층, value 가치를 주는 층, pay 돈 받는 층, return 다시 오게 하는 층." },
+              "weight": { "type": "number", "description": "세로 길이의 어림값. 서로의 비율만 쓴다." },
+              "kind": { "enum": ["media", "headline", "price", "nav", "numbers", "list", "notice", "quotes", "faq", "cta", "footer", "text"] },
+              "status": { "$ref": "#/$defs/status" },
+              "mine": { "type": "string", "description": "선택. 내 버전에서 같은 구실을 하는 구역의 CSS 선택자." },
+              "taken": { "type": "boolean", "description": "false 면 내 버전에 가져오지 않은 구역." }
+            }
+          }
+        }
+      }
+    },
+    "schema": { "const": "rebiz/report@1" },
+    "meta": {
+      "type": "object",
+      "required": ["target", "analyzed_at", "analyst", "scope", "method", "terms", "one_line"],
+      "properties": {
+        "target": {
+          "type": "object",
+          "required": ["name", "kind", "relation"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "kind": { "enum": ["web-service", "desktop-app", "mobile-app", "local-tool", "other"] },
+            "url": { "type": "string", "description": "공개 주소. 없으면 빈 문자열." },
+            "relation": { "enum": ["own", "third-party"], "description": "own 은 내 것(소스 읽기 가능), third-party 는 남의 것(공개된 것만)." }
+          }
+        },
+        "analyzed_at": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "analyst": { "type": "string", "description": "분석한 에이전트나 사람. 개인정보는 넣지 않는다." },
+        "scope": { "type": "string", "description": "무엇을 봤고 무엇을 보지 않았는지 한두 문장." },
+        "method": { "type": "array", "items": { "type": "string" } },
+        "terms": {
+          "type": "object",
+          "required": ["status", "note"],
+          "properties": {
+            "status": { "enum": ["checked", "robots-only", "not-applicable", "not-found"], "description": "checked 는 약관 조항까지 읽었을 때만. robots-only 는 robots.txt 까지만 확인하고 약관은 아직 읽지 못한 상태. not-applicable 은 내 것일 때만." },
+            "note": { "type": "string" },
+            "evidence": { "$ref": "#/$defs/evidenceRefs" }
+          }
+        },
+        "one_line": { "type": "string", "description": "이 사업을 한 문장으로." },
+        "depth": {
+          "type": "object",
+          "description": "선택. 읽은 깊이. steps 는 surface(겉 읽기), flow(흐름 읽기), code(속 읽기) 순서이고, state 는 done | partial | skipped | blocked | failed. 끝까지 못 읽은 단계에는 note 에 까닭을 적는다.",
+          "properties": { "mode": { "enum": ["light", "precise"] }, "reached": { "enum": ["surface", "flow", "code"] }, "steps": { "type": "array" } }
+        },
+        "read": {
+          "type": "object",
+          "description": "선택. 가벼운 수집기가 적는 읽은 방식. mode 는 html(받은 HTML 만) 또는 rendered(브라우저가 그린 화면). thin 이 true 면 읽은 글이 적어 모름이 많다는 뜻이고 화면 맨 위에 알림이 뜬다.",
+          "properties": { "mode": { "enum": ["html", "rendered"] }, "chars": { "type": "number" }, "html_chars": { "type": "number" }, "thin": { "type": "boolean" }, "note": { "type": "string" }, "next": { "type": "string" } }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "ref"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^E\\d+$" },
+          "type": { "enum": ["url", "screen", "doc", "file", "run"], "description": "file 은 relation 이 own 일 때만." },
+          "ref": { "type": "string", "description": "url 이면 http(s) 주소, 나머지는 리포트 기준 상대 경로나 짧은 설명. 절대 경로 금지." },
+          "note": { "type": "string" },
+          "seen_at": { "type": "string" },
+          "seen": { "enum": ["page", "flow", "code"], "description": "어디서 봤는지. page 화면에서(기본), flow 흐름에서(펼치기와 요청 호스트), code 코드에서. 코드에서만 본 것은 관찰로 쓸 수 없다." }
+        }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "required": ["money", "flow", "map", "tech", "unknowns", "my_version"],
+      "properties": {
+        "money": {
+          "type": "object",
+          "required": ["customer", "problem", "price", "revenue"],
+          "properties": {
+            "customer": { "$ref": "#/$defs/claims" },
+            "problem": { "$ref": "#/$defs/claims" },
+            "price": { "$ref": "#/$defs/claims" },
+            "revenue": {
+              "$ref": "#/$defs/claims",
+              "description": "매출, 사용자 수 같은 숫자. 공개 근거(url 또는 doc)가 있는 관찰만. 없으면 빈 배열."
+            }
+          }
+        },
+        "flow": {
+          "type": "object",
+          "required": ["steps"],
+          "properties": {
+            "steps": {
+              "type": "array",
+              "description": "signup, first_value, payment 단계는 각각 한 번 이상. flow.services 에는 흐름이나 코드에서 본 바깥 서비스(결제사, 분석 도구 등)의 이름을 적을 수 있다. arrive(유입)와 return(다시 오기)을 적으면 구조도의 다섯 마디가 모두 채워진다.",
+              "items": {
+                "allOf": [
+                  { "$ref": "#/$defs/claim" },
+                  {
+                    "type": "object",
+                    "required": ["stage", "label"],
+                    "properties": {
+                      "stage": { "enum": ["arrive", "first_value", "signup", "payment", "return", "other"] },
+                      "label": { "type": "string" }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "map": {
+          "type": "object",
+          "required": ["screens"],
+          "properties": {
+            "screens": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "purpose", "features", "status", "evidence"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "purpose": { "type": "string" },
+                  "features": { "type": "array", "items": { "type": "string" } },
+                  "status": { "$ref": "#/$defs/status" },
+                  "evidence": { "$ref": "#/$defs/evidenceRefs" }
+                }
+              }
+            }
+          }
+        },
+        "tech": {
+          "type": "object",
+          "required": ["items"],
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  { "$ref": "#/$defs/claim" },
+                  { "type": "object", "required": ["layer"], "properties": { "layer": { "type": "string" } } }
+                ]
+              }
+            }
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["question", "why"],
+            "properties": {
+              "question": { "type": "string" },
+              "why": { "type": "string", "description": "왜 모르는지." },
+              "next": { "type": "string", "description": "선을 넘지 않고 알아낼 방법." }
+            }
+          }
+        },
+        "my_version": {
+          "type": "object",
+          "required": ["working_name", "same_problem", "who", "mvp", "differences", "not_taken"],
+          "properties": {
+            "working_name": { "type": "string", "description": "가칭. 대상의 이름이나 클론이라는 말을 넣지 않는다." },
+            "same_problem": { "type": "string" },
+            "who": { "type": "string" },
+            "mvp": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+            "differences": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "required": ["title", "text"],
+                "properties": { "title": { "type": "string" }, "text": { "type": "string" } }
+              }
+            },
+            "not_taken": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "status": { "enum": ["observed", "inferred", "unknown", "code"], "description": "observed 관찰(화면이나 흐름에서 봄), inferred 추정, unknown 모름, code 코드 흔적(내려온 코드 안에서만 봄. 지금 그렇다는 뜻이 아니다)." },
+    "evidenceRefs": { "type": "array", "items": { "type": "string", "pattern": "^E\\d+$" } },
+    "claim": {
+      "type": "object",
+      "required": ["text", "status", "evidence"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "status": { "$ref": "#/$defs/status" },
+        "evidence": { "$ref": "#/$defs/evidenceRefs", "description": "observed, inferred 는 1개 이상. unknown 은 비워 둔다." }
+      }
+    },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } }
+  }
+}

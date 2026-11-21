@@ -1,0 +1,311 @@
+# korean-jangbu-for
+
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-orange)
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB)
+[![Discord](https://img.shields.io/badge/Discord-SpeciAI-5865F2)](https://discord.gg/wQWpEpnBfE)
+
+한국 스타트업·1인 법인 대표·프리랜서·개인사업자를 위한 장부 자동 생성 Claude Code 스킬 패키지.
+카드명세서 PDF·은행 CSV·영수증을 넣으면 표준 거래내역·계정과목 매핑·재무제표·세무사 전달 CSV가 자동 생성됩니다.
+
+> 한국 법률 AI 허브 **SpeciAI** 에서 만들고 있어요.
+> 계약·노동·투자·지재권·세무를 AI로 해결하는 창업자·변호사 커뮤니티에 초대합니다.
+> → [discord.gg/wQWpEpnBfE](https://discord.gg/wQWpEpnBfE)
+
+**라이선스**: Apache-2.0
+**버전**: 0.2.0
+**저자**: [@kimlawtech](https://github.com/kimlawtech) (SpeciAI)
+
+## 설계 원칙
+
+- **입력은 넓게** — 엑셀·은행 CSV·카드 내역·영수증 이미지·세금계산서 PDF
+- **출력은 단계적** — 세무용(BS·PL) / 경영용(현금흐름·cash burn)
+- **계정체계는 매핑** — 내부 계정(유연) ↔ 국세청 표준계정(고정)
+- **보안 Level 2** — 민감정보 마스킹 + 룰 우선 분류 + LLM fallback 최소화
+
+## 스킬 구성
+
+진입점 1개 + 하위 스킬 6개 + MCP 서버 1개.
+
+| 스킬 | 호출 | 용도 |
+|------|------|------|
+| `korean-jangbu-for` | 진입점 | 번호·문자 메뉴 라우팅 |
+| `jangbu-connect` | 직행 | CODEF API 자격증명 설정 (BYOK) — 홈택스·은행·카드 자동 수집용 |
+| `jangbu-import` | 직행 | 원본 데이터(엑셀·CSV·이미지·PDF) → 표준 거래내역 |
+| `jangbu-tag` | 직행 | 표준 거래내역 → 계정과목 매핑 (룰 + 학습 + LLM) |
+| `jangbu-tax` | 직행 | 세무용 BS·PL (국세청 표준계정) |
+| `jangbu-dash` | 직행 | 경영용 현금흐름·대시보드·카드별 분석 |
+| `jangbu-jongso` | 직행 | 종소세 체크리스트 + 홈택스 다운로드 경로 상세 안내 |
+
+## 지원 파일 포맷
+
+| 유형 | 확장자 |
+|------|--------|
+| 이미지 OCR | PNG · JPG · JPEG · HEIC · HEIF · WEBP · TIFF · TIF · BMP · GIF |
+| PDF | PDF (단·다중 페이지) |
+| 엑셀 | XLSX · XLS · XLSM |
+| CSV | CSV · TSV (한글 헤더 자동 감지) |
+
+HEIC/HEIF(iOS 기본 포맷)는 `pip install pillow-heif` 추가 설치 필요 (install.sh가 자동 처리).
+
+**폴더 일괄 처리**: `/korean-jangbu-for` → `[I]` 선택 → 폴더 경로 입력 → 혼합된 파일들을 자동 분류·처리.
+
+## 자동 수집 (BYOK — 사용자 본인 CODEF 키)
+
+사용자가 직접 [CODEF developer.codef.io](https://developer.codef.io)에 무료 가입해 받은 Client ID/Secret을 로컬에 저장하고, 본인 계정으로 홈택스·은행·카드사 데이터를 자동 수집합니다.
+
+- **자격증명은 macOS Keychain 또는 `~/.jangbu/credentials.env`(0o600)에만 저장**
+- **외부 서버 전송 없음**
+- **개인 개발자 샌드박스 월 1,000건 무료**
+- 설정: `/korean-jangbu-for` → `[S]` → `/jangbu-connect`
+- 실행: `/korean-jangbu-for` → `[F]` → 카카오/PASS 간편인증 → 자동 적재
+
+지원 범위:
+- **홈택스**: 소득금액증명·납세증명·사업자등록·부가세과세표준 증명
+- **은행**: KB·신한·우리·하나·IBK·NH·카카오뱅크·토스뱅크 거래내역
+- **카드**: 신한·KB·삼성·현대·롯데·BC·우리·하나·NH 이용내역
+- **향후 확장**: 건강보험·국민연금·고용산재·증권 매매내역
+
+```
+/korean-jangbu-for      → 1·2·3·4·M·Q·T·X·C·A 번호·문자 메뉴
+/jangbu-import       → 원본 데이터 표준화 인터뷰 (7대 카드사 명세서 포함)
+/jangbu-tag        → 계정과목 매핑 인터뷰 (룰 + LLM + 학습)
+/jangbu-tax      → BS·PL 생성
+/jangbu-dash     → 경영 리포트 + 카드별 분석 + 대시보드
+/jangbu-jongso   → 종소세 준비 체크리스트 + 자동 생성 서류
+```
+
+## 카드사 지원 현황
+
+| 카드사 | 명세서 PDF 파싱 | 비고 |
+|--------|---------------|------|
+| 신한카드 | ✅ 완전 지원 | 실전 검증 완료 (313건/74% 분류) |
+| KB국민카드 | ✅ 범용 파서 | 테스트 통과, 실전 샘플 대기 |
+| 삼성카드 | ✅ 범용 파서 | 테스트 통과 |
+| 현대카드 | ✅ 범용 파서 | 테스트 통과 (M/X 카드 포함) |
+| 롯데카드 | ✅ 범용 파서 | 테스트 통과 |
+| BC(비씨)카드 | ✅ 범용 파서 | 테스트 통과 |
+| 우리카드 | ✅ 범용 파서 | 테스트 통과 |
+| 하나카드 | ✅ 범용 파서 | 테스트 통과 |
+
+범용 파서 구조: **발급사별 카드 마커 패턴 분기 + 공통 앵커(날짜·금액·사업자번호·상품구분) 추출**.
+카드사별 특화 파서는 `CARD_PARSERS` 레지스트리에 추가 등록 가능.
+
+## 데이터 흐름
+
+```
+[원본 파일]
+  ├─ bank.csv, card.csv, books.xlsx
+  └─ receipt.jpg, tax_invoice.pdf
+        ↓
+  [jangbu-mcp-server]
+    ├─ ingest_raw        # CSV/엑셀 파서
+    ├─ ocr_document      # PaddleOCR (로컬)
+    └─ 마스킹 레이어      # 사업자번호·카드번호·계좌번호 토큰화
+        ↓
+  표준 거래내역 (13개 필드, SQLite)
+        ↓
+  [jangbu-tag]
+    ├─ 룰 기반 (거래처 사전 + MCC + 정규식) → 80%+
+    └─ LLM fallback (마스킹된 데이터만) → 나머지
+        ↓
+  분류 완료 거래내역
+        ↓
+  ├─ [jangbu-tax]  → BS·PL (국세청 표준계정 매핑)
+  └─ [jangbu-dash] → 현금흐름·cash burn·월별 손익
+```
+
+## 표준 거래내역 스키마
+
+필수 9 + 확장 4.
+
+| 필드 | 타입 | 필수 | 설명 | 예시 |
+|---|---|---|---|---|
+| `transaction_id` | str (UUID) | 필수 | 내부 고유 ID | `tx_01HW...` |
+| `date` | date | 필수 | 거래일 | `2026-04-15` |
+| `amount` | decimal(18,2) | 필수 | 절대값 | `1500000.00` |
+| `currency` | str (ISO 4217) | 필수 | 통화코드 | `KRW` |
+| `direction` | enum | 필수 | `inflow`/`outflow` | `outflow` |
+| `counterparty` | str | 필수 | 상대방명(정규화) | `구글코리아` |
+| `description` | str | 필수 | 정규화 적요 | `Google Ads 광고비` |
+| `source` | enum | 필수 | `bank`/`card`/`manual`/`ocr` | `card` |
+| `source_ref` | str | 필수 | 원본 식별자(중복 제거) | `20260415-APPR-88421` |
+| `raw_description` | str | 확장 | 원문 적요 | `GOOGLE*ADS 1234` |
+| `account_id` | str | 확장 | 내부 계좌/카드 ID | `acct_shinhan_001` |
+| `matched_account` | str | 확장 | 매핑된 계정과목 | `광고선전비` |
+| `confidence` | float (0~1) | 확장 | 분류 신뢰도 | `0.92` |
+
+## 보안 모델 (Level 2)
+
+- **토큰화 대상**: 사업자번호·주민번호·카드번호·계좌번호·`account_id`
+- **원본 유지**: `date`, `amount`, `currency`, `direction`, `source`
+- **부분 마스킹**: `counterparty`·`description`·`raw_description` (번호류만 토큰 치환)
+- **LLM 미경유 작업**: 룰 분류·BS/PL 생성·OCR 텍스트 추출
+- **LLM 경유 작업**: 룰 실패한 분류 건만, 마스킹된 뷰로 전달
+- **감사 로그**: 모든 MCP 도구 호출 기록(append-only)
+
+## 저장소 레이아웃
+
+```
+~/.jangbu/
+  ├── raw/
+  │   ├── imports/         # 엑셀·CSV 원본
+  │   └── ocr/             # 영수증·세금계산서 이미지·PDF
+  ├── finance.db           # SQLite: transactions, mappings, classifications
+  ├── tokens.db            # SQLite: 토큰↔원본 매핑 (권한 분리)
+  └── audit.log            # append-only 감사 로그
+```
+
+## OCR 파이프라인
+
+PaddleOCR 로컬 실행 → 룰 기반 구조화 → LLM fallback.
+
+1. **PaddleOCR (PP-OCRv4 한국어 모델)** — 텍스트 + 좌표 추출, 외부 전송 없음
+2. **문서 유형별 파서**
+   - `receipt`: 상호·사업자번호·날짜·합계·공급가액·부가세
+   - `tax_invoice`: 공급자·공급받는자·품목·공급가액·세액·작성일자
+   - `bank_statement_scan`: 거래일·적요·금액·잔액
+3. **LLM fallback** — 파서 실패 시 마스킹된 텍스트만 전달해 구조화
+
+## 설치 (3분)
+
+### 1. 한 줄 설치
+
+```bash
+mkdir -p ~/.claude/skills && cd ~/.claude/skills && \
+  git clone https://github.com/kimlawtech/korean-jangbu-for.git && \
+  bash korean-jangbu-for/scripts/install.sh
+```
+
+자동으로:
+- poppler 확인·설치 (`brew install poppler`)
+- Python 가상환경 + 의존성 설치
+- macOS면 Vision 프레임워크 / Linux면 PaddleOCR 자동 선택
+- SQLite 초기화 + 시드 주입 (계정 47개 + 룰 46개)
+- 6개 스킬 심볼릭 링크 생성
+
+### 2. MCP 서버 등록
+
+```bash
+claude mcp add jangbu-mcp -- \
+  ~/.claude/skills/korean-jangbu-for/mcp-server/.venv/bin/python -m jangbu_mcp
+```
+
+### 3. 설치 검증 (선택)
+
+```bash
+bash ~/.claude/skills/korean-jangbu-for/scripts/verify.sh
+```
+
+### 4. Claude Code 재시작 후 사용
+
+```
+/korean-jangbu-for
+```
+
+메뉴가 뜨면 성공.
+
+### 요구사항
+
+- **macOS** (Vision OCR 추가 다운로드 없음) 또는 **Linux** (PaddleOCR ~500MB)
+- **Python 3.11+**
+- **Homebrew** (poppler 자동 설치용)
+- **Claude Code** 설치됨
+
+### 문제 해결
+
+| 증상 | 해결 |
+|------|------|
+| `brew` 없음 | `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` |
+| Python 3.13에서 PaddleOCR 실패 | 무시 가능 — macOS는 Vision 사용 (install.sh 자동 처리) |
+| `jangbu-mcp` 도구 안 보임 | Claude Code 완전 재시작 후 `claude mcp list` 확인 |
+| 직접 MCP 서버 실행 테스트 | `~/.claude/skills/korean-jangbu-for/mcp-server/.venv/bin/python -m jangbu_mcp` |
+
+## 대상 사용자
+
+- 스타트업 대표 — 기장 맡기기 전 내부 재무 가시성 확보
+- 1인 법인 — 법인세 신고 연결 + 월별 현금흐름 파악
+- 세무사무소 주니어 — 고객 raw 데이터 정리 반복 업무 단축
+
+## 법적 면책
+
+본 스킬이 생성하는 재무제표는 **참고용 초안**이며, 공인회계사 감사·세무사 검토를 대체하지 않습니다.
+
+- 외감 대상(자산 120억 이상 등)은 **공인회계사 감사 필수**
+- 법인세 신고 전 **세무사 검토 필수**
+- 일반기업회계기준(K-GAAP)의 간소화 버전이며 모든 주석을 포함하지 않습니다
+
+## 커뮤니티 — SpeciAI
+
+한국 법률 AI 허브 **SpeciAI** 디스코드에서 만들어요.
+창업자·개발자·변호사·세무사·회계사가 모여 계약·노동·투자·지재권·세무 이슈를 AI로 푸는 커뮤니티입니다.
+
+### 여기서 바로 물어볼 수 있어요
+
+**스킬 사용 관련**
+- 이 스킬 설치·실행 중 막히는 부분 → 스샷 올리면 바로 답변
+- OCR 오인식·파싱 실패 사례 공유 → 다음 버전 룰에 반영
+- CODEF 연동·간편인증 에러 트러블슈팅
+- 특정 카드사·은행 CSV 포맷 질문
+- "내 경우엔 이런 계정으로 처리하는 게 맞나?" 실무 질문
+
+**세무·회계 실무**
+- 종소세(5월)·법인세(3월)·부가세(분기) 신고 전 체크 질문
+- "이 거래를 접대비·복리후생비 어디로 넣어야 하나?"
+- 세무사랑·더존 호환 CSV 포맷 팁
+- 프리랜서 3.3% 원천징수 관련 이슈
+
+**법률·계약 실무** (다른 `korean-*` 스킬 연동)
+- `korean-contracts` — 근로·프리랜서·외주 계약서 작성 질문
+- `korean-privacy-terms` — 처리방침·이용약관 관련
+- `korean-patent-diagram` — 특허 도면 생성
+
+**아이디어·기능 요청**
+- "이런 스킬 있으면 좋겠는데" 제안
+- 버그 리포트 · PR 환영
+- 실제 사용 사례 공유
+
+### 활동 내용
+
+- **신규 스킬 출시 공지** · 업데이트 체인지로그
+- **실전 Q&A 채널** — 익명 질문 가능
+- **법령 업데이트 반영 공지** (개정 때마다 스킬 자동 업데이트)
+- **오픈소스 기여자 소통**
+
+**초대 링크**: [discord.gg/wQWpEpnBfE](https://discord.gg/wQWpEpnBfE)
+
+## 기여
+
+Pull Request 환영합니다. 특히 필요한 영역:
+
+- 카드사별 특화 파서 (KB·삼성·현대·롯데·BC·우리·하나)
+- 5대 은행 CSV 포맷 실데이터 검증·보강
+- 계정과목 분류 룰 확장 (업종별 특화)
+- 분개 엔진 MVP (복식부기 기반 정식 BS)
+
+## 저자
+
+운영: **[@kimlawtech](https://github.com/kimlawtech)** — [SpeciAI](https://discord.gg/wQWpEpnBfE)
+
+한국 법률 AI 허브 SpeciAI를 운영하며 한국 사업자를 위한 계약서·처리방침·약관·장부·세무 자동화 Claude Code 스킬을 만들고 있습니다.
+
+**관련 스킬 패키지**
+- [`korean-contracts`](https://github.com/kimlawtech/korean-contracts) — 근로계약·프리랜서·외주·연봉갱신 등 9종 계약서
+- [`korean-privacy-terms`](https://github.com/kimlawtech/korean-privacy-terms) — 처리방침·이용약관 (PIPA·GDPR·CCPA)
+- [`korean-patent-diagram`](https://github.com/kimlawtech/korean-patent-diagram) — 특허 도면 자동 생성
+- **`korean-jangbu-for`** — 장부·재무제표·세무사 전달 (이 패키지)
+
+## License
+
+**Apache License 2.0** — 자세한 내용은 [LICENSE](./LICENSE) 참조.
+Copyright 2026 kimlawtech (SpeciAI).
+
+## Disclaimer
+
+본 스킬이 생성하는 재무제표는 **참고용 초안**이며 공인회계사 감사·세무사 검토를 대체하지 않습니다.
+실제 법인세·종합소득세 신고 전 반드시 세무사 검토를 받으세요.
+자세한 면책 고지는 [DISCLAIMER.md](./DISCLAIMER.md) 참조.
+
+---
+
+Built with [Claude Code](https://claude.com/claude-code) by [@kimlawtech](https://github.com/kimlawtech).

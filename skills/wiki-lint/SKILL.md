@@ -50,6 +50,19 @@ python3 "/Users/kbg1023/DEV/my-llm-wiki/90. Settings/scripts/similar_titles.py" 
 It lists note titles within edit distance 2, excluding digit-only series pairs
 and identical titles. These are review candidates, never repair instructions.
 
+## Citation check (local add-on, read-only)
+
+Then run the citation check and report it as its own section:
+
+```bash
+python3 "/Users/kbg1023/DEV/my-llm-wiki/90. Settings/scripts/citation_check.py" --vault "$VAULT"
+```
+
+It compares each video `> 출처:` quote in `20. Wiki` with the same time range in
+`10. Raw Sources/youtube/<id>.md`, ignoring only whitespace. It checks captions,
+not video playback, so a caption typo can be the true cause of a mismatch. It
+skips vaults without that folder. "인용문 없음" means unverifiable, not wrong.
+
 ## Explain findings
 
 1. Preserve the engine's paths, line numbers, targets, categories, and counts.

@@ -114,6 +114,8 @@ description: 편집 프로그램 없이 Claude가 코드(HTML+GSAP)로 모션그
 
 강의·설교·영상·교재에 어떻게 쓸지: [ministry-applications.md](references/ministry-applications.md).
 
+5칸 주문서(스타일·주제·진행방식·길이·화면소리)와 MP3+SRT로 장면 시각 맞추기, 승인 관문 문구: [kit-5field-srt-sync.md](references/kit-5field-srt-sync.md).
+
 ## 6. 저장
 
 결과물은 `~/Desktop/cysjavis/모션그래픽/<한글이름>/`에 둔다(정본). 샘플 도감 정본: `~/Desktop/cysjavis/모션그래픽/클로드_모션스튜디오_샘플도감.html`.
