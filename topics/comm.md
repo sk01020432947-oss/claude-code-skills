@@ -20,27 +20,27 @@ rm -rf /tmp/ccs-comm && git clone --depth 1 --filter=blob:none --sparse https://
 
 | 스킬 | 기능 | 부르는 말 |
 |---|---|---|
-| [gws-calendar](../skills/gws-calendar) | Google Calendar: Manage calendars and events. |  |
-| [gws-calendar-agenda](../skills/gws-calendar-agenda) | Google Calendar: Show upcoming events across all calendars. |  |
-| [gws-calendar-insert](../skills/gws-calendar-insert) | Google Calendar: Create a new event. |  |
-| [gws-classroom](../skills/gws-classroom) | Google Classroom: Manage classes, rosters, and coursework. |  |
-| [gws-docs](../skills/gws-docs) | Read and write Google Docs. |  |
-| [gws-docs-write](../skills/gws-docs-write) | Google Docs: Append text to a document. |  |
-| [gws-drive](../skills/gws-drive) | Google Drive: Manage files, folders, and shared drives. |  |
-| [gws-drive-upload](../skills/gws-drive-upload) | Google Drive: Upload a file with automatic metadata. |  |
-| [gws-forms](../skills/gws-forms) | Read and write Google Forms. |  |
-| [gws-gmail](../skills/gws-gmail) | Gmail: Send, read, and manage email. |  |
-| [gws-gmail-read](../skills/gws-gmail-read) | Gmail: Read a message and extract its body or headers. |  |
-| [gws-gmail-reply](../skills/gws-gmail-reply) | Gmail: Reply to a message (handles threading automatically). |  |
-| [gws-gmail-send](../skills/gws-gmail-send) | Gmail: Send an email. |  |
-| [gws-gmail-triage](../skills/gws-gmail-triage) | Gmail: Show unread inbox summary (sender, subject, date). |  |
-| [gws-shared](../skills/gws-shared) | gws CLI: Shared patterns for authentication, global flags, and output formatting. |  |
-| [gws-sheets](../skills/gws-sheets) | Google Sheets: Read and write spreadsheets. |  |
-| [gws-sheets-append](../skills/gws-sheets-append) | Google Sheets: Append a row to a spreadsheet. |  |
-| [gws-sheets-read](../skills/gws-sheets-read) | Google Sheets: Read values from a spreadsheet. |  |
-| [gws-slides](../skills/gws-slides) | Google Slides: Read and write presentations. |  |
-| [gws-tasks](../skills/gws-tasks) | Google Tasks: Manage task lists and tasks. |  |
-| [gws-workflow](../skills/gws-workflow) | Google Workflow: Cross-service productivity workflows. |  |
-| [gws-workflow-meeting-prep](../skills/gws-workflow-meeting-prep) | Google Workflow: Prepare for your next meeting: agenda, attendees, and linked docs. |  |
-| [gws-workflow-weekly-digest](../skills/gws-workflow-weekly-digest) | Google Workflow: Weekly summary: this week's meetings + unread email count. |  |
+| [gws-calendar](../skills/gws-calendar) | Google Calendar: Manage calendars and events.<br>Google Calendar: 캘린더와 일정 관리. |  |
+| [gws-calendar-agenda](../skills/gws-calendar-agenda) | Google Calendar: Show upcoming events across all calendars.<br>Google Calendar: 모든 캘린더의 다가오는 일정 표시. |  |
+| [gws-calendar-insert](../skills/gws-calendar-insert) | Google Calendar: Create a new event.<br>Google Calendar: 새 일정 생성. |  |
+| [gws-classroom](../skills/gws-classroom) | Google Classroom: Manage classes, rosters, and coursework.<br>Google Classroom: 수업, 명단, 과제 관리. |  |
+| [gws-docs](../skills/gws-docs) | Read and write Google Docs.<br>Google Docs 읽기와 쓰기. |  |
+| [gws-docs-write](../skills/gws-docs-write) | Google Docs: Append text to a document.<br>Google Docs: 문서에 텍스트 추가. |  |
+| [gws-drive](../skills/gws-drive) | Google Drive: Manage files, folders, and shared drives.<br>Google Drive: 파일, 폴더, 공유 드라이브 관리. |  |
+| [gws-drive-upload](../skills/gws-drive-upload) | Google Drive: Upload a file with automatic metadata.<br>Google Drive: 메타데이터를 자동으로 붙여 파일 업로드. |  |
+| [gws-forms](../skills/gws-forms) | Read and write Google Forms.<br>Google Forms 읽기와 쓰기. |  |
+| [gws-gmail](../skills/gws-gmail) | Gmail: Send, read, and manage email.<br>Gmail: 이메일 보내기, 읽기, 관리. |  |
+| [gws-gmail-read](../skills/gws-gmail-read) | Gmail: Read a message and extract its body or headers.<br>Gmail: 메시지를 읽고 본문이나 헤더 추출. |  |
+| [gws-gmail-reply](../skills/gws-gmail-reply) | Gmail: Reply to a message (handles threading automatically).<br>Gmail: 메시지에 답장(스레드 자동 처리). |  |
+| [gws-gmail-send](../skills/gws-gmail-send) | Gmail: Send an email.<br>Gmail: 이메일 보내기. |  |
+| [gws-gmail-triage](../skills/gws-gmail-triage) | Gmail: Show unread inbox summary (sender, subject, date).<br>Gmail: 읽지 않은 받은편지함 요약 표시(보낸 사람, 제목, 날짜). |  |
+| [gws-shared](../skills/gws-shared) | gws CLI: Shared patterns for authentication, global flags, and output formatting.<br>gws CLI: 인증, 전역 플래그, 출력 서식에 관한 공통 패턴. |  |
+| [gws-sheets](../skills/gws-sheets) | Google Sheets: Read and write spreadsheets.<br>Google Sheets: 스프레드시트 읽기와 쓰기. |  |
+| [gws-sheets-append](../skills/gws-sheets-append) | Google Sheets: Append a row to a spreadsheet.<br>Google Sheets: 스프레드시트에 행 추가. |  |
+| [gws-sheets-read](../skills/gws-sheets-read) | Google Sheets: Read values from a spreadsheet.<br>Google Sheets: 스프레드시트에서 값 읽기. |  |
+| [gws-slides](../skills/gws-slides) | Google Slides: Read and write presentations.<br>Google Slides: 프레젠테이션 읽기와 쓰기. |  |
+| [gws-tasks](../skills/gws-tasks) | Google Tasks: Manage task lists and tasks.<br>Google Tasks: 할 일 목록과 할 일 관리. |  |
+| [gws-workflow](../skills/gws-workflow) | Google Workflow: Cross-service productivity workflows.<br>Google Workflow: 여러 서비스를 아우르는 생산성 워크플로. |  |
+| [gws-workflow-meeting-prep](../skills/gws-workflow-meeting-prep) | Google Workflow: Prepare for your next meeting: agenda, attendees, and linked docs.<br>Google Workflow: 다음 회의 준비 — 안건, 참석자, 연결된 문서. |  |
+| [gws-workflow-weekly-digest](../skills/gws-workflow-weekly-digest) | Google Workflow: Weekly summary: this week's meetings + unread email count.<br>Google Workflow: 주간 요약 — 이번 주 회의와 읽지 않은 이메일 수. |  |
 | [nopal](../skills/nopal) | Google Workspace 오케스트레이션 — 자연어로 9개 서비스를 자동 조합 Gmail·Calendar·Drive·Sheets·Docs·Slides·Chat·Tasks·Meet을 gws CLI로 조합한다. 읽기 조회는 바로 실행하고 쓰기·변경은  |  |

@@ -33,13 +33,13 @@ rm -rf /tmp/ccs-gov-data && git clone --depth 1 --filter=blob:none --sparse http
 | [g2b-sanctioned-supplier](../skills/g2b-sanctioned-supplier) | 조달청 나라장터 부정당제재업체정보를 공공데이터포털 API(k-skill-proxy 경유)로 조회한다. 사업자등록번호 정확 일치로 조회시점 현재 유효한 입찰참가자격 제한(부정당제재)의 기간·제재기관·근거법률을 확인한다. |  |
 | [hankookilbo-news](../skills/hankookilbo-news) | 한국일보 공식 원격 MCP 서버(mcp.hankookilbo.com)를 인증 없이 직접 호출해 편집 헤드라인·많이 본·꼼꼼히 본·최신 기사·섹션별 편집 추천·주제 검색·오늘의 운세를 기사 메타데이터(제목·발행시각·원문 링크) 중심으로 조회한다. |  |
 | [ip-ministry-lens](../skills/ip-ministry-lens) | 목회·출판·사역·AI도구 개발·복지 강의에 특허청 KIPRIS 데이터를 쓰는 레시피 스킬. 이미 설치된 korean-patent MCP(mcp.gomdori.app/patent, 도구 7종)로 ① 사역·프로그램·책·채널 이름 상표 사전점검 ② 교회 굿 | 상표 있나·이름 써도 되나·책 제목 등록 |
-| [joseon-sillok-search](../skills/joseon-sillok-search) | Search Joseon Dynasty Annals records from the official sillok.history.go.kr site with keyword search plus optional king/year narrowing. |  |
+| [joseon-sillok-search](../skills/joseon-sillok-search) | Search Joseon Dynasty Annals records from the official sillok.history.go.kr site with keyword search plus optional king/year narrowing.<br>공식 sillok.history.go.kr 사이트에서 키워드 검색과 선택적 왕·연도 범위 지정으로 조선왕조실록 기록을 검색한다. |  |
 | [k-dart](../skills/k-dart) | 금융감독원 전자공시시스템(DART) OpenAPI로 공시검색, 기업개황, 재무제표, 주요사항보고서를 조회한다. 사용자의 API_K_DART 환경변수를 직접 사용한다. 교회 건축 시공사 실사·교단 기금 점검·기부금 공시처럼 목회 맥락 적용은 dart-m |  |
 | [k-schoollunch-menu](../skills/k-schoollunch-menu) | Use when the user asks for Korean school meal menus (급식 식단) by natural-language education office and school name, via k-skill-proxy NEIS sch |  |
 | [kakao-map](../skills/kakao-map) | Kakao Local (장소 검색·주소-좌표 변환) + Kakao Mobility (자동차 길찾기) 를 k-skill-proxy 경유로 조회한다. 사용자 키 불필요. 돌쇠에서는 공식 표면을 통한 후속 액션까지 진행한다. |  |
 | [korean-cinema-search](../skills/korean-cinema-search) | CGV, 메가박스, 롯데시네마 영화관 검색, 상영작, 시간표, 잔여석 조회가 필요할 때 사용한다. 돌쇠에서는 공식 표면을 통한 후속 액션까지 진행한다. |  |
-| [korean-heritage-search](../skills/korean-heritage-search) | Search official Korean national heritage records, details, locations, and monthly heritage events from the Korea Heritage Service Open API. |  |
-| [korean-law-search](../skills/korean-law-search) | 한국 법령 조회는 korean-law-mcp를 우선 사용하고, 기본 서비스가 안 될 때 법망(Beopmang)으로 폴백. | OO법 제N조·판례 찾아줘·인용 맞는지 검증 |
+| [korean-heritage-search](../skills/korean-heritage-search) | Search official Korean national heritage records, details, locations, and monthly heritage events from the Korea Heritage Service Open API.<br>국가유산청 Open API로 공식 한국 국가유산 기록, 상세 정보, 위치, 월별 국가유산 행사를 검색한다. |  |
+| [korean-law-search](../skills/korean-law-search) | 한국 법령·조문·판례·해석례·자치법규(조례)·행정규칙 조회와 AI 글의 법 인용 검증에 korean-law MCP(v4.15, 도구 10개)를 쓴다. "OO법 제N조", "판례 찾아줘", "인용 맞는지 검증", "조례 상위법 개정 반영됐나", "과거 <br>한국 법령 조회는 korean-law-mcp를 우선 사용하고, 기본 서비스가 안 될 때 법망(Beopmang)으로 폴백. | OO법 제N조·판례 찾아줘·인용 맞는지 검증 |
 | [korean-scholarship-search](../skills/korean-scholarship-search) | Search Korean scholarship announcements across official KOSAF, university, foundation, company, and public-sector sources, extract amount an |  |
 | [korean-transit-route](../skills/korean-transit-route) | Korean door-to-door public transit routing (subway + bus + walking) via ODsay LIVE API with Kakao geocoding for address-to-address queries.  |  |
 | [kosis-stats](../skills/kosis-stats) | 국가데이터처가 운영하는 KOSIS(국가통계포털, kosis.kr) Open API로 한국 공식 통계표를 검색하고 메타데이터·데이터·대용량 자료를 조회한다. Use when the user asks for 한국 공식 통계 수치 조회, 특히 공공기관·공무 |  |
@@ -52,7 +52,7 @@ rm -rf /tmp/ccs-gov-data && git clone --depth 1 --filter=blob:none --sparse http
 | [mfds-food-safety](../skills/mfds-food-safety) | 식약처/식품안전나라 공개 표면을 k-skill-proxy 경유로 조회하기 전에 증상·섭취상황을 반드시 되묻는 인터뷰형 식품 안전 체크 스킬. 건강기능식품 원료 인정·개별인정·품목신고, 검사부적합·부적합 식품, 회수·판매중지 목록을 조회한다. 트리거:  |  |
 | [national-assembly-tracker](../skills/national-assembly-tracker) | 열린국회정보 Open API와 국회 공식 시스템으로 특정 키워드 관련 법률안·의안 진행상태를 검색하고 제안일, 소관위원회, 처리결과, 대표발의자, 공동발의자, 상세 의안정보 링크, 회의록·입법예고 확인 링크를 정리한다. Use when the user |  |
 | [national-pension-workplace](../skills/national-pension-workplace) | 국민연금공단 국민연금 가입 사업장 내역을 공공데이터포털 API(k-skill-proxy 경유)로 조회한다. 사업장명으로 가입자수·당월 고지금액·월별 취득/상실 추이를 확인해 그 회사의 직원 규모와 변화를 본다. |  |
-| [naver-blog-research](../skills/naver-blog-research) | Search Naver blogs, read full post content, and download images using only python3 stdlib — no API key required. |  |
+| [naver-blog-research](../skills/naver-blog-research) | Search Naver blogs, read full post content, and download images using only python3 stdlib — no API key required.<br>python3 표준 라이브러리만으로 네이버 블로그를 검색하고, 글 전문을 읽고, 이미지를 내려받는다 — API 키 불필요. |  |
 | [naver-news-search](../skills/naver-news-search) | 네이버 검색 Open API 뉴스 검색(news.json)을 k-skill-proxy 경유로 조회해 최신 뉴스 기사 제목·발행시각·링크·요약을 보수적으로 정리한다. 사용자는 별도 API 키 발급 없이 호출한다. |  |
 | [naver-shopping-search](../skills/naver-shopping-search) | 네이버 쇼핑 공개 BFF JSON을 k-skill-proxy로 조회해 상품 후보, 최저가, 판매처 링크를 보수적으로 가격비교한다. 돌쇠에서는 공식 표면을 통한 후속 액션까지 진행한다. |  |
 | [nhis-care-checkup-search](../skills/nhis-care-checkup-search) | 국민건강보험공단 장기요양기관·건강검진기관을 조회하고, 돌쇠에서는 공식 연락·예약 가능 표면까지 이어간다. 장기요양기관과 건강검진기관 후보(주소·전화)를 조회한다. 트리거: ''○○ 장기요양기관 찾아줘'', ''요양원 후보'', ''주말 검진 가능한 검 |  |
